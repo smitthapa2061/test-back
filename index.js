@@ -56,7 +56,7 @@ app.use(session({
     sameSite: "none", // Required for cross-site cookies
   }
 }));
-
+console.log("hello");
 
 // --- REGISTER ROUTES ---
 app.use('/api/users', userRoutes);
