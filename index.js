@@ -35,7 +35,7 @@ app.use((req, res, next) => {
 });
 
 app.use(cors({
-  origin: ["http://localhost:3001", "http://localhost:1420", "tauri://localhost"],
+  origin: ["http://localhost:3001", "http://localhost:1420", "tauri://localhost","https://scoresync-v1.vercel.app/"],
   credentials: true,               // allow sending cookies
   methods: ["GET","POST","PUT","PATCH","DELETE","OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
