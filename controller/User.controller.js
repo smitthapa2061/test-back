@@ -58,7 +58,12 @@ const loginUser = async (req, res) => {
 
     req.session.userId = user._id;
 req.session.save(err => {
-  if (err) return res.status(500).json({ message: err.message });
+  if (err) {
+    console.error('❌ Session save error:', err);
+    return res.status(500).json({ message: err.message });
+  }
+  console.log('✅ Login successful, session saved:', req.sessionID);
+  console.log('✅ User ID in session:', req.session.userId);
   res.status(200).json({
     user: {
       _id: user._id,
@@ -115,11 +120,23 @@ const getAllUsers = async (req, res) => {
 };
 
 const getCurrentUser = async (req, res) => {
-  if (!req.session.userId) return res.status(401).json({ message: "Not logged in" });
+  console.log('🔍 getCurrentUser called');
+  console.log('🔍 Session ID:', req.sessionID);
+  console.log('🔍 Session userId:', req.session?.userId);
+  console.log('🔍 Session data:', req.session);
+  
+  if (!req.session.userId) {
+    console.log('❌ No userId in session - user not logged in');
+    return res.status(401).json({ message: "Not logged in" });
+  }
 
   const user = await User.findById(req.session.userId).select("-password");
-  if (!user) return res.status(404).json({ message: "User not found" });
+  if (!user) {
+    console.log('❌ User not found in database');
+    return res.status(404).json({ message: "User not found" });
+  }
 
+  console.log('✅ User found:', user.email);
   res.json(user);
 };
 

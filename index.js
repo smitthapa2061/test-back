@@ -23,19 +23,37 @@ const { startLiveMatchUpdater } = require('./controller/Api_controllers/pubgApiM
 const app = express();
 const port = process.env.PORT || 3000;
 
+// Trust proxy (required for Render.com and other cloud platforms)
+app.set('trust proxy', 1);
+
 // --- CONNECT TO MONGODB ---
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('✅ MongoDB connected'))
   .catch(err => console.error('❌ MongoDB connection error:', err));
 
 // --- MIDDLEWARES ---
-app.use((req, res, next) => {
-  console.log('Requested URL:', req.method, req.originalUrl);
-  next();
-});
-
+// CORS must come first
 app.use(cors({
-  origin: ["http://localhost:3001", "http://localhost:1420", "tauri://localhost", "https://scoresync-v1.vercel.app"],
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    const allowedOrigins = [
+      "http://localhost:3001", 
+      "http://localhost:3000",
+      "http://localhost:1420", 
+      "tauri://localhost", 
+      "https://scoresync-v1.vercel.app",
+    ];
+    
+    // Check if origin is allowed OR if it's a Vercel preview deployment
+    if (allowedOrigins.includes(origin) || origin.includes('.vercel.app')) {
+      callback(null, true);
+    } else {
+      console.warn('⚠️ CORS blocked origin:', origin);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,               // allow sending cookies
   methods: ["GET","POST","PUT","PATCH","DELETE","OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
@@ -43,7 +61,7 @@ app.use(cors({
 
 app.use(express.json());
 
-// --- SESSION MIDDLEWARE ---
+// --- SESSION MIDDLEWARE (must come before routes) ---
 app.use(session({
   secret: process.env.SESSION_SECRET || 'supersecretkey123',
   resave: false,
@@ -51,11 +69,23 @@ app.use(session({
   store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }),
   cookie: {
     httpOnly: true,
-    secure: true, // Must be true for cross-site cookies over HTTPS
+    secure: true, // MUST be true for cross-site cookies (requires HTTPS)
     maxAge: 1000 * 60 * 60 * 24, // 1 day
-    sameSite: "none", // Required for cross-site cookies
-  }
+    sameSite: 'none', // MUST be 'none' for cross-site cookies
+    domain: undefined, // Let browser handle domain automatically
+  },
+  proxy: true, // Trust the reverse proxy (Render uses proxies)
 }));
+
+// Logging middleware (after session is set up)
+app.use((req, res, next) => {
+  console.log('📍', req.method, req.originalUrl);
+  console.log('🌐 Origin:', req.headers.origin);
+  console.log('🔑 Session ID:', req.sessionID);
+  console.log('👤 User ID:', req.session?.userId);
+  console.log('🍪 Cookies:', req.headers.cookie);
+  next();
+});
 console.log("hello");
 
 // --- REGISTER ROUTES ---
