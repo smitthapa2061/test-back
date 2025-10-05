@@ -62,6 +62,12 @@ app.use(cors({
 app.use(express.json());
 
 // --- SESSION MIDDLEWARE (must come before routes) ---
+// Auto-detect production: check NODE_ENV or if running on Render
+const isProduction = process.env.NODE_ENV === 'production' || process.env.RENDER === 'true';
+console.log('🔧 Environment:', isProduction ? 'PRODUCTION' : 'DEVELOPMENT');
+console.log('🔧 NODE_ENV:', process.env.NODE_ENV);
+console.log('🔧 RENDER:', process.env.RENDER);
+
 app.use(session({
   secret: process.env.SESSION_SECRET || 'supersecretkey123',
   resave: false,
@@ -69,9 +75,9 @@ app.use(session({
   store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }),
   cookie: {
     httpOnly: true,
-    secure: true, // MUST be true for cross-site cookies (requires HTTPS)
+    secure: isProduction, // true for production (HTTPS), false for localhost (HTTP)
     maxAge: 1000 * 60 * 60 * 24, // 1 day
-    sameSite: 'none', // MUST be 'none' for cross-site cookies
+    sameSite: isProduction ? 'none' : 'lax', // 'none' for cross-site (production), 'lax' for same-site (localhost)
     domain: undefined, // Let browser handle domain automatically
   },
   proxy: true, // Trust the reverse proxy (Render uses proxies)
