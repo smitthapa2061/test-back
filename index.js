@@ -68,7 +68,7 @@ console.log('🔧 Environment:', isProduction ? 'PRODUCTION' : 'DEVELOPMENT');
 console.log('🔧 NODE_ENV:', process.env.NODE_ENV);
 console.log('🔧 RENDER:', process.env.RENDER);
 
-app.use(session({
+const sessionMiddleware = session({
   secret: process.env.SESSION_SECRET || 'supersecretkey123',
   resave: false,
   saveUninitialized: false,
@@ -81,7 +81,36 @@ app.use(session({
     domain: undefined, // Let browser handle domain automatically
   },
   proxy: true, // Trust the reverse proxy (Render uses proxies)
-}));
+});
+
+// Middleware to add Partitioned attribute to cookies (Chrome requirement for cross-site cookies)
+app.use((req, res, next) => {
+  sessionMiddleware(req, res, (err) => {
+    if (err) return next(err);
+    
+    // Add Partitioned attribute to Set-Cookie header in production
+    if (isProduction) {
+      const originalSetHeader = res.setHeader.bind(res);
+      res.setHeader = function(name, value) {
+        if (name.toLowerCase() === 'set-cookie' && Array.isArray(value)) {
+          value = value.map(cookie => {
+            if (cookie.includes('connect.sid') && !cookie.includes('Partitioned')) {
+              return cookie + '; Partitioned';
+            }
+            return cookie;
+          });
+        } else if (name.toLowerCase() === 'set-cookie' && typeof value === 'string') {
+          if (value.includes('connect.sid') && !value.includes('Partitioned')) {
+            value = value + '; Partitioned';
+          }
+        }
+        return originalSetHeader(name, value);
+      };
+    }
+    
+    next();
+  });
+});
 
 // Logging middleware (after session is set up)
 app.use((req, res, next) => {
