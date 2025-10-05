@@ -123,38 +123,76 @@ await updateTeamsWithApiPlayers(apiPlayers, matchId, userId);
 
       if (matchPlayer || grpPlayer) {
         finalPlayer = {
+          // Spread ALL API player data first
+          ...apiPlayer,
+          
+          // Override with identity fields from DB/Group
           _id: new mongoose.Types.ObjectId(),
           uId: uid,
           playerOpenId: matchPlayer?.playerOpenId || grpPlayer?.playerOpenId || apiPlayer.playerOpenId || '',
+          playerName: matchPlayer?.playerName?.trim() || grpPlayer?.playerName?.trim() || apiPlayer.playerName,
+          picUrl: matchPlayer?.picUrl?.trim() || grpPlayer?.photo?.trim() || apiPlayer.picUrl || '',
+          showPicUrl: '', // intentionally left empty
+          
+          // Ensure critical fields from API
           teamIdfromApi: team.slot,
           location: apiPlayer.location || { x: 0, y: 0, z: 0 },
           bHasDied: apiPlayer.liveState === 5,
-          character: apiPlayer.character || 'None',
-          rank: apiPlayer.rank || 0,
+          
+          // All live stats from API (health, damage, etc.)
+          health: apiPlayer.health || 0,
+          healthMax: apiPlayer.healthMax || 100,
+          liveState: apiPlayer.liveState || 0,
           killNum: apiPlayer.killNum || 0,
-          picUrl: matchPlayer?.picUrl?.trim() || grpPlayer?.photo?.trim() || apiPlayer.picUrl || '',
-          playerName: matchPlayer?.playerName?.trim() || grpPlayer?.playerName?.trim() || apiPlayer.playerName,
-          showPicUrl: '' // <-- intentionally left empty
+          killNumBeforeDie: apiPlayer.killNumBeforeDie || 0,
+          damage: apiPlayer.damage || 0,
+          assists: apiPlayer.assists || 0,
+          knockouts: apiPlayer.knockouts || 0,
+          headShotNum: apiPlayer.headShotNum || 0,
+          survivalTime: apiPlayer.survivalTime || 0,
+          isFiring: apiPlayer.isFiring || false,
+          isOutsideBlueCircle: apiPlayer.isOutsideBlueCircle || false,
+          inDamage: apiPlayer.inDamage || 0,
+          driveDistance: apiPlayer.driveDistance || 0,
+          marchDistance: apiPlayer.marchDistance || 0,
+          outsideBlueCircleTime: apiPlayer.outsideBlueCircleTime || 0,
+          rescueTimes: apiPlayer.rescueTimes || 0,
+          gotAirDropNum: apiPlayer.gotAirDropNum || 0,
+          maxKillDistance: apiPlayer.maxKillDistance || 0,
+          killNumInVehicle: apiPlayer.killNumInVehicle || 0,
+          killNumByGrenade: apiPlayer.killNumByGrenade || 0,
+          AIKillNum: apiPlayer.AIKillNum || 0,
+          BossKillNum: apiPlayer.BossKillNum || 0,
+          useSmokeGrenadeNum: apiPlayer.useSmokeGrenadeNum || 0,
+          useFragGrenadeNum: apiPlayer.useFragGrenadeNum || 0,
+          useBurnGrenadeNum: apiPlayer.useBurnGrenadeNum || 0,
+          useFlashGrenadeNum: apiPlayer.useFlashGrenadeNum || 0,
+          PoisonTotalDamage: apiPlayer.PoisonTotalDamage || 0,
+          UseSelfRescueTime: apiPlayer.UseSelfRescueTime || 0,
+          UseEmergencyCallTime: apiPlayer.UseEmergencyCallTime || 0,
         };
         
-        if (apiPlayer.killNum > 0) {
-          console.log(`Merged player ${finalPlayer.playerName}: killNum = ${finalPlayer.killNum} (from API: ${apiPlayer.killNum})`);
+        if (apiPlayer.killNum > 0 || apiPlayer.health < 100) {
+          console.log(`Merged player ${finalPlayer.playerName}: kills=${finalPlayer.killNum}, health=${finalPlayer.health}/${finalPlayer.healthMax}`);
         }
       } else {
         finalPlayer = {
+          // Spread ALL API player data
           ...apiPlayer,
+          
+          // Override identity fields
           _id: new mongoose.Types.ObjectId(),
           uId: uid,
           teamIdfromApi: team.slot,
           location: apiPlayer.location || { x: 0, y: 0, z: 0 },
           bHasDied: apiPlayer.liveState === 5,
           picUrl: apiPlayer.picUrl || '',
-          showPicUrl: '', // <-- intentionally left empty
+          showPicUrl: '',
           playerName: apiPlayer.playerName,
         };
         
-        if (finalPlayer.killNum > 0) {
-          console.log(`New player ${finalPlayer.playerName}: killNum = ${finalPlayer.killNum}`);
+        if (finalPlayer.killNum > 0 || finalPlayer.health < 100) {
+          console.log(`New player ${finalPlayer.playerName}: kills=${finalPlayer.killNum}, health=${finalPlayer.health}/${finalPlayer.healthMax}`);
         }
       }
 

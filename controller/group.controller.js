@@ -34,7 +34,13 @@ const createGroup = async (req, res) => {
     const teamIds = normalizedSlots.map(s => s.team);
     const teamsExist = await Team.find({ _id: { $in: teamIds } });
     if (teamsExist.length !== teamIds.length) {
-      return res.status(400).json({ message: 'Some teams in slots not found' });
+      const foundIds = teamsExist.map(t => t._id.toString());
+      const missingIds = teamIds.filter(id => !foundIds.includes(id.toString()));
+      console.error('❌ Missing team IDs:', missingIds);
+      return res.status(400).json({ 
+        message: 'Some teams in slots not found',
+        missingTeamIds: missingIds 
+      });
     }
 
     // Validate slot numbers
@@ -111,7 +117,13 @@ const updateGroup = async (req, res) => {
       const teamIds = slots.map(slot => slot.team);
       const teamsExist = await Team.find({ _id: { $in: teamIds } });
       if (teamsExist.length !== teamIds.length) {
-        return res.status(400).json({ message: 'Some teams in slots not found' });
+        const foundIds = teamsExist.map(t => t._id.toString());
+        const missingIds = teamIds.filter(id => !foundIds.includes(id.toString()));
+        console.error('❌ Missing team IDs during update:', missingIds);
+        return res.status(400).json({ 
+          message: 'Some teams in slots not found',
+          missingTeamIds: missingIds 
+        });
       }
       for (const slot of slots) {
         if (typeof slot.slot !== 'number' || slot.slot < 1) {
