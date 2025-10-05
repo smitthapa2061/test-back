@@ -9,12 +9,32 @@ function initializeSocket(server) {
   }
   const { Server } = require('socket.io');
   ioInstance = new Server(server, {
-   cors: {
-    origin: ['http://localhost:3001', 'http://localhost:3000'],
-    credentials: true,
-  }
+    cors: {
+      origin: function (origin, callback) {
+        // Allow requests with no origin (like mobile apps or Postman)
+        if (!origin) return callback(null, true);
+        
+        const allowedOrigins = [
+          'http://localhost:3001',
+          'http://localhost:3000',
+          'http://localhost:1420',
+          'tauri://localhost',
+          'https://scoresync-v1.vercel.app',
+        ];
+        
+        // Check if origin is allowed OR if it's a Vercel preview deployment
+        if (allowedOrigins.includes(origin) || origin.includes('.vercel.app')) {
+          callback(null, true);
+        } else {
+          console.warn('⚠️ Socket.IO CORS blocked origin:', origin);
+          callback(new Error('Not allowed by CORS'));
+        }
+      },
+      credentials: true,
+      methods: ['GET', 'POST'],
+    }
   });
-  console.log('Socket.IO initialized.');
+  console.log('✅ Socket.IO initialized with CORS');
   return ioInstance;
 }
 
