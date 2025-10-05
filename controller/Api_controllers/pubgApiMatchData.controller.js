@@ -92,9 +92,18 @@ const updateMatchDataWithLiveStats = async (matchId, userId) => {
   });
 
   // --- Get API players ---
-  const res = await axios.get('http://localhost:10086/gettotalplayerlist');
-  const apiPlayers = res.data.playerInfoList || [];
-  console.log(`API returned ${apiPlayers.length} players`);
+  const PUBG_API_URL = process.env.PUBG_API_URL || 'http://localhost:10086';
+  
+  let apiPlayers = [];
+  try {
+    const res = await axios.get(`${PUBG_API_URL}/gettotalplayerlist`, { timeout: 5000 });
+    apiPlayers = res.data.playerInfoList || [];
+    console.log(`API returned ${apiPlayers.length} players`);
+  } catch (err) {
+    console.warn(`⚠️ Could not connect to PUBG API at ${PUBG_API_URL}:`, err.code);
+    console.log('Continuing without API data...');
+    return matchData; // Return existing data without updates
+  }
 await updateTeamsWithApiPlayers(apiPlayers, matchId, userId);
   const normalizeId = id => (id ? String(id).trim() : '');
 
