@@ -102,27 +102,33 @@ function buildInitialAggPlayer(p) {
 const getOverallMatchDataForRound = async (req, res) => {
   try {
     const userId = req.session && req.session.userId;
-    if (!userId) return res.status(401).json({ error: 'Unauthorized' });
 
-    const { tournamentId, roundId } = req.params;
-    if (!mongoose.Types.ObjectId.isValid(tournamentId) || !mongoose.Types.ObjectId.isValid(roundId)) {
-      return res.status(400).json({ error: 'Invalid tournamentId or roundId' });
+    const { tournamentId, roundId, matchId } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(tournamentId) || !mongoose.Types.ObjectId.isValid(roundId) || !mongoose.Types.ObjectId.isValid(matchId)) {
+      return res.status(400).json({ error: 'Invalid tournamentId, roundId, or matchId' });
     }
 
-    // Verify round ownership
-    const round = await Round.findOne({ _id: roundId, tournamentId, createdBy: userId });
-    if (!round) return res.status(404).json({ error: 'Round not found or not yours' });
+    // Verify round exists (skip ownership for public routes)
+    const round = await Round.findOne({ _id: roundId, tournamentId, ...(userId && { createdBy: userId }) });
+    if (!round) return res.status(404).json({ error: 'Round not found' });
 
-    // Fetch all matches for this tournament/round/user
-    const matches = await Match.find({ tournamentId, roundId, userId }, { _id: 1 }).lean();
+    // Verify match exists (skip ownership for public routes)
+    const targetMatch = await Match.findOne({ _id: matchId, tournamentId, roundId, ...(userId && { userId }) });
+    if (!targetMatch) return res.status(404).json({ error: 'Match not found' });
+
+    // Fetch all matches for this tournament/round, sorted by matchNo
+    const matches = await Match.find({ tournamentId, roundId, ...(userId && { userId }) }, { _id: 1, matchNo: 1 }).sort({ matchNo: 1 }).lean();
     if (!matches || matches.length === 0) {
-      return res.json({ tournamentId, roundId, userId, teams: [] });
+      return res.json({ tournamentId, roundId, matchId, ...(userId && { userId }), teams: [] });
     }
 
-    const matchIds = matches.map(m => m._id);
+    // Filter matches up to but not including the target match's matchNo
+    const filteredMatches = matches.filter(m => m.matchNo < targetMatch.matchNo);
+
+    const matchIds = filteredMatches.map(m => m._id);
 
     // Ensure matchData exists for each match (create if missing to follow current pattern)
-    const existing = await MatchData.find({ matchId: { $in: matchIds }, userId }).select('_id matchId').lean();
+    const existing = await MatchData.find({ matchId: { $in: matchIds }, ...(userId && { userId }) }).select('_id matchId').lean();
     const existingMap = new Map(existing.map(md => [md.matchId.toString(), md._id]));
 
     for (const m of matchIds) {
@@ -137,7 +143,17 @@ const getOverallMatchDataForRound = async (req, res) => {
     }
 
     // Load all matchData after attempting creation
-    const matchDatas = await MatchData.find({ matchId: { $in: matchIds }, userId }).lean();
+    const matchDatas = await MatchData.find({ matchId: { $in: matchIds }, ...(userId && { userId }) }).lean();
+
+    // Deduplicate matchDatas by matchId to avoid summing the same data multiple times
+    const uniqueMatchDatas = [];
+    const seenMatchIds = new Set();
+    for (const md of matchDatas) {
+      if (!seenMatchIds.has(md.matchId.toString())) {
+        seenMatchIds.add(md.matchId.toString());
+        uniqueMatchDatas.push(md);
+      }
+    }
 
     // Aggregate by teamId
     const teamsMap = new Map(); // key: teamId string -> aggregated team
@@ -209,7 +225,7 @@ const getOverallMatchDataForRound = async (req, res) => {
       players: Array.from(t.players.values()),
     })).sort((a, b) => (a.slot || 0) - (b.slot || 0));
 
-    return res.json({ tournamentId, roundId, userId, teams: aggregatedTeams, createdAt: new Date() });
+    return res.json({ tournamentId, roundId, matchId, ...(userId && { userId }), teams: aggregatedTeams, createdAt: new Date() });
   } catch (error) {
     console.error('Error generating overall matchData:', error);
     return res.status(500).json({ error: error.message });

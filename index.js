@@ -39,11 +39,14 @@ app.use(cors({
     if (!origin) return callback(null, true);
     
     const allowedOrigins = [
-      "http://localhost:3001", 
-      "http://localhost:3000",
-      "http://localhost:1420", 
-      "tauri://localhost", 
+      "http://localhost:3001",
+    
+      "http://localhost:1420",
+      "http://tauri.localhost",
+      "tauri://com.admin.tauri-app",
+      "tauri://localhost",
       "https://scoresync-v1.vercel.app",
+    
     ];
     
     // Check if origin is allowed OR if it's a Vercel preview deployment
@@ -56,12 +59,19 @@ app.use(cors({
   },
   credentials: true,               // allow sending cookies
   methods: ["GET","POST","PUT","PATCH","DELETE","OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
+  allowedHeaders: ["Content-Type", "Authorization", "x-cookie"],
 }));
 
 app.use(express.json());
 
-// --- SESSION MIDDLEWARE (must come before routes) ---
+// Middleware to handle custom cookie header for Tauri
+app.use((req, res, next) => {
+  if (req.headers['x-cookie']) {
+    req.headers.cookie = req.headers['x-cookie'];
+  }
+  next();
+});
+
 // Auto-detect production: check NODE_ENV or if running on Render
 const isProduction = process.env.NODE_ENV === 'production' || process.env.RENDER === 'true';
 console.log('🔧 Environment:', isProduction ? 'PRODUCTION' : 'DEVELOPMENT');
@@ -69,15 +79,15 @@ console.log('🔧 NODE_ENV:', process.env.NODE_ENV);
 console.log('🔧 RENDER:', process.env.RENDER);
 
 const sessionMiddleware = session({
-  secret: process.env.SESSION_SECRET || 'supersecretkey123',
+  secret: process.env.SESSION_SECRET || 'newsecret123',
   resave: false,
   saveUninitialized: false,
   store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }),
   cookie: {
-    httpOnly: true,
-    secure: isProduction, // true for production (HTTPS), false for localhost (HTTP)
+    httpOnly: false, // false to allow JavaScript access
+    secure: isProduction, // true for production/HTTPS, false for development
     maxAge: 1000 * 60 * 60 * 24, // 1 day
-    sameSite: isProduction ? 'none' : 'lax', // 'none' for cross-site (production), 'lax' for same-site (localhost)
+    sameSite: isProduction ? 'none' : 'lax', // 'none' for cross-site in production, 'lax' for development
     domain: undefined, // Let browser handle domain automatically
   },
   proxy: true, // Trust the reverse proxy (Render uses proxies)
@@ -115,13 +125,12 @@ app.use((req, res, next) => {
 // Logging middleware (after session is set up)
 app.use((req, res, next) => {
   console.log('📍', req.method, req.originalUrl);
-  console.log('🌐 Origin:', req.headers.origin);
+  console.log('🍪 Cookies:', req.headers.cookie);
   console.log('🔑 Session ID:', req.sessionID);
   console.log('👤 User ID:', req.session?.userId);
-  console.log('🍪 Cookies:', req.headers.cookie);
   next();
 });
-console.log("hello");
+
 
 // --- REGISTER ROUTES ---
 app.use('/api/users', userRoutes);
@@ -250,8 +259,8 @@ app.get('/api/public/tournaments/:tournamentId/rounds/:roundId/selected-match', 
   }
 });
 
-// Public overall aggregated data for a round in a tournament
-app.get('/api/public/tournaments/:tournamentId/rounds/:roundId/overall', async (req, res) => {
+// Public overall aggregated data for a round in a tournament up to a specific match
+app.get('/api/public/tournament/:tournamentId/round/:roundId/match/:matchId/overall', async (req, res) => {
   try {
     const mongoose = require('mongoose');
     const Match = require('./models/match.model');
@@ -259,18 +268,24 @@ app.get('/api/public/tournaments/:tournamentId/rounds/:roundId/overall', async (
     const Round = require('./models/round.model');
     const { createMatchDataForMatchDoc } = require('./controller/matchData.controller');
 
-    const { tournamentId, roundId } = req.params;
-    if (!mongoose.Types.ObjectId.isValid(tournamentId) || !mongoose.Types.ObjectId.isValid(roundId)) {
-      return res.status(400).json({ error: 'Invalid tournamentId or roundId' });
+    const { tournamentId, roundId, matchId } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(tournamentId) || !mongoose.Types.ObjectId.isValid(roundId) || !mongoose.Types.ObjectId.isValid(matchId)) {
+      return res.status(400).json({ error: 'Invalid tournamentId, roundId, or matchId' });
     }
 
     const round = await Round.findOne({ _id: roundId, tournamentId });
     if (!round) return res.status(404).json({ error: 'Round not found' });
 
-    const matches = await Match.find({ tournamentId, roundId }).lean();
+    const targetMatch = await Match.findById(matchId);
+    if (!targetMatch) return res.status(404).json({ error: 'Match not found' });
+
+    const matches = await Match.find({ tournamentId, roundId }).sort({ matchNo: 1 }).lean();
     if (!matches || matches.length === 0) {
-      return res.json({ tournamentId, roundId, teams: [] });
+      return res.json({ tournamentId, roundId, matchId, teams: [] });
     }
+
+    // Filter matches up to but not including the target match's matchNo
+    const filteredMatches = matches.filter(m => m.matchNo < targetMatch.matchNo);
 
     // helpers
     const NUMERIC_PLAYER_FIELDS = [
@@ -338,7 +353,7 @@ app.get('/api/public/tournaments/:tournamentId/rounds/:roundId/overall', async (
     // load matchDatas using pattern similar to public matchdata route
     const teamsMap = new Map();
 
-    for (const m of matches) {
+    for (const m of filteredMatches) {
       let matchData = await MatchData.findOne({ matchId: m._id, userId: m.userId }).lean();
       if (!matchData) {
         matchData = await MatchData.findOne({ matchId: m._id }).lean();
@@ -409,7 +424,7 @@ app.get('/api/public/tournaments/:tournamentId/rounds/:roundId/overall', async (
       players: Array.from(t.players.values())
     })).sort((a, b) => (a.slot || 0) - (b.slot || 0));
 
-    return res.json({ tournamentId, roundId, teams: aggregatedTeams, createdAt: new Date() });
+    return res.json({ tournamentId, roundId, matchId, teams: aggregatedTeams, createdAt: new Date() });
   } catch (err) {
     console.error('Public overall error:', err);
     return res.status(500).json({ error: err.message });
@@ -424,8 +439,18 @@ app.get('/', (req, res) => {
 const server = http.createServer(app);
 const io = initializeSocket(server);
 
+// Wrap session middleware for socket.io
+const wrap = middleware => (socket, next) => middleware(socket.request, {}, next);
+io.use(wrap(sessionMiddleware));
+
 io.on('connection', (socket) => {
   console.log('WebSocket client connected:', socket.id);
+
+  // Join user-specific room if user is authenticated
+  if (socket.request.session?.userId) {
+    socket.join(socket.request.session.userId);
+    console.log(`User ${socket.request.session.userId} joined their room`);
+  }
 
   socket.on('message', (msg) => {
     console.log('Received message:', msg);
@@ -442,3 +467,4 @@ server.listen(port, () => {
   console.log(`🚀 Server running at http://localhost:${port}`);
   startLiveMatchUpdater();
 });
+

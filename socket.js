@@ -16,9 +16,10 @@ function initializeSocket(server) {
         
         const allowedOrigins = [
           'http://localhost:3001',
-          'http://localhost:3000',
+      "tauri://com.admin.tauri-app",
           'http://localhost:1420',
-          'tauri://localhost',
+          "tauri://localhost",
+              "http://tauri.localhost",
           'https://scoresync-v1.vercel.app',
         ];
         
@@ -32,7 +33,9 @@ function initializeSocket(server) {
       },
       credentials: true,
       methods: ['GET', 'POST'],
-    }
+      allowedHeaders: ["Content-Type", "Authorization", "x-cookie"],
+    },
+    allowEIO3: true, // Allow Engine.IO v3 clients
   });
   console.log('✅ Socket.IO initialized with CORS');
   return ioInstance;

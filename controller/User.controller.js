@@ -57,22 +57,25 @@ const loginUser = async (req, res) => {
  
 
     req.session.userId = user._id;
-req.session.save(err => {
-  if (err) {
-    console.error('❌ Session save error:', err);
-    return res.status(500).json({ message: err.message });
-  }
-  console.log('✅ Login successful, session saved:', req.sessionID);
-  console.log('✅ User ID in session:', req.session.userId);
-  res.status(200).json({
-    user: {
-      _id: user._id,
-      username: user.username,
-      email: user.email,
-      isAdmin: user.isAdmin,
-    },
+  req.session.save(err => {
+    if (err) {
+      console.error('❌ Session save error:', err);
+      return res.status(500).json({ message: err.message });
+    }
+    console.log('✅ Login successful, session saved:', req.sessionID);
+    console.log('✅ User ID in session:', req.session.userId);
+    const setCookie = res.get('set-cookie');
+    res.status(200).json({
+      user: {
+        _id: user._id,
+        username: user.username,
+        email: user.email,
+        isAdmin: user.isAdmin,
+      },
+      sessionId: req.sessionID,
+      sessionCookie: setCookie ? setCookie[0] : null,
+    });
   });
-});
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -136,8 +139,9 @@ const getCurrentUser = async (req, res) => {
     return res.status(404).json({ message: "User not found" });
   }
 
+  const setCookie = res.get('set-cookie');
   console.log('✅ User found:', user.email);
-  res.json(user);
+  res.json({ ...user.toObject(), sessionId: req.sessionID, sessionCookie: setCookie ? setCookie[0] : null });
 };
 
 

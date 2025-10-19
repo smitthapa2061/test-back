@@ -1,4 +1,5 @@
 const MatchSelection = require('../models/MatchSelection.model.js');
+const Round = require('../models/round.model.js');
 const mongoose = require('mongoose');
 const { getSocket } = require('../socket.js'); // ✅ updated import
 
@@ -43,6 +44,17 @@ const updatePollingStatus = async (req, res) => {
 
     if (typeof isPollingActive !== 'boolean') {
       return res.status(400).json({ message: 'isPollingActive must be a boolean' });
+    }
+
+    // Check if the round has API enabled
+    const round = await Round.findById(roundId);
+    if (!round) {
+      return res.status(404).json({ message: 'Round not found' });
+    }
+
+    // Allow polling only if API is enabled for the round
+    if (!round.apiEnable) {
+      return res.status(403).json({ message: 'API is not enabled for this round. Cannot modify polling status.' });
     }
 
     // Disable polling for all other matches of this user in the same round & tournament

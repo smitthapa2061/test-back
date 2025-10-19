@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Round = require('../models/round.model');
 const Group = require('../models/group.model');
 const Match = require('../models/match.model');
+const MatchSelection = require('../models/MatchSelection.model');
 
 // ---------------- CREATE ROUND ----------------
 const createRoundInTournament = async (req, res) => {
@@ -18,7 +19,7 @@ const createRoundInTournament = async (req, res) => {
     }
 
     if (apiEnable === true) {
-      // Disable apiEnable for all rounds owned by this user
+      // Disable apiEnable for all rounds across all tournaments owned by this user
       await Round.updateMany({ createdBy }, { $set: { apiEnable: false } }, { session });
     }
 
@@ -136,6 +137,7 @@ const updateRound = async (req, res) => {
     }
 
     if (updateData.apiEnable === true) {
+      // Disable apiEnable for all other rounds across all tournaments owned by this user
       await Round.updateMany(
         { createdBy: userId, _id: { $ne: id } },
         { $set: { apiEnable: false } },
@@ -143,8 +145,19 @@ const updateRound = async (req, res) => {
       );
     }
 
+    const wasApiEnabled = round.apiEnable;
+
     Object.assign(round, updateData);
     const updatedRound = await round.save({ session });
+
+    // If apiEnable was changed to false, deactivate polling for this round
+    if (wasApiEnabled && !updatedRound.apiEnable) {
+      await MatchSelection.updateMany(
+        { roundId: updatedRound._id },
+        { $set: { isPollingActive: false } },
+        { session }
+      );
+    }
 
     await session.commitTransaction();
     session.endSession();
@@ -168,6 +181,9 @@ const deleteRound = async (req, res) => {
     // Only allow deletion if the user created it
     const round = await Round.findOneAndDelete({ _id: id, tournamentId, createdBy: userId });
     if (!round) return res.status(403).json({ error: 'You are not allowed to delete this round' });
+
+    // Delete all MatchSelection for this round
+    await MatchSelection.deleteMany({ roundId: id });
 
     res.json({ message: 'Round deleted successfully' });
   } catch (err) {

@@ -12,6 +12,11 @@ const { getSocket } = require('../../socket');
 let lastMatchDataByMatch = {};
 let lastPlayerDataByMatch = {};
 
+// Adaptive polling variables
+let currentInterval = 2500; // Start with 2.5 seconds
+let consecutiveNoChanges = 0;
+let pollTimer = null;
+
 // ---------- helpers ----------
 const idStr = (v) => (v === null || v === undefined) ? '' : String(v).trim();
 const idsEqual = (a, b) => idStr(a) === idStr(b);
@@ -21,6 +26,32 @@ function startLiveMatchUpdater() {
   console.log('Live match updater started');
   const io = getSocket();
   console.log('Socket.IO instance connected:', !!io);
+
+  // Adaptive polling function
+  const adjustInterval = (hadChanges) => {
+    if (hadChanges) {
+      consecutiveNoChanges = 0;
+      currentInterval = Math.max(2000, currentInterval - 1000); // Decrease, min 1 second
+    } else {
+      consecutiveNoChanges++;
+      if (consecutiveNoChanges >= 3) {
+        currentInterval = Math.min(10000, currentInterval + 1000); // Increase, max 10 seconds
+      }
+    }
+    console.log(`Adaptive polling: interval=${currentInterval}ms, consecutiveNoChanges=${consecutiveNoChanges}`);
+  };
+
+  // Schedule next poll
+  const scheduleNextPoll = () => {
+    pollTimer = setTimeout(async () => {
+      const hadChanges = await poll();
+      adjustInterval(hadChanges);
+      scheduleNextPoll(); // Schedule next
+    }, currentInterval);
+  };
+
+  // Start polling
+  scheduleNextPoll();
 
   /**
    * Merge DB player data with API player data while preserving identity fields
@@ -240,11 +271,28 @@ await updateTeamsWithApiPlayers(apiPlayers, matchId, userId);
 
 
  const poll = async () => {
+  let hadChanges = false;
   try {
-    const selectedMatches = await MatchSelection.find({ isSelected: true, userId: { $exists: true, $ne: null } });
+    // Get all rounds with API enabled
+    const apiEnabledRounds = await Round.find({ apiEnable: true });
+    if (!apiEnabledRounds.length) {
+      console.log('No rounds with API enabled found');
+      return false;
+    }
+
+    const roundIds = apiEnabledRounds.map(r => r._id.toString());
+
+
+    // Find selected matches only for rounds with API enabled
+    const selectedMatches = await MatchSelection.find({
+      isSelected: true,
+      userId: { $exists: true, $ne: null },
+      roundId: { $in: roundIds }
+    });
+
     if (!selectedMatches.length) {
-      console.log('No selected matches found');
-      return;
+      console.log('No selected matches found in API-enabled rounds');
+      return false;
     }
 
     for (const selected of selectedMatches) {
@@ -253,7 +301,9 @@ await updateTeamsWithApiPlayers(apiPlayers, matchId, userId);
         console.log(`Skipping selection ${selected._id} with missing userId`);
         continue;
       }
-      console.log(`Selected match: ${selected.matchId} for user ${userId}`);
+
+      const round = apiEnabledRounds.find(r => r._id.toString() === selected.roundId.toString());
+      console.log(`Selected match: ${selected.matchId} for user ${userId}, round: ${round?.roundName || 'unknown'} `);
 
       // --- Check if polling is active for this match ---
       if (!selected.isPollingActive) {
@@ -261,66 +311,58 @@ await updateTeamsWithApiPlayers(apiPlayers, matchId, userId);
         continue; // Skip this match
       }
 
-      const round = await Round.findOne({ _id: selected.roundId, createdBy: userId });
-      if (!round) {
-        console.log('Round not found for roundId:', selected.roundId);
-        continue;
-      }
+       if (!lastPlayerDataByMatch[selected.matchId]) {
+         lastPlayerDataByMatch[selected.matchId] = {};
+       }
 
-      if (!round.apiEnable) {
-        console.log('API disabled for round:', round.roundName);
-        continue;
-      }
+       const updatedMatchData = await updateMatchDataWithLiveStats(selected.matchId, userId);
 
-      if (!lastPlayerDataByMatch[selected.matchId]) {
-        lastPlayerDataByMatch[selected.matchId] = {};
-      }
+       if (updatedMatchData) {
+         const lastData = lastMatchDataByMatch[selected.matchId];
+         const currentData = updatedMatchData.toObject();
 
-      const updatedMatchData = await updateMatchDataWithLiveStats(selected.matchId, userId);
+         if (!lastData) {
+           console.log('No previous data, emitting liveMatchUpdate for match:', selected.matchId);
+           io.emit('liveMatchUpdate', updatedMatchData);
+           lastMatchDataByMatch[selected.matchId] = currentData;
+           hadChanges = true;
+         } else {
+           const isEqual = _.isEqual(currentData, lastData);
+           console.log('Data comparison for match:', selected.matchId, 'isEqual:', isEqual);
 
-      if (updatedMatchData) {
-        const lastData = lastMatchDataByMatch[selected.matchId];
-        const currentData = updatedMatchData.toObject();
-        
-        if (!lastData) {
-          console.log('No previous data, emitting liveMatchUpdate for match:', selected.matchId);
-          io.emit('liveMatchUpdate', updatedMatchData);
-          lastMatchDataByMatch[selected.matchId] = currentData;
-        } else {
-          const isEqual = _.isEqual(currentData, lastData);
-          console.log('Data comparison for match:', selected.matchId, 'isEqual:', isEqual);
-          
-          if (!isEqual) {
-            // Log specific differences in kill numbers
-            currentData.teams.forEach((team, teamIndex) => {
-              const lastTeam = lastData.teams[teamIndex];
-              if (lastTeam) {
-                team.players.forEach((player, playerIndex) => {
-                  const lastPlayer = lastTeam.players[playerIndex];
-                  if (lastPlayer && player.killNum !== lastPlayer.killNum) {
-                    console.log(`Kill change detected - Team: ${team.teamTag}, Player: ${player.playerName}, Old: ${lastPlayer.killNum}, New: ${player.killNum}`);
-                  }
-                });
-              }
-            });
-            
-            console.log('Emitting liveMatchUpdate for match:', selected.matchId);
-            io.emit('liveMatchUpdate', updatedMatchData);
-            lastMatchDataByMatch[selected.matchId] = currentData;
-          } else {
-            console.log('No changes detected for match:', selected.matchId);
-          }
-        }
-      }
-    }
-  } catch (err) {
-    console.error('Poll error:', err);
-  }
-};
+           if (!isEqual) {
+             // Log specific differences in kill numbers
+             currentData.teams.forEach((team, teamIndex) => {
+               const lastTeam = lastData.teams[teamIndex];
+               if (lastTeam) {
+                 team.players.forEach((player, playerIndex) => {
+                   const lastPlayer = lastTeam.players[playerIndex];
+                   if (lastPlayer && player.killNum !== lastPlayer.killNum) {
+                     console.log(`Kill change detected - Team: ${team.teamTag}, Player: ${player.playerName}, Old: ${lastPlayer.killNum}, New: ${player.killNum}`);
+                   }
+                 });
+               }
+             });
+
+             console.log('Emitting liveMatchUpdate for match:', selected.matchId);
+             io.emit('liveMatchUpdate', updatedMatchData);
+             lastMatchDataByMatch[selected.matchId] = currentData;
+             hadChanges = true;
+           } else {
+             console.log('No changes detected for match:', selected.matchId);
+           }
+         }
+       }
+     }
+   } catch (err) {
+     console.error('Poll error:', err);
+   }
+   return hadChanges;
+ };
 
 
 
-  setInterval(poll, 2500); // poll every 2 seconds
+  // Adaptive polling started above
 }
 
 module.exports = { startLiveMatchUpdater };

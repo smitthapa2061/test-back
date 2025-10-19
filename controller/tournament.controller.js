@@ -4,6 +4,7 @@ const Team = require('../models/teams.model');
 const Match = require('../models/match.model');
 const MatchData = require('../models/matchData.model');
 const Group = require('../models/group.model');
+const MatchSelection = require('../models/MatchSelection.model');
 
 // --- CREATE TOURNAMENT ---
 const createTournament = async (req, res) => {
@@ -118,6 +119,7 @@ const deleteTournament = async (req, res) => {
       MatchData.deleteMany({ matchId: { $in: matchIds } }),
       Match.deleteMany({ _id: { $in: matchIds } }),
       Round.deleteMany({ _id: { $in: roundIds } }),
+      MatchSelection.deleteMany({ tournamentId }),
       Tournament.findByIdAndDelete(tournamentId)
     ]);
 
