@@ -1,4 +1,7 @@
-require('dotenv').config();
+const path = require('path');
+const dotenv = require('dotenv');
+dotenv.config({ path: path.join(process.cwd(), ".env") });
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -6,7 +9,7 @@ const http = require('http');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const { initializeSocket } = require('./socket.js');
-
+const axios = require(require.resolve('axios'));
 // Import routes
 const groupRoutes = require('./route/group.route.js');
 const teamRoutes = require('./route/team.route.js');
@@ -259,8 +262,8 @@ app.get('/api/public/tournaments/:tournamentId/rounds/:roundId/selected-match', 
   }
 });
 
-// Public overall aggregated data for a round in a tournament up to a specific match
-app.get('/api/public/tournament/:tournamentId/round/:roundId/match/:matchId/overall', async (req, res) => {
+// Public overall aggregated data for a round in a tournament
+app.get('/api/public/tournaments/:tournamentId/rounds/:roundId/overall', async (req, res) => {
   try {
     const mongoose = require('mongoose');
     const Match = require('./models/match.model');
@@ -268,24 +271,21 @@ app.get('/api/public/tournament/:tournamentId/round/:roundId/match/:matchId/over
     const Round = require('./models/round.model');
     const { createMatchDataForMatchDoc } = require('./controller/matchData.controller');
 
-    const { tournamentId, roundId, matchId } = req.params;
-    if (!mongoose.Types.ObjectId.isValid(tournamentId) || !mongoose.Types.ObjectId.isValid(roundId) || !mongoose.Types.ObjectId.isValid(matchId)) {
-      return res.status(400).json({ error: 'Invalid tournamentId, roundId, or matchId' });
+    const { tournamentId, roundId } = req.params;
+    if (!mongoose.Types.ObjectId.isValid(tournamentId) || !mongoose.Types.ObjectId.isValid(roundId)) {
+      return res.status(400).json({ error: 'Invalid tournamentId or roundId' });
     }
 
     const round = await Round.findOne({ _id: roundId, tournamentId });
     if (!round) return res.status(404).json({ error: 'Round not found' });
 
-    const targetMatch = await Match.findById(matchId);
-    if (!targetMatch) return res.status(404).json({ error: 'Match not found' });
-
     const matches = await Match.find({ tournamentId, roundId }).sort({ matchNo: 1 }).lean();
     if (!matches || matches.length === 0) {
-      return res.json({ tournamentId, roundId, matchId, teams: [] });
+      return res.json({ tournamentId, roundId, teams: [], createdAt: new Date() });
     }
 
-    // Filter matches up to but not including the target match's matchNo
-    const filteredMatches = matches.filter(m => m.matchNo < targetMatch.matchNo);
+    // Use all matches in the round for overall data
+    const filteredMatches = matches;
 
     // helpers
     const NUMERIC_PLAYER_FIELDS = [
@@ -424,7 +424,7 @@ app.get('/api/public/tournament/:tournamentId/round/:roundId/match/:matchId/over
       players: Array.from(t.players.values())
     })).sort((a, b) => (a.slot || 0) - (b.slot || 0));
 
-    return res.json({ tournamentId, roundId, matchId, teams: aggregatedTeams, createdAt: new Date() });
+    return res.json({ tournamentId, roundId, teams: aggregatedTeams, createdAt: new Date() });
   } catch (err) {
     console.error('Public overall error:', err);
     return res.status(500).json({ error: err.message });

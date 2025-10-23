@@ -30,7 +30,7 @@ const createTeam = async (req, res) => {
       players: normalizedPlayers,
     });
     const savedTeam = await team.save();
-    res.status(201).json(savedTeam);
+    res.status(201).json(savedTeam.toObject()); // Convert to plain object for faster response
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
@@ -38,7 +38,7 @@ const createTeam = async (req, res) => {
 // Get team by ID
 const getTeamById = async (req, res) => {
   try {
-    const team = await Team.findById(req.params.id);
+    const team = await Team.findById(req.params.id).lean(); // Use lean() for faster queries
     if (!team) return res.status(404).json({ error: 'Team not found' });
     res.json(team);
   } catch (err) {
@@ -49,12 +49,12 @@ const getTeamById = async (req, res) => {
 // Get all teams
 const getAllTeams = async (req, res) => {
   try {
-    const teams = await Team.find();
+    const teams = await Team.find().lean(); // Use lean() for faster queries
     res.json(teams);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
-};  
+};
 
 // Update team info (including players)
 const updateTeam = async (req, res) => {
@@ -70,7 +70,7 @@ const updateTeam = async (req, res) => {
     if (players) team.players = players;
 
     const updatedTeam = await team.save();
-    res.json(updatedTeam);
+    res.json(updatedTeam.toObject()); // Convert to plain object for faster response
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
@@ -79,7 +79,7 @@ const updateTeam = async (req, res) => {
 // Delete team by ID
 const deleteTeam = async (req, res) => {
   try {
-    const deleted = await Team.findByIdAndDelete(req.params.id);
+    const deleted = await Team.findByIdAndDelete(req.params.id).lean(); // Use lean() for faster queries
     if (!deleted) return res.status(404).json({ error: 'Team not found' });
     res.json({ message: 'Team deleted successfully' });
   } catch (err) {
@@ -104,7 +104,7 @@ const addPlayerToTeam = async (req, res) => {
     team.players.push({ playerName, playerId, photo: finalPhoto });
     await team.save();
 
-    res.status(201).json(team);
+    res.status(201).json(team.toObject()); // Convert to plain object for faster response
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
@@ -123,7 +123,7 @@ const removePlayerFromTeam = async (req, res) => {
     team.players.pull({ _id: playerId }); // ⬅️ this replaces player.remove()
     await team.save();
 
-    res.json({ message: 'Player removed successfully', team });
+    res.json({ message: 'Player removed successfully', team: team.toObject() }); // Convert to plain object for faster response
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -149,7 +149,7 @@ const removeMultiplePlayersFromTeam = async (req, res) => {
 
     await team.save();
 
-    res.json({ message: "Players removed successfully", team });
+    res.json({ message: "Players removed successfully", team: team.toObject() }); // Convert to plain object for faster response
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
