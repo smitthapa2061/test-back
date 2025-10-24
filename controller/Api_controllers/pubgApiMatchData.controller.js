@@ -138,10 +138,15 @@ function startLiveMatchUpdater() {
     const PUBG_API_URL = process.env.PUBG_API_URL || 'http://localhost:10086';
 
     let apiPlayers = [];
+    let circleInfo = {};
     try {
-      const res = await axios.get(`${PUBG_API_URL}/gettotalplayerlist`, { timeout: 5000 });
-      apiPlayers = res.data.playerInfoList || [];
-      console.log(`API returned ${apiPlayers.length} players`);
+      const [playersRes, circleRes] = await Promise.all([
+        axios.get(`${PUBG_API_URL}/gettotalplayerlist`, { timeout: 5000 }),
+        axios.get(`${PUBG_API_URL}/getcircleinfo`, { timeout: 5000 })
+      ]);
+      apiPlayers = playersRes.data.playerInfoList || [];
+      circleInfo = circleRes.data || {};
+      console.log(`API returned ${apiPlayers.length} players and circle info:`, circleInfo);
     } catch (err) {
       console.warn(`⚠️ Could not connect to PUBG API at ${PUBG_API_URL}:`, err.code);
       console.log('Continuing without API data...');
@@ -351,6 +356,12 @@ function startLiveMatchUpdater() {
               io.emit('liveMatchUpdate', updatedMatchData);
               lastMatchDataByUserMatch[snapshotKey] = currentData;
               hadChanges = true;
+
+              // Emit circle info if available
+              if (typeof circleInfo !== 'undefined' && circleInfo && Object.keys(circleInfo).length > 0) {
+                console.log('Emitting circleInfoUpdate:', circleInfo);
+                io.emit('circleInfoUpdate', circleInfo);
+              }
             } else {
               console.log(`[user ${userKey}] No changes detected for match:`, selected.matchId);
             }
