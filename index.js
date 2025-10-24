@@ -20,7 +20,8 @@ const matchDataRoutes = require('./route/matchData.route.js');
 const matchSelectionRoutes = require('./route/matchSelection.route.js');
 const overallRoutes = require('./route/overall.route.js');
 const userRoutes = require('./route/User.route.js');
-const { startLiveMatchUpdater } = require('./controller/Api_controllers/pubgApiMatchData.controller.js'); 
+const { startLiveMatchUpdater } = require('./controller/Api_controllers/pubgApiMatchData.controller.js');
+const { startCircleInfoUpdater } = require('./controller/Api_controllers/circleInfo.controller.js');
 
 // --- DECLARE APP AND PORT ---
 const app = express();
@@ -457,6 +458,22 @@ io.on('connection', (socket) => {
     socket.emit('message', `Server received: ${msg}`);
   });
 
+  // Emit circle info immediately when client connects
+  const emitCircleInfoToClient = async () => {
+    try {
+      const axios = require('axios');
+      const PUBG_API_URL = process.env.PUBG_API_URL || 'http://localhost:10086';
+      const circleRes = await axios.get(`${PUBG_API_URL}/getcircleinfo`, { timeout: 5000 });
+      const circleInfo = circleRes.data.circleInfo || circleRes.data;
+      console.log(`Emitting circle info to newly connected client ${socket.id}:`, circleInfo);
+      socket.emit('circleInfoUpdate', circleInfo);
+    } catch (err) {
+      console.warn(`Could not fetch circle info for client ${socket.id}:`, err.code);
+    }
+  };
+
+  emitCircleInfoToClient();
+
   socket.on('disconnect', () => {
     console.log('WebSocket client disconnected:', socket.id);
   });
@@ -466,5 +483,6 @@ io.on('connection', (socket) => {
 server.listen(port, () => {
   console.log(`🚀 Server running at http://localhost:${port}`);
   startLiveMatchUpdater();
+  startCircleInfoUpdater();
 });
 
