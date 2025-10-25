@@ -1,8 +1,8 @@
 const Team = require('../models/teams.model.js');
 
 // Default assets
-const DEFAULT_TEAM_LOGO = 'https://res.cloudinary.com/dqckienxj/image/upload/v1759393783/default1_ypnvsb.png';
-const DEFAULT_PLAYER_PHOTO = 'https://res.cloudinary.com/dqckienxj/image/upload/v1727161666/defult_chach_apsjhc.png';
+const DEFAULT_TEAM_LOGO = 'https://res.cloudinary.com/dqckienxj/image/upload/v1761358754/def_logo_yyaoaz.png';
+const DEFAULT_PLAYER_PHOTO = 'https://res.cloudinary.com/dqckienxj/image/upload/v1761358753/defplayer_m7qexs.png';
 
 // Create a new team
 const createTeam = async (req, res) => {

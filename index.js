@@ -465,7 +465,6 @@ io.on('connection', (socket) => {
       const PUBG_API_URL = process.env.PUBG_API_URL || 'http://localhost:10086';
       const circleRes = await axios.get(`${PUBG_API_URL}/getcircleinfo`, { timeout: 5000 });
       const circleInfo = circleRes.data.circleInfo || circleRes.data;
-      console.log(`Emitting circle info to newly connected client ${socket.id}:`, circleInfo);
       socket.emit('circleInfoUpdate', circleInfo);
     } catch (err) {
       console.warn(`Could not fetch circle info for client ${socket.id}:`, err.code);

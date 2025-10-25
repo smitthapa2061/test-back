@@ -16,9 +16,8 @@ const NO_CHANGE_THRESHOLD = 1;
 const { getSocket } = require('../../socket');
 
 function startCircleInfoUpdater() {
-  console.log('Circle info updater started');
+  console.log('[CIRCLE] Circle info updater started');
   const io = getSocket();
-  console.log('Socket.IO instance connected for circle info:', !!io);
 
   // Emit current circle info to all connected clients immediately
   const emitCurrentCircleInfo = async () => {
@@ -26,7 +25,7 @@ function startCircleInfoUpdater() {
       const PUBG_API_URL = process.env.PUBG_API_URL || 'http://localhost:10086';
       const circleRes = await axios.get(`${PUBG_API_URL}/getcircleinfo`, { timeout: 5000 });
       const circleInfo = circleRes.data.circleInfo || circleRes.data;
-      console.log('Emitting current circle info to all clients:', circleInfo);
+      // Emit current circle info to all clients
       io.emit('circleInfoUpdate', circleInfo);
     } catch (err) {
       console.warn('Could not fetch initial circle info:', err.code);
@@ -57,7 +56,7 @@ function startCircleInfoUpdater() {
         s.intervalMs = Math.min(MAX_INTERVAL, s.intervalMs + 1000);
       }
     }
-    console.log(`[circle] user=${userKey} interval=${s.intervalMs}ms noChangeCount=${s.noChangeCount}`);
+    // Adaptive interval logging removed for cleaner output
   };
 
   const scheduleNextUserPoll = (userKey) => {
@@ -78,7 +77,6 @@ function startCircleInfoUpdater() {
       // Get all rounds with API enabled
       const apiEnabledRounds = await Round.find({ apiEnable: true });
       if (!apiEnabledRounds.length) {
-        console.log(`[circle user ${userKey}] No rounds with API enabled found`);
         return false;
       }
 
@@ -93,7 +91,6 @@ function startCircleInfoUpdater() {
       });
 
       if (!selectedMatches.length) {
-        console.log(`[circle user ${userKey}] No selected matches found in API-enabled rounds`);
         return false;
       }
 
@@ -104,21 +101,17 @@ function startCircleInfoUpdater() {
         const circleRes = await axios.get(`${PUBG_API_URL}/getcircleinfo`, { timeout: 5000 });
         const circleInfo = circleRes.data.circleInfo || circleRes.data;
 
-        console.log(`[circle user ${userKey}] Fetched circle info:`, circleInfo);
-
         // Always emit circle info for now to ensure it reaches frontend
-        console.log(`[circle user ${userKey}] Emitting circleInfoUpdate:`, circleInfo);
         io.emit('circleInfoUpdate', circleInfo);
-        console.log(`[circle user ${userKey}] circleInfoUpdate emitted successfully`);
         lastCircleInfoByUser[String(userKey)] = circleInfo;
         hadChanges = true;
 
       } catch (apiErr) {
-        console.warn(`[circle user ${userKey}] Could not connect to PUBG API at ${PUBG_API_URL}:`, apiErr.code);
+        console.warn(`[CIRCLE] API connection failed:`, apiErr.code);
       }
 
     } catch (err) {
-      console.error(`[circle user ${userKey}] Poll error:`, err);
+      console.error(`[CIRCLE] Poll error:`, err.message);
     }
 
     return hadChanges;
@@ -129,7 +122,6 @@ function startCircleInfoUpdater() {
     try {
       const apiEnabledRounds = await Round.find({ apiEnable: true });
       if (!apiEnabledRounds.length) {
-        console.log('[circle discovery] No API-enabled rounds found');
         return;
       }
 
@@ -154,7 +146,6 @@ function startCircleInfoUpdater() {
       for (const uid of activeUserIds) {
         const state = getOrInitUserState(uid);
         if (!state.timer) {
-          console.log(`[circle discovery] Starting circle polling loop for user ${uid}`);
           scheduleNextUserPoll(uid);
         }
       }
@@ -169,7 +160,6 @@ function startCircleInfoUpdater() {
           }
           st.noChangeCount = 0;
           st.intervalMs = MAX_INTERVAL;
-          console.log(`[circle discovery] Paused circle polling loop for inactive user ${existingUid}`);
         }
       }
     } catch (e) {
