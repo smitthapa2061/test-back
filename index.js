@@ -158,7 +158,7 @@ const sessionMiddleware = session({
     httpOnly: true,
     sameSite: isProduction ? 'none' : 'lax', // Must be 'none' for cross-site in production
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-    domain: isProduction ? '.onrender.com' : undefined, // Set domain for production
+    domain: undefined, // Don't set domain for cross-site cookies between different TLDs
     path: '/',
     partitioned: isProduction // Enable partitioned for production
   },
