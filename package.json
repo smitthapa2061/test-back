@@ -1,18 +1,34 @@
 {
-  "name": "back",
+  "name": "server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "bin": "./index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
-    "start": "NODE_ENV=production node index.js",
-    "build": "pkg index.js --targets node18-win-x64 --output dist/ScoreSync.exe"
+    "start": "node index.js",
+    "build": "node build.js",
+    "package": "pkg . --out-path build --targets node18-win-x64"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
+  "pkg": {
+    "scripts": [
+      "config/**/*.js",
+      "**/*.js"
+    ],
+    "assets": [
+      "views/**/*",
+      "public/**/*",
+      ".env"
+    ],
+    "targets": ["node18-win-x64"],
+    "outputPath": "build",
+    "nodeVersion": "18.0.0"
+  },
   "dependencies": {
     "axios": "^0.27.2",
     "bcryptjs": "^3.0.2",
@@ -28,20 +44,8 @@
     "socket.io": "^4.8.1"
   },
   "devDependencies": {
+    "cross-env": "^10.1.0",
     "nodemon": "^3.1.10",
     "pkg": "^5.8.1"
-  },
-  "pkg": {
-    "assets": [
-      ".env"
-  
-    ],
-    "scripts": [
-      "**/*.js",
-        "node_modules/axios/dist/node/axios.cjs"
-    ],
-    "targets": [
-      "node18-win-x64"
-    ]
   }
 }

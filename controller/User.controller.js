@@ -1,14 +1,12 @@
 const User = require('../models/User.model.js');
-
-// Admin secret code for creating users
-const ADMIN_CODE = "9804344434";
+const config = require('../config');
 
 // --- CREATE USER (Admin protected, auto-login) ---
 const createUser = async (req, res) => {
   try {
     const { username, email, password, adminAuth, isAdmin } = req.body;
 
-    if (adminAuth !== ADMIN_CODE) {
+    if (adminAuth !== config.ADMIN_CODE) {
       return res.status(403).json({ message: "Invalid admin authentication code" });
     }
 
@@ -57,25 +55,25 @@ const loginUser = async (req, res) => {
  
 
     req.session.userId = user._id;
-  req.session.save(err => {
-    if (err) {
-      console.error('❌ Session save error:', err);
-      return res.status(500).json({ message: err.message });
-    }
-    console.log('✅ Login successful, session saved:', req.sessionID);
-    console.log('✅ User ID in session:', req.session.userId);
-    const setCookie = res.get('set-cookie');
-    res.status(200).json({
-      user: {
-        _id: user._id,
-        username: user.username,
-        email: user.email,
-        isAdmin: user.isAdmin,
-      },
-      sessionId: req.sessionID,
-      sessionCookie: setCookie ? setCookie[0] : null,
+    req.session.save(err => {
+      if (err) {
+        console.error('❌ Session save error:', err);
+        return res.status(500).json({ message: err.message });
+      }
+      console.log('✅ Login successful, session saved:', req.sessionID);
+      console.log('✅ User ID in session:', req.session.userId);
+      const setCookie = res.get('set-cookie');
+      res.status(200).json({
+        user: {
+          _id: user._id,
+          username: user.username,
+          email: user.email,
+          isAdmin: user.isAdmin,
+        },
+        sessionId: req.sessionID,
+        sessionCookie: setCookie ? setCookie[0] : null,
+      });
     });
-  });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

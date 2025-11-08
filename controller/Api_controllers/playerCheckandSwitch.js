@@ -11,7 +11,7 @@ const mongoose = require('mongoose');
  */
 async function updateTeamsWithApiPlayers(apiPlayers, matchId, userId) {
   try {
-    console.log(`\n[updateTeams] Processing ${apiPlayers.length} API players for match ${matchId}...`);
+  
 
     // --- Fetch matchData for this match to map slot → DB teamId ---
     const matchData = await MatchData.findOne({ matchId, userId });

@@ -1,6 +1,10 @@
-const path = require('path');
-const dotenv = require('dotenv');
-dotenv.config({ path: path.join(process.cwd(), ".env") });
+#!/usr/bin/env node
+
+// Initialize logger first to capture all logs
+require('./logger');
+
+// Load configuration
+const config = require('./config');
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -31,70 +35,134 @@ const port = process.env.PORT || 3000;
 app.set('trust proxy', 1);
 
 // --- CONNECT TO MONGODB ---
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(config.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
   .then(() => console.log('✅ MongoDB connected'))
   .catch(err => console.error('❌ MongoDB connection error:', err));
 
 // --- MIDDLEWARES ---
 // CORS must come first
+const allowedOrigins = [
+  "http://localhost:3001",
+  "http://localhost:1420",
+  "http://tauri.localhost",
+  "tauri://com.admin.tauri-app",
+  "tauri://localhost",
+  "https://scoresync-v1.vercel.app",
+  "capacitor://localhost",
+  "http://localhost",
+  "http://localhost:8080"
+];
+
+// Enhanced CORS configuration for iOS
 app.use(cors({
   origin: function (origin, callback) {
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
-    
-    const allowedOrigins = [
-      "http://localhost:3001",
-    
-      "http://localhost:1420",
-      "http://tauri.localhost",
-      "tauri://com.admin.tauri-app",
-      "tauri://localhost",
-      "https://scoresync-v1.vercel.app",
-    
-    ];
-    
+
     // Check if origin is allowed OR if it's a Vercel preview deployment
-    if (allowedOrigins.includes(origin) || origin.includes('.vercel.app')) {
-      callback(null, true);
-    } else {
-      console.warn('⚠️ CORS blocked origin:', origin);
-      callback(new Error('Not allowed by CORS'));
+    if (allowedOrigins.includes(origin) ||
+        origin.includes('.vercel.app') ||
+        origin.includes('//localhost') ||
+        origin.startsWith('capacitor://') ||
+        origin.startsWith('http://192.168.')) {
+      return callback(null, true);
     }
+
+    console.warn('⚠️ CORS blocked origin:', origin);
+    return callback(new Error('Not allowed by CORS'));
   },
-  credentials: true,               // allow sending cookies
-  methods: ["GET","POST","PUT","PATCH","DELETE","OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization", "x-cookie"],
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: [
+    "Content-Type",
+    "Authorization",
+    "x-cookie",
+    "X-Requested-With",
+    "Accept",
+    "Origin",
+    "Cache-Control",
+    "Pragma",
+    "Expires"
+  ],
+  exposedHeaders: ["set-cookie", "Authorization"],
+  maxAge: 600 // Cache preflight requests for 10 minutes
 }));
 
-app.use(express.json());
-
-// Middleware to handle custom cookie header for Tauri
+// Add OPTIONS handler for preflight requests
 app.use((req, res, next) => {
-  if (req.headers['x-cookie']) {
-    req.headers.cookie = req.headers['x-cookie'];
+  if (req.method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, x-cookie, X-Requested-With, Accept, Origin, Cache-Control, Pragma, Expires');
+    res.header('Access-Control-Max-Age', '600');
+    res.sendStatus(200);
+    return;
   }
   next();
 });
 
-// Auto-detect production: check NODE_ENV or if running on Render
-const isProduction = process.env.NODE_ENV === 'production' || process.env.RENDER === 'true';
+app.use(express.json());
+
+// Enhanced middleware for handling cookies and security headers
+app.use((req, res, next) => {
+  // Handle custom cookie header for Tauri
+  if (req.headers['x-cookie']) {
+    req.headers.cookie = req.headers['x-cookie'];
+  }
+  
+  // Add security headers
+  res.header('X-Content-Type-Options', 'nosniff');
+  res.header('X-Frame-Options', 'SAMEORIGIN');
+  res.header('X-XSS-Protection', '1; mode=block');
+  
+  // For API responses, prevent caching
+  if (req.method === 'OPTIONS' || req.path.startsWith('/api/')) {
+    res.header('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    res.header('Pragma', 'no-cache');
+    res.header('Expires', '0');
+  }
+  
+  next();
+});
+
+// Auto-detect production environment
+const isProduction = process.env.NODE_ENV === 'production' || process.env.RENDER === 'true' || process.env.REACT_APP_API_URL?.includes('render.com');
 console.log('🔧 Environment:', isProduction ? 'PRODUCTION' : 'DEVELOPMENT');
 console.log('🔧 NODE_ENV:', process.env.NODE_ENV);
 console.log('🔧 RENDER:', process.env.RENDER);
+console.log('🔧 REACT_APP_API_URL:', process.env.REACT_APP_API_URL);
 
+// Enhanced session store configuration
+const sessionStore = MongoStore.create({
+  mongoUrl: config.MONGODB_URI,
+  collectionName: 'sessions',
+  ttl: 7 * 24 * 60 * 60, // 7 days in seconds
+  autoRemove: 'interval',
+  autoRemoveInterval: 60 // Remove expired sessions every hour
+});
+
+// Enhanced session configuration for iOS compatibility
 const sessionMiddleware = session({
-  secret: process.env.SESSION_SECRET || 'newsecret123',
+  secret: config.SESSION_SECRET,
+  name: 'scoreSync.sid', // Custom session cookie name
   resave: false,
   saveUninitialized: false,
-  store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }),
+  store: sessionStore,
+  proxy: true, // Trust the reverse proxy (important for HTTPS)
   cookie: {
-    httpOnly: false, // false to allow JavaScript access
-    secure: isProduction, // true for production/HTTPS, false for development
-    maxAge: 1000 * 60 * 60 * 24, // 1 day
-    sameSite: isProduction ? 'none' : 'lax', // 'none' for cross-site in production, 'lax' for development
-    domain: undefined, // Let browser handle domain automatically
+    secure: isProduction, // Must be true in production (HTTPS)
+    httpOnly: true,
+    sameSite: isProduction ? 'none' : 'lax', // Must be 'none' for cross-site in production
+    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    domain: isProduction ? '.onrender.com' : undefined, // Set domain for production
+    path: '/',
+    partitioned: isProduction // Enable partitioned for production
   },
-  proxy: true, // Trust the reverse proxy (Render uses proxies)
+  rolling: true // Reset the expiration on every request
 });
 
 // Middleware to add Partitioned attribute to cookies (Chrome requirement for cross-site cookies)
@@ -430,6 +498,11 @@ app.get('/api/public/tournaments/:tournamentId/rounds/:roundId/overall', async (
     console.error('Public overall error:', err);
     return res.status(500).json({ error: err.message });
   }
+});
+
+// API health check route
+app.get('/api', (req, res) => {
+  res.json({ message: 'API is running', version: '1.0.0', status: 'ok' });
 });
 
 app.get('/', (req, res) => {

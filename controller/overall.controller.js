@@ -157,8 +157,38 @@ const getOverallMatchDataForRound = async (req, res) => {
 
     // Aggregate by teamId
     const teamsMap = new Map(); // key: teamId string -> aggregated team
+    const playersMap = new Map(); // key: uId string -> aggregated player
 
-    for (const md of matchDatas) {
+    // First, deduplicate players by uId within each matchData's teams
+    const deduplicatedMatchDatas = matchDatas.map(md => ({
+      ...md,
+      teams: md.teams.map(team => ({
+        ...team,
+        players: (() => {
+          const playerMap = new Map();
+          for (const p of team.players || []) {
+            const key = p.uId || '';
+            if (!playerMap.has(key)) {
+              playerMap.set(key, { ...p });
+            } else {
+              // Sum numeric fields if duplicate uId
+              sumNumericFields(playerMap.get(key), p, NUMERIC_PLAYER_FIELDS);
+              // Update display fields if present
+              if (p.playerName) playerMap.get(key).playerName = p.playerName;
+              if (p.picUrl) playerMap.get(key).picUrl = p.picUrl;
+              if (p.showPicUrl) playerMap.get(key).showPicUrl = p.showPicUrl;
+              if (p.character) playerMap.get(key).character = p.character;
+              if (p.playerOpenId) playerMap.get(key).playerOpenId = p.playerOpenId;
+              if (p.uId) playerMap.get(key).uId = p.uId;
+              if (p.teamIdfromApi) playerMap.get(key).teamIdfromApi = p.teamIdfromApi;
+            }
+          }
+          return Array.from(playerMap.values());
+        })()
+      }))
+    }));
+
+    for (const md of deduplicatedMatchDatas) {
       for (const team of md.teams || []) {
         const teamKey = team.teamId.toString();
         if (!teamsMap.has(teamKey)) {
@@ -170,7 +200,7 @@ const getOverallMatchDataForRound = async (req, res) => {
             slot: Number.isFinite(team.slot) ? team.slot : 0,
             placePoints: 0,
             wwcd: 0,
-            players: new Map(), // key: player _id string -> agg player
+            players: new Set(), // set of uId strings
           });
         }
 
@@ -190,13 +220,13 @@ const getOverallMatchDataForRound = async (req, res) => {
           aggTeam.wwcd += 1;
         }
 
-        // Aggregate players
+        // Aggregate players globally by uId
         for (const p of team.players || []) {
-          const pKey = p._id.toString();
-          if (!aggTeam.players.has(pKey)) {
-            aggTeam.players.set(pKey, buildInitialAggPlayer(p));
+          const pKey = p.uId || '';
+          if (!playersMap.has(pKey)) {
+            playersMap.set(pKey, buildInitialAggPlayer(p));
           }
-          const aggPlayer = aggTeam.players.get(pKey);
+          const aggPlayer = playersMap.get(pKey);
 
           // Always update latest display fields if present
           if (p.playerName) aggPlayer.playerName = p.playerName;
@@ -209,6 +239,9 @@ const getOverallMatchDataForRound = async (req, res) => {
 
           // Sum numeric stats
           sumNumericFields(aggPlayer, p, NUMERIC_PLAYER_FIELDS);
+
+          // Add uId to team's players set
+          aggTeam.players.add(pKey);
         }
       }
     }
@@ -222,8 +255,13 @@ const getOverallMatchDataForRound = async (req, res) => {
       slot: t.slot || 0,
       placePoints: t.placePoints,
       wwcd: t.wwcd,
-      players: Array.from(t.players.values()),
+      players: Array.from(t.players).map(uId => playersMap.get(uId)),
     })).sort((a, b) => (a.slot || 0) - (b.slot || 0));
+
+    // Final deduplication by uId within each team's players to ensure no duplicates
+    for (const t of aggregatedTeams) {
+      t.players = Array.from(new Map(t.players.map(p => [p.uId, p])).values());
+    }
 
     return res.json({ tournamentId, roundId, matchId, ...(userId && { userId }), teams: aggregatedTeams, createdAt: new Date() });
   } catch (error) {
