@@ -21,6 +21,7 @@ function initializeSocket(server) {
           "tauri://localhost",
               "http://tauri.localhost",
           'https://scoresync-v1.vercel.app',
+          'http://192.168.18.6:3001'
         ];
         
         // Check if origin is allowed OR if it's a Vercel preview deployment

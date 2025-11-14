@@ -34,6 +34,28 @@ const port = process.env.PORT || 3000;
 // Trust proxy (required for Render.com and other cloud platforms)
 app.set('trust proxy', 1);
 
+// Auto-detect production environment
+const isProduction = process.env.NODE_ENV === 'production' || process.env.RENDER === 'true' || process.env.REACT_APP_API_URL?.includes('render.com');
+console.log('🔧 Environment:', isProduction ? 'PRODUCTION' : 'DEVELOPMENT');
+console.log('🔧 NODE_ENV:', process.env.NODE_ENV);
+console.log('🔧 RENDER:', process.env.RENDER);
+console.log('🔧 REACT_APP_API_URL:', process.env.REACT_APP_API_URL);
+
+// For local development with IP addresses, treat as development
+const isLocalIP = process.env.NODE_ENV !== 'production' && !process.env.RENDER && !process.env.REACT_APP_API_URL?.includes('render.com');
+console.log('🔧 Local IP mode:', isLocalIP);
+
+// Force HTTPS in production to ensure backend is HTTPS (critical for iOS login)
+if (isProduction) {
+  app.use((req, res, next) => {
+    if (req.header('x-forwarded-proto') !== 'https') {
+      res.redirect(`https://${req.header('host')}${req.url}`);
+    } else {
+      next();
+    }
+  });
+}
+
 // --- CONNECT TO MONGODB ---
 mongoose.connect(config.MONGODB_URI, {
     useNewUrlParser: true,
@@ -129,13 +151,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// Auto-detect production environment
-const isProduction = process.env.NODE_ENV === 'production' || process.env.RENDER === 'true' || process.env.REACT_APP_API_URL?.includes('render.com');
-console.log('🔧 Environment:', isProduction ? 'PRODUCTION' : 'DEVELOPMENT');
-console.log('🔧 NODE_ENV:', process.env.NODE_ENV);
-console.log('🔧 RENDER:', process.env.RENDER);
-console.log('🔧 REACT_APP_API_URL:', process.env.REACT_APP_API_URL);
-
 // Enhanced session store configuration
 const sessionStore = MongoStore.create({
   mongoUrl: config.MONGODB_URI,
@@ -154,13 +169,13 @@ const sessionMiddleware = session({
   store: sessionStore,
   proxy: true, // Trust the reverse proxy (important for HTTPS)
   cookie: {
-    secure: isProduction, // Must be true in production (HTTPS)
+    secure: isProduction && !isLocalIP, // Only secure in true production, not local IP
     httpOnly: true,
-    sameSite: isProduction ? 'none' : 'lax', // Must be 'none' for cross-site in production
+    sameSite: 'none', // 'none' only for true production
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     domain: undefined, // Don't set domain for cross-site cookies between different TLDs
     path: '/',
-    partitioned: isProduction // Enable partitioned for production
+    partitioned: isProduction && !isLocalIP // Only partitioned in true production
   },
   rolling: true // Reset the expiration on every request
 });
@@ -169,27 +184,32 @@ const sessionMiddleware = session({
 app.use((req, res, next) => {
   sessionMiddleware(req, res, (err) => {
     if (err) return next(err);
-    
-    // Add Partitioned attribute to Set-Cookie header in production
-    if (isProduction) {
-      const originalSetHeader = res.setHeader.bind(res);
-      res.setHeader = function(name, value) {
-        if (name.toLowerCase() === 'set-cookie' && Array.isArray(value)) {
-          value = value.map(cookie => {
-            if (cookie.includes('connect.sid') && !cookie.includes('Partitioned')) {
-              return cookie + '; Partitioned';
+
+    // Add Partitioned attribute to Set-Cookie header in true production for Chrome only
+    if (isProduction && !isLocalIP) {
+      const userAgent = req.headers['user-agent'] || '';
+      const isChrome = /Chrome\//.test(userAgent) && !/Edg\//.test(userAgent); // Chrome but not Edge
+
+      if (isChrome) {
+        const originalSetHeader = res.setHeader.bind(res);
+        res.setHeader = function(name, value) {
+          if (name.toLowerCase() === 'set-cookie' && Array.isArray(value)) {
+            value = value.map(cookie => {
+              if (cookie.includes('connect.sid') && !cookie.includes('Partitioned')) {
+                return cookie + '; Partitioned';
+              }
+              return cookie;
+            });
+          } else if (name.toLowerCase() === 'set-cookie' && typeof value === 'string') {
+            if (value.includes('connect.sid') && !value.includes('Partitioned')) {
+              value = value + '; Partitioned';
             }
-            return cookie;
-          });
-        } else if (name.toLowerCase() === 'set-cookie' && typeof value === 'string') {
-          if (value.includes('connect.sid') && !value.includes('Partitioned')) {
-            value = value + '; Partitioned';
           }
-        }
-        return originalSetHeader(name, value);
-      };
+          return originalSetHeader(name, value);
+        };
+      }
     }
-    
+
     next();
   });
 });
