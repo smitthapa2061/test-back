@@ -1,0 +1,698 @@
+[2025-12-20T20:44:19.957Z] [ERROR] Uncaught Exception: Error: Cannot find module 'compression'
+Require stack:
+- D:\code\newProd\renderBack\index.js
+    at Function._resolveFilename (node:internal/modules/cjs/loader:1383:15)
+    at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+    at Function._load (node:internal/modules/cjs/loader:1192:37)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+    at Module.require (node:internal/modules/cjs/loader:1463:12)
+    at require (node:internal/modules/helpers:147:16)
+    at Object.<anonymous> (D:\code\newProd\renderBack\index.js:12:21)
+    at Module._compile (node:internal/modules/cjs/loader:1706:14)
+[2025-12-20T20:44:19.960Z] [INFO] Process exited with code 0
+[2025-12-20T20:46:54.595Z] [INFO] 🔧 Environment: DEVELOPMENT
+[2025-12-20T20:46:54.595Z] [INFO] 🔧 NODE_ENV: undefined
+[2025-12-20T20:46:54.595Z] [INFO] 🔧 RENDER: undefined
+[2025-12-20T20:46:54.595Z] [INFO] 🔧 REACT_APP_API_URL: undefined
+[2025-12-20T20:46:54.596Z] [INFO] 🔧 Local IP mode: true
+[2025-12-20T20:46:54.672Z] [INFO] ✅ Socket.IO initialized with CORS
+[2025-12-20T20:46:54.674Z] [ERROR] (node:37068) [MONGODB DRIVER] Warning: useNewUrlParser is a deprecated option: useNewUrlParser has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(Use `node --trace-warnings ...` to show where the warning was created)
+[2025-12-20T20:46:54.675Z] [ERROR] (node:37068) [MONGODB DRIVER] Warning: useUnifiedTopology is a deprecated option: useUnifiedTopology has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+[2025-12-20T20:46:54.675Z] [INFO] 🚀 Server running at http://localhost:3000
+[2025-12-20T20:46:54.676Z] [INFO] Live match updater started
+[2025-12-20T20:46:54.676Z] [INFO] Socket.IO instance connected: true
+[2025-12-20T20:46:54.677Z] [INFO] [CIRCLE] Circle info updater started
+[2025-12-20T20:46:54.695Z] [WARN] Could not fetch initial circle info: ECONNREFUSED
+[2025-12-20T20:46:55.558Z] [INFO] ✅ MongoDB connected
+[2025-12-20T20:46:55.593Z] [INFO] WebSocket client connected: _Zp770oyeguEOZp9AAAC
+[2025-12-20T20:46:55.598Z] [WARN] Could not fetch circle info for client _Zp770oyeguEOZp9AAAC: ECONNREFUSED
+[2025-12-20T20:46:55.649Z] [INFO] WebSocket client connected: Hnw0zuSwnAEZag7XAAAJ
+[2025-12-20T20:46:55.651Z] [WARN] Could not fetch circle info for client Hnw0zuSwnAEZag7XAAAJ: ECONNREFUSED
+[2025-12-20T20:46:55.704Z] [INFO] WebSocket client connected: CoRcOPz6DdYN9GDlAAAK
+[2025-12-20T20:46:55.706Z] [WARN] Could not fetch circle info for client CoRcOPz6DdYN9GDlAAAK: ECONNREFUSED
+[2025-12-20T20:46:55.759Z] [INFO] WebSocket client connected: F93Pq8XFFlqtxy4MAAAN
+[2025-12-20T20:46:55.763Z] [WARN] Could not fetch circle info for client F93Pq8XFFlqtxy4MAAAN: ECONNREFUSED
+[2025-12-20T20:46:55.815Z] [INFO] WebSocket client connected: AJg04WJZkOqjuWqcAAAO
+[2025-12-20T20:46:55.817Z] [WARN] Could not fetch circle info for client AJg04WJZkOqjuWqcAAAO: ECONNREFUSED
+[2025-12-20T20:46:55.871Z] [INFO] WebSocket client connected: qIJZdrOLCJIMw9HaAAAR
+[2025-12-20T20:46:55.874Z] [WARN] Could not fetch circle info for client qIJZdrOLCJIMw9HaAAAR: ECONNREFUSED
+[2025-12-20T20:46:55.926Z] [INFO] WebSocket client connected: -XC0gAP-YlRP6k-2AAAS
+[2025-12-20T20:46:55.929Z] [WARN] Could not fetch circle info for client -XC0gAP-YlRP6k-2AAAS: ECONNREFUSED
+[2025-12-20T20:46:55.981Z] [INFO] WebSocket client connected: Ma-gkrCUxTlq0tFlAAAV
+[2025-12-20T20:46:55.983Z] [WARN] Could not fetch circle info for client Ma-gkrCUxTlq0tFlAAAV: ECONNREFUSED
+[2025-12-20T20:46:55.995Z] [INFO] WebSocket client connected: ufRXWjGYVB0E1t5JAAAF
+[2025-12-20T20:46:55.998Z] [WARN] Could not fetch circle info for client ufRXWjGYVB0E1t5JAAAF: ECONNREFUSED
+[2025-12-20T20:46:56.036Z] [INFO] WebSocket client connected: GoUySq2_3isrLvkPAAAa
+[2025-12-20T20:46:56.037Z] [INFO] WebSocket client connected: Kyf6b4_Ya7nL5-RmAAAG
+[2025-12-20T20:46:56.041Z] [WARN] Could not fetch circle info for client GoUySq2_3isrLvkPAAAa: ECONNREFUSED
+[2025-12-20T20:46:56.041Z] [WARN] Could not fetch circle info for client Kyf6b4_Ya7nL5-RmAAAG: ECONNREFUSED
+[2025-12-20T20:46:56.056Z] [INFO] WebSocket client connected: 6UMGtZzfsHAJa8kPAAAd
+[2025-12-20T20:46:56.058Z] [WARN] Could not fetch circle info for client 6UMGtZzfsHAJa8kPAAAd: ECONNREFUSED
+[2025-12-20T20:46:56.091Z] [INFO] WebSocket client connected: qVwRY5n6ARAKPmhSAAAe
+[2025-12-20T20:46:56.092Z] [WARN] Could not fetch circle info for client qVwRY5n6ARAKPmhSAAAe: ECONNREFUSED
+[2025-12-20T20:46:56.103Z] [INFO] WebSocket client connected: 2X884dOzmMeytsAGAAAh
+[2025-12-20T20:46:56.105Z] [WARN] Could not fetch circle info for client 2X884dOzmMeytsAGAAAh: ECONNREFUSED
+[2025-12-20T20:46:56.119Z] [INFO] WebSocket client connected: gGiKVPPtCSsiU_USAAAi
+[2025-12-20T20:46:56.123Z] [WARN] Could not fetch circle info for client gGiKVPPtCSsiU_USAAAi: ECONNREFUSED
+[2025-12-20T20:46:56.145Z] [INFO] WebSocket client connected: 5gbxScrddFgcP5_dAAAl
+[2025-12-20T20:46:56.149Z] [WARN] Could not fetch circle info for client 5gbxScrddFgcP5_dAAAl: ECONNREFUSED
+[2025-12-20T20:46:56.170Z] [INFO] WebSocket client connected: UzmykzX5Q8HhtH41AAAm
+[2025-12-20T20:46:56.171Z] [WARN] Could not fetch circle info for client UzmykzX5Q8HhtH41AAAm: ECONNREFUSED
+[2025-12-20T20:46:56.180Z] [INFO] WebSocket client connected: hNwjB5XP7LCf3ZtfAAAp
+[2025-12-20T20:46:56.182Z] [WARN] Could not fetch circle info for client hNwjB5XP7LCf3ZtfAAAp: ECONNREFUSED
+[2025-12-20T20:46:56.200Z] [INFO] WebSocket client connected: n-ReRtMclAKIFzWmAAAq
+[2025-12-20T20:46:56.202Z] [WARN] Could not fetch circle info for client n-ReRtMclAKIFzWmAAAq: ECONNREFUSED
+[2025-12-20T20:46:56.236Z] [INFO] WebSocket client connected: jJu8KyF9YriFZ0RpAAAt
+[2025-12-20T20:46:56.238Z] [WARN] Could not fetch circle info for client jJu8KyF9YriFZ0RpAAAt: ECONNREFUSED
+[2025-12-20T20:46:56.241Z] [INFO] WebSocket client connected: GRvSGfx_25_Rxh79AAAu
+[2025-12-20T20:46:56.243Z] [WARN] Could not fetch circle info for client GRvSGfx_25_Rxh79AAAu: ECONNREFUSED
+[2025-12-20T20:46:56.254Z] [INFO] WebSocket client connected: V0s4cSD5Z2psMZFcAAAx
+[2025-12-20T20:46:56.256Z] [WARN] Could not fetch circle info for client V0s4cSD5Z2psMZFcAAAx: ECONNREFUSED
+[2025-12-20T20:46:56.303Z] [INFO] WebSocket client connected: a3mRNmFwJ0G-CXYuAAA1
+[2025-12-20T20:46:56.304Z] [INFO] WebSocket client connected: ZmiMIQWQD0-Ff7BaAAAy
+[2025-12-20T20:46:56.306Z] [WARN] Could not fetch circle info for client a3mRNmFwJ0G-CXYuAAA1: ECONNREFUSED
+[2025-12-20T20:46:56.306Z] [WARN] Could not fetch circle info for client ZmiMIQWQD0-Ff7BaAAAy: ECONNREFUSED
+[2025-12-20T20:46:56.307Z] [INFO] WebSocket client connected: nGHdfbqG7eA7lrA-AAA2
+[2025-12-20T20:46:56.309Z] [WARN] Could not fetch circle info for client nGHdfbqG7eA7lrA-AAA2: ECONNREFUSED
+[2025-12-20T20:46:56.361Z] [INFO] WebSocket client connected: _H8Vrx_1qRC38nWPAAA9
+[2025-12-20T20:46:56.364Z] [INFO] WebSocket client connected: ZwycmaFsP9u9JAyCAAA5
+[2025-12-20T20:46:56.365Z] [WARN] Could not fetch circle info for client _H8Vrx_1qRC38nWPAAA9: ECONNREFUSED
+[2025-12-20T20:46:56.366Z] [WARN] Could not fetch circle info for client ZwycmaFsP9u9JAyCAAA5: ECONNREFUSED
+[2025-12-20T20:46:56.369Z] [INFO] WebSocket client connected: JbJUrMUiJz5uUbRXAAA6
+[2025-12-20T20:46:56.370Z] [WARN] Could not fetch circle info for client JbJUrMUiJz5uUbRXAAA6: ECONNREFUSED
+[2025-12-20T20:46:56.371Z] [INFO] WebSocket client connected: lZK08ZMQvMKUuPQSAAAW
+[2025-12-20T20:46:56.372Z] [WARN] Could not fetch circle info for client lZK08ZMQvMKUuPQSAAAW: ECONNREFUSED
+[2025-12-20T20:46:56.405Z] [INFO] WebSocket client connected: AGRdV0UCv-KdT_GIAAAZ
+[2025-12-20T20:46:56.407Z] [WARN] Could not fetch circle info for client AGRdV0UCv-KdT_GIAAAZ: ECONNREFUSED
+[2025-12-20T20:46:56.416Z] [INFO] WebSocket client connected: 0U_H0FUjn9W-hd2oAABC
+[2025-12-20T20:46:56.418Z] [WARN] Could not fetch circle info for client 0U_H0FUjn9W-hd2oAABC: ECONNREFUSED
+[2025-12-20T20:46:56.427Z] [INFO] WebSocket client connected: -iZdfwR0pi4ROg34AABF
+[2025-12-20T20:46:56.429Z] [INFO] WebSocket client connected: ektfBXvowRn78pkMAABJ
+[2025-12-20T20:46:56.430Z] [WARN] Could not fetch circle info for client -iZdfwR0pi4ROg34AABF: ECONNREFUSED
+[2025-12-20T20:46:56.431Z] [WARN] Could not fetch circle info for client ektfBXvowRn78pkMAABJ: ECONNREFUSED
+[2025-12-20T20:46:56.434Z] [INFO] WebSocket client connected: iYRa5Zc96OOg5JHWAABG
+[2025-12-20T20:46:56.436Z] [WARN] Could not fetch circle info for client iYRa5Zc96OOg5JHWAABG: ECONNREFUSED
+[2025-12-20T20:46:56.463Z] [INFO] WebSocket client connected: LUwT6-HipPvEdNjiAABK
+[2025-12-20T20:46:56.465Z] [WARN] Could not fetch circle info for client LUwT6-HipPvEdNjiAABK: ECONNREFUSED
+[2025-12-20T20:46:56.471Z] [INFO] WebSocket client connected: f0p_3LGD6lVZzyNpAABN
+[2025-12-20T20:46:56.473Z] [WARN] Could not fetch circle info for client f0p_3LGD6lVZzyNpAABN: ECONNREFUSED
+[2025-12-20T20:46:56.487Z] [INFO] WebSocket client connected: CyYNWE0zx1IhYG5BAABR
+[2025-12-20T20:46:56.489Z] [INFO] WebSocket client connected: n-jXFqNwzOrramNiAABO
+[2025-12-20T20:46:56.491Z] [WARN] Could not fetch circle info for client CyYNWE0zx1IhYG5BAABR: ECONNREFUSED
+[2025-12-20T20:46:56.491Z] [WARN] Could not fetch circle info for client n-jXFqNwzOrramNiAABO: ECONNREFUSED
+[2025-12-20T20:46:56.512Z] [INFO] WebSocket client connected: uoZQLTFVBR0-2CZZAABS
+[2025-12-20T20:46:56.515Z] [WARN] Could not fetch circle info for client uoZQLTFVBR0-2CZZAABS: ECONNREFUSED
+[2025-12-20T20:46:56.521Z] [INFO] WebSocket client connected: C1a3h1DDae9A13BUAABV
+[2025-12-20T20:46:56.523Z] [WARN] Could not fetch circle info for client C1a3h1DDae9A13BUAABV: ECONNREFUSED
+[2025-12-20T20:46:56.526Z] [INFO] WebSocket client connected: TOMTQvV3IeujR3eyAABW
+[2025-12-20T20:46:56.529Z] [WARN] Could not fetch circle info for client TOMTQvV3IeujR3eyAABW: ECONNREFUSED
+[2025-12-20T20:46:56.544Z] [INFO] WebSocket client connected: YruecdtLuvZvV68ZAABZ
+[2025-12-20T20:46:56.547Z] [WARN] Could not fetch circle info for client YruecdtLuvZvV68ZAABZ: ECONNREFUSED
+[2025-12-20T20:46:56.549Z] [INFO] WebSocket client connected: 4SpKSdVA7wfBd1d7AABa
+[2025-12-20T20:46:56.551Z] [WARN] Could not fetch circle info for client 4SpKSdVA7wfBd1d7AABa: ECONNREFUSED
+[2025-12-20T20:46:56.579Z] [INFO] WebSocket client connected: 4qvPwE1eE7qEtGCuAABd
+[2025-12-20T20:46:56.581Z] [INFO] WebSocket client connected: rr9CogGLNvLLr_S9AABe
+[2025-12-20T20:46:56.583Z] [INFO] WebSocket client connected: x71uqhJjFRj6HntbAABh
+[2025-12-20T20:46:56.585Z] [WARN] Could not fetch circle info for client 4qvPwE1eE7qEtGCuAABd: ECONNREFUSED
+[2025-12-20T20:46:56.585Z] [WARN] Could not fetch circle info for client rr9CogGLNvLLr_S9AABe: ECONNREFUSED
+[2025-12-20T20:46:56.586Z] [WARN] Could not fetch circle info for client x71uqhJjFRj6HntbAABh: ECONNREFUSED
+[2025-12-20T20:46:56.602Z] [INFO] WebSocket client connected: sOMAUMWzYcyT9uV2AABi
+[2025-12-20T20:46:56.605Z] [WARN] Could not fetch circle info for client sOMAUMWzYcyT9uV2AABi: ECONNREFUSED
+[2025-12-20T20:46:56.610Z] [INFO] WebSocket client connected: KDY5y6BjxpFJ3yVeAABl
+[2025-12-20T20:46:56.612Z] [WARN] Could not fetch circle info for client KDY5y6BjxpFJ3yVeAABl: ECONNREFUSED
+[2025-12-20T20:46:56.638Z] [INFO] WebSocket client connected: I3VXXr-jQhzPEb18AABq
+[2025-12-20T20:46:56.641Z] [INFO] WebSocket client connected: 8oZbMAeYkFmOPESIAABp
+[2025-12-20T20:46:56.645Z] [INFO] WebSocket client connected: e_M9skSFt9P68Kq1AABm
+[2025-12-20T20:46:56.646Z] [WARN] Could not fetch circle info for client I3VXXr-jQhzPEb18AABq: ECONNREFUSED
+[2025-12-20T20:46:56.647Z] [WARN] Could not fetch circle info for client 8oZbMAeYkFmOPESIAABp: ECONNREFUSED
+[2025-12-20T20:46:56.648Z] [WARN] Could not fetch circle info for client e_M9skSFt9P68Kq1AABm: ECONNREFUSED
+[2025-12-20T20:46:56.660Z] [INFO] WebSocket client connected: 9KFf5YrZXFc0ZQAzAABt
+[2025-12-20T20:46:56.662Z] [WARN] Could not fetch circle info for client 9KFf5YrZXFc0ZQAzAABt: ECONNREFUSED
+[2025-12-20T20:46:56.672Z] [INFO] WebSocket client connected: r_CmhVm550_8BN5lAABu
+[2025-12-20T20:46:56.674Z] [WARN] Could not fetch circle info for client r_CmhVm550_8BN5lAABu: ECONNREFUSED
+[2025-12-20T20:46:56.693Z] [INFO] WebSocket client connected: Jrj6UOHMrjFktYs-AABx
+[2025-12-20T20:46:56.695Z] [WARN] Could not fetch circle info for client Jrj6UOHMrjFktYs-AABx: ECONNREFUSED
+[2025-12-20T20:46:56.699Z] [INFO] WebSocket client connected: QDq2ijht08bEza0NAABy
+[2025-12-20T20:46:56.702Z] [WARN] Could not fetch circle info for client QDq2ijht08bEza0NAABy: ECONNREFUSED
+[2025-12-20T20:46:56.711Z] [INFO] WebSocket client connected: a55dP-DhCk2SgVUxAAB1
+[2025-12-20T20:46:56.713Z] [WARN] Could not fetch circle info for client a55dP-DhCk2SgVUxAAB1: ECONNREFUSED
+[2025-12-20T20:46:56.717Z] [INFO] WebSocket client connected: 5yLqpdFkv3pBx8wTAAB2
+[2025-12-20T20:46:56.719Z] [WARN] Could not fetch circle info for client 5yLqpdFkv3pBx8wTAAB2: ECONNREFUSED
+[2025-12-20T20:46:56.733Z] [INFO] WebSocket client connected: ag_iFESak3MlyrSYAAB5
+[2025-12-20T20:46:56.735Z] [WARN] Could not fetch circle info for client ag_iFESak3MlyrSYAAB5: ECONNREFUSED
+[2025-12-20T20:46:56.748Z] [INFO] WebSocket client connected: 8QmXcp31L3yldES_AAB6
+[2025-12-20T20:46:56.750Z] [WARN] Could not fetch circle info for client 8QmXcp31L3yldES_AAB6: ECONNREFUSED
+[2025-12-20T20:46:56.757Z] [INFO] WebSocket client connected: IwGN80GtTZUu5MgeAAB9
+[2025-12-20T20:46:56.759Z] [WARN] Could not fetch circle info for client IwGN80GtTZUu5MgeAAB9: ECONNREFUSED
+[2025-12-20T20:46:56.775Z] [INFO] WebSocket client connected: UUFD2WH2TOYiA5s5AACC
+[2025-12-20T20:46:56.776Z] [INFO] WebSocket client connected: xdgyrmLAoXT2_40PAAA-
+[2025-12-20T20:46:56.777Z] [INFO] WebSocket client connected: KjLwLAG4Cpo0QO_9AAB-
+[2025-12-20T20:46:56.780Z] [WARN] Could not fetch circle info for client UUFD2WH2TOYiA5s5AACC: ECONNREFUSED
+[2025-12-20T20:46:56.781Z] [WARN] Could not fetch circle info for client xdgyrmLAoXT2_40PAAA-: ECONNREFUSED
+[2025-12-20T20:46:56.781Z] [WARN] Could not fetch circle info for client KjLwLAG4Cpo0QO_9AAB-: ECONNREFUSED
+[2025-12-20T20:46:56.793Z] [INFO] WebSocket client connected: RWzfnws94FVKMqPsAACF
+[2025-12-20T20:46:56.795Z] [WARN] Could not fetch circle info for client RWzfnws94FVKMqPsAACF: ECONNREFUSED
+[2025-12-20T20:46:56.798Z] [INFO] WebSocket client connected: VGDrGCRn4mmmSAFyAABB
+[2025-12-20T20:46:56.799Z] [WARN] Could not fetch circle info for client VGDrGCRn4mmmSAFyAABB: ECONNREFUSED
+[2025-12-20T20:46:56.802Z] [INFO] WebSocket client connected: aD1h6nKX5snCBopjAACJ
+[2025-12-20T20:46:56.805Z] [WARN] Could not fetch circle info for client aD1h6nKX5snCBopjAACJ: ECONNREFUSED
+[2025-12-20T20:46:56.814Z] [INFO] WebSocket client connected: 1zy0kajBJj8udIFfAACK
+[2025-12-20T20:46:56.816Z] [WARN] Could not fetch circle info for client 1zy0kajBJj8udIFfAACK: ECONNREFUSED
+[2025-12-20T20:46:56.833Z] [INFO] WebSocket client connected: ubkS0jgS1KMS9kBNAACN
+[2025-12-20T20:46:56.836Z] [WARN] Could not fetch circle info for client ubkS0jgS1KMS9kBNAACN: ECONNREFUSED
+[2025-12-20T20:46:56.836Z] [INFO] WebSocket client connected: IzuzNgxuObtm0_nyAACO
+[2025-12-20T20:46:56.839Z] [WARN] Could not fetch circle info for client IzuzNgxuObtm0_nyAACO: ECONNREFUSED
+[2025-12-20T20:46:56.842Z] [INFO] WebSocket client connected: F61aJ3uyUW0lcvJyAACR
+[2025-12-20T20:46:56.843Z] [WARN] Could not fetch circle info for client F61aJ3uyUW0lcvJyAACR: ECONNREFUSED
+[2025-12-20T20:46:56.859Z] [INFO] WebSocket client connected: LCzZjv4_kNr8JoM1AACW
+[2025-12-20T20:46:56.861Z] [INFO] WebSocket client connected: fENVdUoD3ZiVyqcuAACV
+[2025-12-20T20:46:56.862Z] [INFO] WebSocket client connected: GGHP1m-8umXf9QdnAACS
+[2025-12-20T20:46:56.863Z] [WARN] Could not fetch circle info for client LCzZjv4_kNr8JoM1AACW: ECONNREFUSED
+[2025-12-20T20:46:56.864Z] [WARN] Could not fetch circle info for client fENVdUoD3ZiVyqcuAACV: ECONNREFUSED
+[2025-12-20T20:46:56.864Z] [WARN] Could not fetch circle info for client GGHP1m-8umXf9QdnAACS: ECONNREFUSED
+[2025-12-20T20:46:56.877Z] [INFO] WebSocket client connected: FYGKAoN43o1pkW_2AACZ
+[2025-12-20T20:46:56.880Z] [WARN] Could not fetch circle info for client FYGKAoN43o1pkW_2AACZ: ECONNREFUSED
+[2025-12-20T20:46:56.891Z] [INFO] WebSocket client connected: 7-29uBX74u1015dCAACa
+[2025-12-20T20:46:56.893Z] [WARN] Could not fetch circle info for client 7-29uBX74u1015dCAACa: ECONNREFUSED
+[2025-12-20T20:46:56.898Z] [INFO] WebSocket client connected: Ggr--39PRpdAplTuAACc
+[2025-12-20T20:46:56.901Z] [WARN] Could not fetch circle info for client Ggr--39PRpdAplTuAACc: ECONNREFUSED
+[2025-12-20T20:46:56.908Z] [INFO] WebSocket client connected: bjnFOrPh1DcJZdZNAACg
+[2025-12-20T20:46:56.910Z] [WARN] Could not fetch circle info for client bjnFOrPh1DcJZdZNAACg: ECONNREFUSED
+[2025-12-20T20:46:56.914Z] [INFO] WebSocket client connected: bZ3LYRJY-8-sYQjGAACh
+[2025-12-20T20:46:56.917Z] [INFO] WebSocket client connected: h7t_u0vmkVitSldwAACi
+[2025-12-20T20:46:56.919Z] [WARN] Could not fetch circle info for client bZ3LYRJY-8-sYQjGAACh: ECONNREFUSED
+[2025-12-20T20:46:56.920Z] [WARN] Could not fetch circle info for client h7t_u0vmkVitSldwAACi: ECONNREFUSED
+[2025-12-20T20:46:56.922Z] [INFO] WebSocket client connected: wsVoSgDPqEcyin-KAACl
+[2025-12-20T20:46:56.923Z] [WARN] Could not fetch circle info for client wsVoSgDPqEcyin-KAACl: ECONNREFUSED
+[2025-12-20T20:46:56.936Z] [INFO] WebSocket client connected: jyFlpcd13mb94L9cAACm
+[2025-12-20T20:46:56.938Z] [WARN] Could not fetch circle info for client jyFlpcd13mb94L9cAACm: ECONNREFUSED
+[2025-12-20T20:46:56.950Z] [INFO] WebSocket client connected: gNfPvaOhHg0p_EMEAACp
+[2025-12-20T20:46:56.951Z] [WARN] Could not fetch circle info for client gNfPvaOhHg0p_EMEAACp: ECONNREFUSED
+[2025-12-20T20:46:56.958Z] [INFO] WebSocket client connected: xBpuWuZiByTgDbapAACq
+[2025-12-20T20:46:56.962Z] [WARN] Could not fetch circle info for client xBpuWuZiByTgDbapAACq: ECONNREFUSED
+[2025-12-20T20:46:56.968Z] [INFO] WebSocket client connected: Cm1EecalhI31rzl3AACu
+[2025-12-20T20:46:56.969Z] [WARN] Could not fetch circle info for client Cm1EecalhI31rzl3AACu: ECONNREFUSED
+[2025-12-20T20:46:56.972Z] [INFO] WebSocket client connected: Fodc33mROq6LsT-rAACw
+[2025-12-20T20:46:56.974Z] [INFO] WebSocket client connected: v_v4Qh8g8DEN4EeqAACt
+[2025-12-20T20:46:56.975Z] [WARN] Could not fetch circle info for client Fodc33mROq6LsT-rAACw: ECONNREFUSED
+[2025-12-20T20:46:56.975Z] [WARN] Could not fetch circle info for client v_v4Qh8g8DEN4EeqAACt: ECONNREFUSED
+[2025-12-20T20:46:56.982Z] [INFO] WebSocket client connected: Lnf4Cgg75MMQziyAAACz
+[2025-12-20T20:46:56.984Z] [WARN] Could not fetch circle info for client Lnf4Cgg75MMQziyAAACz: ECONNREFUSED
+[2025-12-20T20:46:56.995Z] [INFO] WebSocket client connected: 1I6XWhixrxiZxj0qAAC0
+[2025-12-20T20:46:56.997Z] [WARN] Could not fetch circle info for client 1I6XWhixrxiZxj0qAAC0: ECONNREFUSED
+[2025-12-20T20:46:57.008Z] [INFO] WebSocket client connected: 5Ca1B0rmR8MZaf5vAAC3
+[2025-12-20T20:46:57.011Z] [WARN] Could not fetch circle info for client 5Ca1B0rmR8MZaf5vAAC3: ECONNREFUSED
+[2025-12-20T20:46:57.020Z] [INFO] WebSocket client connected: tFHwNSkQHA0R0gaWAAC4
+[2025-12-20T20:46:57.021Z] [WARN] Could not fetch circle info for client tFHwNSkQHA0R0gaWAAC4: ECONNREFUSED
+[2025-12-20T20:46:57.022Z] [INFO] WebSocket client connected: YMSW6Oh561xZH_nQAAC7
+[2025-12-20T20:46:57.025Z] [WARN] Could not fetch circle info for client YMSW6Oh561xZH_nQAAC7: ECONNREFUSED
+[2025-12-20T20:46:57.027Z] [INFO] WebSocket client connected: 29_ENUmwHlEeZpPAAAC8
+[2025-12-20T20:46:57.029Z] [WARN] Could not fetch circle info for client 29_ENUmwHlEeZpPAAAC8: ECONNREFUSED
+[2025-12-20T20:46:57.039Z] [INFO] WebSocket client connected: SdmcmMuCzsnir-j2AAC_
+[2025-12-20T20:46:57.041Z] [WARN] Could not fetch circle info for client SdmcmMuCzsnir-j2AAC_: ECONNREFUSED
+[2025-12-20T20:46:57.043Z] [INFO] WebSocket client connected: Jvr4yR5UnYdLzHqIAADA
+[2025-12-20T20:46:57.044Z] [WARN] Could not fetch circle info for client Jvr4yR5UnYdLzHqIAADA: ECONNREFUSED
+[2025-12-20T20:46:57.054Z] [INFO] WebSocket client connected: pUXXFa_5QUk3gf9-AADD
+[2025-12-20T20:46:57.056Z] [WARN] Could not fetch circle info for client pUXXFa_5QUk3gf9-AADD: ECONNREFUSED
+[2025-12-20T20:46:57.066Z] [INFO] WebSocket client connected: _L54psizi6wDAl2sAADE
+[2025-12-20T20:46:57.072Z] [WARN] Could not fetch circle info for client _L54psizi6wDAl2sAADE: ECONNREFUSED
+[2025-12-20T20:46:57.077Z] [INFO] WebSocket client connected: Cyb1LnhQDpvAq-EaAADI
+[2025-12-20T20:46:57.080Z] [INFO] WebSocket client connected: v98VplsCoTaaaZF5AADH
+[2025-12-20T20:46:57.081Z] [WARN] Could not fetch circle info for client Cyb1LnhQDpvAq-EaAADI: ECONNREFUSED
+[2025-12-20T20:46:57.082Z] [WARN] Could not fetch circle info for client v98VplsCoTaaaZF5AADH: ECONNREFUSED
+[2025-12-20T20:46:57.085Z] [INFO] WebSocket client connected: YxOOUPL7ZxoWqqobAADL
+[2025-12-20T20:46:57.086Z] [WARN] Could not fetch circle info for client YxOOUPL7ZxoWqqobAADL: ECONNREFUSED
+[2025-12-20T20:46:57.103Z] [INFO] WebSocket client connected: 6o3X_-yVmvXJn9vjAADP
+[2025-12-20T20:46:57.104Z] [INFO] WebSocket client connected: A2Ww-ez--0RMPfwbAADM
+[2025-12-20T20:46:57.106Z] [WARN] Could not fetch circle info for client 6o3X_-yVmvXJn9vjAADP: ECONNREFUSED
+[2025-12-20T20:46:57.107Z] [WARN] Could not fetch circle info for client A2Ww-ez--0RMPfwbAADM: ECONNREFUSED
+[2025-12-20T20:46:57.112Z] [INFO] WebSocket client connected: SlUnS8ev3En3n6DpAADQ
+[2025-12-20T20:46:57.115Z] [WARN] Could not fetch circle info for client SlUnS8ev3En3n6DpAADQ: ECONNREFUSED
+[2025-12-20T20:46:57.125Z] [INFO] WebSocket client connected: _2UlS4HYG1weQDSqAADT
+[2025-12-20T20:46:57.127Z] [WARN] Could not fetch circle info for client _2UlS4HYG1weQDSqAADT: ECONNREFUSED
+[2025-12-20T20:46:57.132Z] [INFO] WebSocket client connected: 3i4-qwI0dHTU0uqWAADU
+[2025-12-20T20:46:57.134Z] [WARN] Could not fetch circle info for client 3i4-qwI0dHTU0uqWAADU: ECONNREFUSED
+[2025-12-20T20:46:57.140Z] [INFO] WebSocket client connected: vxlyCO_eh7rjWmV3AADX
+[2025-12-20T20:46:57.142Z] [INFO] WebSocket client connected: _5NUgfgZoKLx3aEjAADY
+[2025-12-20T20:46:57.145Z] [WARN] Could not fetch circle info for client vxlyCO_eh7rjWmV3AADX: ECONNREFUSED
+[2025-12-20T20:46:57.145Z] [WARN] Could not fetch circle info for client _5NUgfgZoKLx3aEjAADY: ECONNREFUSED
+[2025-12-20T20:46:57.164Z] [INFO] WebSocket client connected: r6RkuExXUu-3ALvOAADb
+[2025-12-20T20:46:57.166Z] [WARN] Could not fetch circle info for client r6RkuExXUu-3ALvOAADb: ECONNREFUSED
+[2025-12-20T20:46:57.170Z] [INFO] WebSocket client connected: tc92A2URmzXVa5lHAADf
+[2025-12-20T20:46:57.171Z] [INFO] WebSocket client connected: 1RR8LJbCxAuDpTSkAADc
+[2025-12-20T20:46:57.174Z] [WARN] Could not fetch circle info for client tc92A2URmzXVa5lHAADf: ECONNREFUSED
+[2025-12-20T20:46:57.175Z] [WARN] Could not fetch circle info for client 1RR8LJbCxAuDpTSkAADc: ECONNREFUSED
+[2025-12-20T20:46:57.176Z] [INFO] WebSocket client connected: fByqB36jc4yhDDvmAACB
+[2025-12-20T20:46:57.178Z] [WARN] Could not fetch circle info for client fByqB36jc4yhDDvmAACB: ECONNREFUSED
+[2025-12-20T20:46:57.181Z] [INFO] WebSocket client connected: rhR4qKF4E5b0sqJuAACG
+[2025-12-20T20:46:57.183Z] [INFO] WebSocket client connected: vnf5rZnlKD75YL3CAADk
+[2025-12-20T20:46:57.185Z] [WARN] Could not fetch circle info for client rhR4qKF4E5b0sqJuAACG: ECONNREFUSED
+[2025-12-20T20:46:57.186Z] [WARN] Could not fetch circle info for client vnf5rZnlKD75YL3CAADk: ECONNREFUSED
+[2025-12-20T20:46:57.187Z] [INFO] WebSocket client connected: P40o3S4-uMnmecI1AADn
+[2025-12-20T20:46:57.189Z] [WARN] Could not fetch circle info for client P40o3S4-uMnmecI1AADn: ECONNREFUSED
+[2025-12-20T20:46:57.198Z] [INFO] WebSocket client connected: BLkXjCddLKSTXq_9AADr
+[2025-12-20T20:46:57.199Z] [WARN] Could not fetch circle info for client BLkXjCddLKSTXq_9AADr: ECONNREFUSED
+[2025-12-20T20:46:57.201Z] [INFO] WebSocket client connected: 3PdQ5DkdM0HcdWxQAADo
+[2025-12-20T20:46:57.202Z] [WARN] Could not fetch circle info for client 3PdQ5DkdM0HcdWxQAADo: ECONNREFUSED
+[2025-12-20T20:46:57.226Z] [INFO] WebSocket client connected: SE8u78eyqP4ME_85AADs
+[2025-12-20T20:46:57.228Z] [WARN] Could not fetch circle info for client SE8u78eyqP4ME_85AADs: ECONNREFUSED
+[2025-12-20T20:46:57.229Z] [INFO] WebSocket client connected: 84hdFRcDdk-S7uvSAADv
+[2025-12-20T20:46:57.230Z] [WARN] Could not fetch circle info for client 84hdFRcDdk-S7uvSAADv: ECONNREFUSED
+[2025-12-20T20:46:57.237Z] [INFO] WebSocket client connected: 4rV6CzQXFtfR_BjEAADw
+[2025-12-20T20:46:57.239Z] [WARN] Could not fetch circle info for client 4rV6CzQXFtfR_BjEAADw: ECONNREFUSED
+[2025-12-20T20:46:57.423Z] [INFO] WebSocket client connected: _r5G2TzVbA35AId7AAEA
+[2025-12-20T20:46:57.425Z] [INFO] WebSocket client connected: M42esFAPcyOUGy0vAAD3
+[2025-12-20T20:46:57.426Z] [INFO] WebSocket client connected: OahQeqdKm_LPCa7UAAD0
+[2025-12-20T20:46:57.427Z] [INFO] WebSocket client connected: LuRHqjdKZr1x1qNrAAD4
+[2025-12-20T20:46:57.428Z] [INFO] WebSocket client connected: 2YCxPW9mzO7SyS0xAADz
+[2025-12-20T20:46:57.429Z] [INFO] WebSocket client connected: Mwbvtt9WPOC5_KkfAAD7
+[2025-12-20T20:46:57.430Z] [INFO] WebSocket client connected: 0CKuCdpSFzHdyw6zAAD_
+[2025-12-20T20:46:57.431Z] [INFO] WebSocket client connected: gGu228rny6LeMc1nAAD8
+[2025-12-20T20:46:57.434Z] [INFO] WebSocket client connected: ZFgh4CC5Ai7ATQCRAAED
+[2025-12-20T20:46:57.436Z] [WARN] Could not fetch circle info for client _r5G2TzVbA35AId7AAEA: ECONNREFUSED
+[2025-12-20T20:46:57.436Z] [WARN] Could not fetch circle info for client M42esFAPcyOUGy0vAAD3: ECONNREFUSED
+[2025-12-20T20:46:57.436Z] [WARN] Could not fetch circle info for client OahQeqdKm_LPCa7UAAD0: ECONNREFUSED
+[2025-12-20T20:46:57.437Z] [WARN] Could not fetch circle info for client LuRHqjdKZr1x1qNrAAD4: ECONNREFUSED
+[2025-12-20T20:46:57.437Z] [WARN] Could not fetch circle info for client 2YCxPW9mzO7SyS0xAADz: ECONNREFUSED
+[2025-12-20T20:46:57.437Z] [WARN] Could not fetch circle info for client Mwbvtt9WPOC5_KkfAAD7: ECONNREFUSED
+[2025-12-20T20:46:57.437Z] [WARN] Could not fetch circle info for client 0CKuCdpSFzHdyw6zAAD_: ECONNREFUSED
+[2025-12-20T20:46:57.438Z] [WARN] Could not fetch circle info for client gGu228rny6LeMc1nAAD8: ECONNREFUSED
+[2025-12-20T20:46:57.438Z] [WARN] Could not fetch circle info for client ZFgh4CC5Ai7ATQCRAAED: ECONNREFUSED
+[2025-12-20T20:46:57.480Z] [INFO] WebSocket client connected: 0Aw8ZO-nYDO2jHKLAAEK
+[2025-12-20T20:46:57.481Z] [INFO] WebSocket client connected: KfGTQ32xFbh5cBwEAAEE
+[2025-12-20T20:46:57.482Z] [INFO] WebSocket client connected: fmyNnqC2GBnp6o6PAAEH
+[2025-12-20T20:46:57.484Z] [INFO] WebSocket client connected: WllYv19kx6TbnPSeAAEI
+[2025-12-20T20:46:57.485Z] [INFO] WebSocket client connected: ZAXh4n1433GVV2VNAAEP
+[2025-12-20T20:46:57.486Z] [WARN] Could not fetch circle info for client 0Aw8ZO-nYDO2jHKLAAEK: ECONNREFUSED
+[2025-12-20T20:46:57.487Z] [WARN] Could not fetch circle info for client KfGTQ32xFbh5cBwEAAEE: ECONNREFUSED
+[2025-12-20T20:46:57.487Z] [WARN] Could not fetch circle info for client fmyNnqC2GBnp6o6PAAEH: ECONNREFUSED
+[2025-12-20T20:46:57.488Z] [INFO] WebSocket client connected: GO7F3pBPY9SUnXjKAAEM
+[2025-12-20T20:46:57.489Z] [WARN] Could not fetch circle info for client WllYv19kx6TbnPSeAAEI: ECONNREFUSED
+[2025-12-20T20:46:57.490Z] [WARN] Could not fetch circle info for client ZAXh4n1433GVV2VNAAEP: ECONNREFUSED
+[2025-12-20T20:46:57.490Z] [INFO] WebSocket client connected: fHTHgyzucbBdBE8vAAEQ
+[2025-12-20T20:46:57.491Z] [INFO] WebSocket client connected: cnt20E1-4iZ_8RcOAAES
+[2025-12-20T20:46:57.493Z] [WARN] Could not fetch circle info for client GO7F3pBPY9SUnXjKAAEM: ECONNREFUSED
+[2025-12-20T20:46:57.493Z] [WARN] Could not fetch circle info for client fHTHgyzucbBdBE8vAAEQ: ECONNREFUSED
+[2025-12-20T20:46:57.493Z] [WARN] Could not fetch circle info for client cnt20E1-4iZ_8RcOAAES: ECONNREFUSED
+[2025-12-20T20:46:57.499Z] [INFO] WebSocket client connected: m8vKi8CEA2FZbGwFAAEU
+[2025-12-20T20:46:57.501Z] [WARN] Could not fetch circle info for client m8vKi8CEA2FZbGwFAAEU: ECONNREFUSED
+[2025-12-20T20:46:57.534Z] [INFO] WebSocket client connected: J2I-wwWfm7xuxg4yAAEX
+[2025-12-20T20:46:57.536Z] [WARN] Could not fetch circle info for client J2I-wwWfm7xuxg4yAAEX: ECONNREFUSED
+[2025-12-20T20:46:57.539Z] [INFO] WebSocket client connected: Di7_StPP7B2dsKzrAAEY
+[2025-12-20T20:46:57.540Z] [INFO] WebSocket client connected: 6ZniCBUuPkORniScAAEb
+[2025-12-20T20:46:57.541Z] [INFO] WebSocket client connected: JugZr4XrxGhr1tC_AAEf
+[2025-12-20T20:46:57.543Z] [INFO] WebSocket client connected: fVmMFYrUTpkZM-6iAAEc
+[2025-12-20T20:46:57.545Z] [WARN] Could not fetch circle info for client Di7_StPP7B2dsKzrAAEY: ECONNREFUSED
+[2025-12-20T20:46:57.545Z] [WARN] Could not fetch circle info for client 6ZniCBUuPkORniScAAEb: ECONNREFUSED
+[2025-12-20T20:46:57.547Z] [WARN] Could not fetch circle info for client JugZr4XrxGhr1tC_AAEf: ECONNREFUSED
+[2025-12-20T20:46:57.547Z] [WARN] Could not fetch circle info for client fVmMFYrUTpkZM-6iAAEc: ECONNREFUSED
+[2025-12-20T20:46:57.551Z] [INFO] WebSocket client connected: zc1CBckt8kCkMmCOAAEg
+[2025-12-20T20:46:57.553Z] [INFO] WebSocket client connected: G03RAgHuy2urMwhGAAEi
+[2025-12-20T20:46:57.554Z] [INFO] WebSocket client connected: _d4Sn4eygTyyfqdzAAEl
+[2025-12-20T20:46:57.556Z] [WARN] Could not fetch circle info for client zc1CBckt8kCkMmCOAAEg: ECONNREFUSED
+[2025-12-20T20:46:57.556Z] [WARN] Could not fetch circle info for client G03RAgHuy2urMwhGAAEi: ECONNREFUSED
+[2025-12-20T20:46:57.556Z] [WARN] Could not fetch circle info for client _d4Sn4eygTyyfqdzAAEl: ECONNREFUSED
+[2025-12-20T20:46:57.565Z] [INFO] WebSocket client connected: F81M7rM1WhzPkBiiAAEm
+[2025-12-20T20:46:57.566Z] [WARN] Could not fetch circle info for client F81M7rM1WhzPkBiiAAEm: ECONNREFUSED
+[2025-12-20T20:46:57.590Z] [INFO] WebSocket client connected: dD-3OAsSAge066QTAAEp
+[2025-12-20T20:46:57.591Z] [WARN] Could not fetch circle info for client dD-3OAsSAge066QTAAEp: ECONNREFUSED
+[2025-12-20T20:46:57.596Z] [INFO] WebSocket client connected: bFHWQNb9UeASXvkWAAEu
+[2025-12-20T20:46:57.597Z] [INFO] WebSocket client connected: 4Q_sB8eItevjFU0nAAEq
+[2025-12-20T20:46:57.599Z] [INFO] WebSocket client connected: RzK94HMH9ZFdXRi4AAEt
+[2025-12-20T20:46:57.601Z] [INFO] WebSocket client connected: MsRB-Mqnyh9e3VWlAAEx
+[2025-12-20T20:46:57.602Z] [WARN] Could not fetch circle info for client bFHWQNb9UeASXvkWAAEu: ECONNREFUSED
+[2025-12-20T20:46:57.602Z] [WARN] Could not fetch circle info for client 4Q_sB8eItevjFU0nAAEq: ECONNREFUSED
+[2025-12-20T20:46:57.603Z] [WARN] Could not fetch circle info for client RzK94HMH9ZFdXRi4AAEt: ECONNREFUSED
+[2025-12-20T20:46:57.603Z] [INFO] WebSocket client connected: AeYQGe-Wrq11v1K7AADj
+[2025-12-20T20:46:57.605Z] [INFO] WebSocket client connected: ApptOrNQDxSLaLutAADg
+[2025-12-20T20:46:57.606Z] [WARN] Could not fetch circle info for client MsRB-Mqnyh9e3VWlAAEx: ECONNREFUSED
+[2025-12-20T20:46:57.607Z] [WARN] Could not fetch circle info for client AeYQGe-Wrq11v1K7AADj: ECONNREFUSED
+[2025-12-20T20:46:57.607Z] [WARN] Could not fetch circle info for client ApptOrNQDxSLaLutAADg: ECONNREFUSED
+[2025-12-20T20:46:57.612Z] [INFO] WebSocket client connected: S3R6T4P5dDf4UGjXAAE2
+[2025-12-20T20:46:57.613Z] [INFO] WebSocket client connected: dNxKLIhbhVTP2ODmAAE5
+[2025-12-20T20:46:57.614Z] [INFO] WebSocket client connected: EcuHkQl_Nxrd9ZJEAAE6
+[2025-12-20T20:46:57.617Z] [WARN] Could not fetch circle info for client S3R6T4P5dDf4UGjXAAE2: ECONNREFUSED
+[2025-12-20T20:46:57.617Z] [WARN] Could not fetch circle info for client dNxKLIhbhVTP2ODmAAE5: ECONNREFUSED
+[2025-12-20T20:46:57.618Z] [WARN] Could not fetch circle info for client EcuHkQl_Nxrd9ZJEAAE6: ECONNREFUSED
+[2025-12-20T20:46:57.630Z] [INFO] WebSocket client connected: BVzShZPpIVqgAtunAAE9
+[2025-12-20T20:46:57.632Z] [WARN] Could not fetch circle info for client BVzShZPpIVqgAtunAAE9: ECONNREFUSED
+[2025-12-20T20:46:57.645Z] [INFO] WebSocket client connected: fSlREknoiTkajE5fAAE-
+[2025-12-20T20:46:57.647Z] [WARN] Could not fetch circle info for client fSlREknoiTkajE5fAAE-: ECONNREFUSED
+[2025-12-20T20:46:57.651Z] [INFO] WebSocket client connected: YXucZMRHSlMn7hEFAAFB
+[2025-12-20T20:46:57.653Z] [WARN] Could not fetch circle info for client YXucZMRHSlMn7hEFAAFB: ECONNREFUSED
+[2025-12-20T20:46:57.655Z] [INFO] WebSocket client connected: Rx8mLDXvehltTz2QAAFC
+[2025-12-20T20:46:57.656Z] [INFO] WebSocket client connected: TNq37tdNv5o2s1mTAAFF
+[2025-12-20T20:46:57.658Z] [WARN] Could not fetch circle info for client Rx8mLDXvehltTz2QAAFC: ECONNREFUSED
+[2025-12-20T20:46:57.658Z] [WARN] Could not fetch circle info for client TNq37tdNv5o2s1mTAAFF: ECONNREFUSED
+[2025-12-20T20:46:57.661Z] [INFO] WebSocket client connected: LZBTVETxnIUStDw2AAFG
+[2025-12-20T20:46:57.663Z] [INFO] WebSocket client connected: Wr3VxyBx1uCScFdqAAFJ
+[2025-12-20T20:46:57.664Z] [INFO] WebSocket client connected: FppD9UgbfKmDyNlJAAFK
+[2025-12-20T20:46:57.665Z] [WARN] Could not fetch circle info for client LZBTVETxnIUStDw2AAFG: ECONNREFUSED
+[2025-12-20T20:46:57.666Z] [WARN] Could not fetch circle info for client Wr3VxyBx1uCScFdqAAFJ: ECONNREFUSED
+[2025-12-20T20:46:57.666Z] [WARN] Could not fetch circle info for client FppD9UgbfKmDyNlJAAFK: ECONNREFUSED
+[2025-12-20T20:46:57.673Z] [INFO] WebSocket client connected: PBxWbEZz4roVWJvbAAFN
+[2025-12-20T20:46:57.674Z] [INFO] WebSocket client connected: zJ4XsCU7c8mg9R2oAAFO
+[2025-12-20T20:46:57.676Z] [INFO] WebSocket client connected: oJD0aa30Kg05SMLBAAFR
+[2025-12-20T20:46:57.677Z] [WARN] Could not fetch circle info for client PBxWbEZz4roVWJvbAAFN: ECONNREFUSED
+[2025-12-20T20:46:57.678Z] [WARN] Could not fetch circle info for client zJ4XsCU7c8mg9R2oAAFO: ECONNREFUSED
+[2025-12-20T20:46:57.678Z] [WARN] Could not fetch circle info for client oJD0aa30Kg05SMLBAAFR: ECONNREFUSED
+[2025-12-20T20:46:57.699Z] [INFO] WebSocket client connected: ozyGfwqKOc1xZiopAAFV
+[2025-12-20T20:46:57.701Z] [INFO] WebSocket client connected: 1uhElN0hGz5EL9LnAAFS
+[2025-12-20T20:46:57.702Z] [WARN] Could not fetch circle info for client ozyGfwqKOc1xZiopAAFV: ECONNREFUSED
+[2025-12-20T20:46:57.703Z] [WARN] Could not fetch circle info for client 1uhElN0hGz5EL9LnAAFS: ECONNREFUSED
+[2025-12-20T20:46:57.706Z] [INFO] WebSocket client connected: tIK8NwskM85lOPI3AAFW
+[2025-12-20T20:46:57.707Z] [WARN] Could not fetch circle info for client tIK8NwskM85lOPI3AAFW: ECONNREFUSED
+[2025-12-20T20:46:57.712Z] [INFO] WebSocket client connected: 2_M6hSHHamRvwQd6AAFZ
+[2025-12-20T20:46:57.713Z] [INFO] WebSocket client connected: eQTE6SGeXDx88g-tAAFa
+[2025-12-20T20:46:57.715Z] [WARN] Could not fetch circle info for client 2_M6hSHHamRvwQd6AAFZ: ECONNREFUSED
+[2025-12-20T20:46:57.715Z] [WARN] Could not fetch circle info for client eQTE6SGeXDx88g-tAAFa: ECONNREFUSED
+[2025-12-20T20:46:57.719Z] [INFO] WebSocket client connected: Gb9rVjpUeQNnGHQbAAFd
+[2025-12-20T20:46:57.721Z] [INFO] WebSocket client connected: Z5RElAB7GA9G0A2HAAFe
+[2025-12-20T20:46:57.722Z] [INFO] WebSocket client connected: GYuOr3MrU3jYVrixAAFh
+[2025-12-20T20:46:57.724Z] [WARN] Could not fetch circle info for client Gb9rVjpUeQNnGHQbAAFd: ECONNREFUSED
+[2025-12-20T20:46:57.724Z] [WARN] Could not fetch circle info for client Z5RElAB7GA9G0A2HAAFe: ECONNREFUSED
+[2025-12-20T20:46:57.725Z] [WARN] Could not fetch circle info for client GYuOr3MrU3jYVrixAAFh: ECONNREFUSED
+[2025-12-20T20:46:57.734Z] [INFO] WebSocket client connected: AHzZe-7P97BK-YfKAAFi
+[2025-12-20T20:46:57.736Z] [INFO] WebSocket client connected: O28FUnsDQLSPYOiwAAFk
+[2025-12-20T20:46:57.737Z] [INFO] WebSocket client connected: LJYyuF5wE7eIOdmwAAFm
+[2025-12-20T20:46:57.739Z] [WARN] Could not fetch circle info for client AHzZe-7P97BK-YfKAAFi: ECONNREFUSED
+[2025-12-20T20:46:57.739Z] [WARN] Could not fetch circle info for client O28FUnsDQLSPYOiwAAFk: ECONNREFUSED
+[2025-12-20T20:46:57.740Z] [WARN] Could not fetch circle info for client LJYyuF5wE7eIOdmwAAFm: ECONNREFUSED
+[2025-12-20T20:46:57.754Z] [INFO] WebSocket client connected: Ra6Ct0ICGycjVdhIAAFp
+[2025-12-20T20:46:57.755Z] [WARN] Could not fetch circle info for client Ra6Ct0ICGycjVdhIAAFp: ECONNREFUSED
+[2025-12-20T20:46:57.760Z] [INFO] WebSocket client connected: 1du6KrQmUZcPVjHfAAFs
+[2025-12-20T20:46:57.762Z] [WARN] Could not fetch circle info for client 1du6KrQmUZcPVjHfAAFs: ECONNREFUSED
+[2025-12-20T20:46:57.766Z] [INFO] WebSocket client connected: L6VmUxeqnhBJpX8HAAFq
+[2025-12-20T20:46:57.768Z] [WARN] Could not fetch circle info for client L6VmUxeqnhBJpX8HAAFq: ECONNREFUSED
+[2025-12-20T20:46:57.770Z] [INFO] WebSocket client connected: k7cGi9BN_BHkaf4KAAFv
+[2025-12-20T20:46:57.771Z] [INFO] WebSocket client connected: oP7ItISWPSaf0888AAFw
+[2025-12-20T20:46:57.773Z] [WARN] Could not fetch circle info for client k7cGi9BN_BHkaf4KAAFv: ECONNREFUSED
+[2025-12-20T20:46:57.773Z] [WARN] Could not fetch circle info for client oP7ItISWPSaf0888AAFw: ECONNREFUSED
+[2025-12-20T20:46:57.777Z] [INFO] WebSocket client connected: htwwRBEuRksF9rG9AAFz
+[2025-12-20T20:46:57.779Z] [WARN] Could not fetch circle info for client htwwRBEuRksF9rG9AAFz: ECONNREFUSED
+[2025-12-20T20:46:57.779Z] [INFO] WebSocket client connected: _8jFQrGYhTalQb4XAAF0
+[2025-12-20T20:46:57.781Z] [INFO] WebSocket client connected: BYQou-5agdNzI2ZiAAF3
+[2025-12-20T20:46:57.785Z] [WARN] Could not fetch circle info for client _8jFQrGYhTalQb4XAAF0: ECONNREFUSED
+[2025-12-20T20:46:57.786Z] [WARN] Could not fetch circle info for client BYQou-5agdNzI2ZiAAF3: ECONNREFUSED
+[2025-12-20T20:46:57.795Z] [INFO] WebSocket client connected: G51pm6BgHOyvNlL5AAF4
+[2025-12-20T20:46:57.797Z] [INFO] WebSocket client connected: Gmn520wJTg3WdGIEAAF7
+[2025-12-20T20:46:57.798Z] [INFO] WebSocket client connected: HidF7cKR7VR_m6gVAAF8
+[2025-12-20T20:46:57.801Z] [WARN] Could not fetch circle info for client G51pm6BgHOyvNlL5AAF4: ECONNREFUSED
+[2025-12-20T20:46:57.801Z] [WARN] Could not fetch circle info for client Gmn520wJTg3WdGIEAAF7: ECONNREFUSED
+[2025-12-20T20:46:57.801Z] [WARN] Could not fetch circle info for client HidF7cKR7VR_m6gVAAF8: ECONNREFUSED
+[2025-12-20T20:46:57.808Z] [INFO] WebSocket client connected: Hd2T4uQ7coCYEbS8AAF_
+[2025-12-20T20:46:57.809Z] [WARN] Could not fetch circle info for client Hd2T4uQ7coCYEbS8AAF_: ECONNREFUSED
+[2025-12-20T20:46:57.816Z] [INFO] WebSocket client connected: kV4CTLL4sSE6roWUAAGA
+[2025-12-20T20:46:57.818Z] [WARN] Could not fetch circle info for client kV4CTLL4sSE6roWUAAGA: ECONNREFUSED
+[2025-12-20T20:46:57.828Z] [INFO] WebSocket client connected: IlYAd-n83mr45cg8AAGE
+[2025-12-20T20:46:57.830Z] [INFO] WebSocket client connected: B94gZjfnIGIlizq3AAGH
+[2025-12-20T20:46:57.832Z] [INFO] WebSocket client connected: MlTDc7f11Gt4fsIPAAGD
+[2025-12-20T20:46:57.833Z] [WARN] Could not fetch circle info for client IlYAd-n83mr45cg8AAGE: ECONNREFUSED
+[2025-12-20T20:46:57.834Z] [WARN] Could not fetch circle info for client B94gZjfnIGIlizq3AAGH: ECONNREFUSED
+[2025-12-20T20:46:57.834Z] [WARN] Could not fetch circle info for client MlTDc7f11Gt4fsIPAAGD: ECONNREFUSED
+[2025-12-20T20:46:57.835Z] [INFO] WebSocket client connected: GIMZzOHKSzcY3PToAAGI
+[2025-12-20T20:46:57.837Z] [WARN] Could not fetch circle info for client GIMZzOHKSzcY3PToAAGI: ECONNREFUSED
+[2025-12-20T20:46:57.838Z] [INFO] WebSocket client connected: Zq0BYYviSTF2XItyAAGL
+[2025-12-20T20:46:57.839Z] [INFO] WebSocket client connected: LgOn69oY9ytNYvUzAAGM
+[2025-12-20T20:46:57.841Z] [WARN] Could not fetch circle info for client Zq0BYYviSTF2XItyAAGL: ECONNREFUSED
+[2025-12-20T20:46:57.841Z] [WARN] Could not fetch circle info for client LgOn69oY9ytNYvUzAAGM: ECONNREFUSED
+[2025-12-20T20:46:57.856Z] [INFO] WebSocket client connected: Gf_ms8PjO7SDtQLxAAGP
+[2025-12-20T20:46:57.857Z] [INFO] WebSocket client connected: kswr1rRikTiR5oLmAAGQ
+[2025-12-20T20:46:57.859Z] [WARN] Could not fetch circle info for client Gf_ms8PjO7SDtQLxAAGP: ECONNREFUSED
+[2025-12-20T20:46:57.859Z] [WARN] Could not fetch circle info for client kswr1rRikTiR5oLmAAGQ: ECONNREFUSED
+[2025-12-20T20:46:57.860Z] [INFO] WebSocket client connected: cAaHyKAAikwgkz7RAAGS
+[2025-12-20T20:46:57.862Z] [INFO] WebSocket client connected: J-THbGyEewZ6CwfZAAGU
+[2025-12-20T20:46:57.863Z] [WARN] Could not fetch circle info for client cAaHyKAAikwgkz7RAAGS: ECONNREFUSED
+[2025-12-20T20:46:57.864Z] [WARN] Could not fetch circle info for client J-THbGyEewZ6CwfZAAGU: ECONNREFUSED
+[2025-12-20T20:46:57.870Z] [INFO] WebSocket client connected: Auhqjz_ioE43y4FhAAGX
+[2025-12-20T20:46:57.872Z] [WARN] Could not fetch circle info for client Auhqjz_ioE43y4FhAAGX: ECONNREFUSED
+[2025-12-20T20:46:57.887Z] [INFO] WebSocket client connected: iQm01bs8XL7WJDCAAAGY
+[2025-12-20T20:46:57.888Z] [INFO] WebSocket client connected: uyhdO4QZcCNo5_CoAAGa
+[2025-12-20T20:46:57.890Z] [WARN] Could not fetch circle info for client iQm01bs8XL7WJDCAAAGY: ECONNREFUSED
+[2025-12-20T20:46:57.890Z] [WARN] Could not fetch circle info for client uyhdO4QZcCNo5_CoAAGa: ECONNREFUSED
+[2025-12-20T20:46:57.892Z] [INFO] WebSocket client connected: VxtN6PVConr2SgaZAAGe
+[2025-12-20T20:46:57.894Z] [WARN] Could not fetch circle info for client VxtN6PVConr2SgaZAAGe: ECONNREFUSED
+[2025-12-20T20:46:57.897Z] [INFO] WebSocket client connected: FWmi5OyGstg2CQcYAAGh
+[2025-12-20T20:46:57.898Z] [INFO] WebSocket client connected: i4_y0cRwI35qDFFPAAGc
+[2025-12-20T20:46:57.900Z] [INFO] WebSocket client connected: crCOdvN1xlXnCS4yAAGi
+[2025-12-20T20:46:57.902Z] [WARN] Could not fetch circle info for client FWmi5OyGstg2CQcYAAGh: ECONNREFUSED
+[2025-12-20T20:46:57.903Z] [WARN] Could not fetch circle info for client i4_y0cRwI35qDFFPAAGc: ECONNREFUSED
+[2025-12-20T20:46:57.903Z] [WARN] Could not fetch circle info for client crCOdvN1xlXnCS4yAAGi: ECONNREFUSED
+[2025-12-20T20:46:57.916Z] [INFO] WebSocket client connected: KEMHkc8Fanhep3XGAAGq
+[2025-12-20T20:46:57.917Z] [INFO] WebSocket client connected: CFCx-apLWwcorkXDAAGl
+[2025-12-20T20:46:57.918Z] [INFO] WebSocket client connected: pcvsqII2cNP-nBhGAAGm
+[2025-12-20T20:46:57.920Z] [WARN] Could not fetch circle info for client KEMHkc8Fanhep3XGAAGq: ECONNREFUSED
+[2025-12-20T20:46:57.920Z] [WARN] Could not fetch circle info for client CFCx-apLWwcorkXDAAGl: ECONNREFUSED
+[2025-12-20T20:46:57.921Z] [WARN] Could not fetch circle info for client pcvsqII2cNP-nBhGAAGm: ECONNREFUSED
+[2025-12-20T20:46:57.921Z] [INFO] WebSocket client connected: fB7DNmWKbGzxRsruAAGp
+[2025-12-20T20:46:57.923Z] [WARN] Could not fetch circle info for client fB7DNmWKbGzxRsruAAGp: ECONNREFUSED
+[2025-12-20T20:46:58.425Z] [INFO] WebSocket client connected: awq637sEf32TckVIAAGu
+[2025-12-20T20:46:58.426Z] [INFO] WebSocket client connected: vrALmlKxLSzDEUuSAAGy
+[2025-12-20T20:46:58.427Z] [INFO] WebSocket client connected: 5d4cUHKQTdrD0TRRAAGw
+[2025-12-20T20:46:58.428Z] [INFO] WebSocket client connected: EHBuwWt8Ae-2FQoXAAEy
+[2025-12-20T20:46:58.429Z] [INFO] WebSocket client connected: 2KGUXWkQUecuYkQxAAG-
+[2025-12-20T20:46:58.431Z] [INFO] WebSocket client connected: gJ81G5H6Irvah4jmAAHC
+[2025-12-20T20:46:58.432Z] [INFO] WebSocket client connected: kH_fEwOR9ICCo59WAAG0
+[2025-12-20T20:46:58.433Z] [INFO] WebSocket client connected: C1kySZOtRXnvHDT5AAG5
+[2025-12-20T20:46:58.434Z] [INFO] WebSocket client connected: Ulb8N2PEkDIbNUiFAAG9
+[2025-12-20T20:46:58.436Z] [INFO] WebSocket client connected: h2SrJk1zI3nF9zbdAAGt
+[2025-12-20T20:46:58.437Z] [INFO] WebSocket client connected: l3gw3DCF1kbmDUdqAAHB
+[2025-12-20T20:46:58.440Z] [INFO] WebSocket client connected: SSVrVMvxLPXVjTOFAAG2
+[2025-12-20T20:46:58.443Z] [WARN] Could not fetch circle info for client awq637sEf32TckVIAAGu: ECONNREFUSED
+[2025-12-20T20:46:58.443Z] [WARN] Could not fetch circle info for client vrALmlKxLSzDEUuSAAGy: ECONNREFUSED
+[2025-12-20T20:46:58.443Z] [WARN] Could not fetch circle info for client 5d4cUHKQTdrD0TRRAAGw: ECONNREFUSED
+[2025-12-20T20:46:58.443Z] [WARN] Could not fetch circle info for client EHBuwWt8Ae-2FQoXAAEy: ECONNREFUSED
+[2025-12-20T20:46:58.444Z] [WARN] Could not fetch circle info for client 2KGUXWkQUecuYkQxAAG-: ECONNREFUSED
+[2025-12-20T20:46:58.444Z] [WARN] Could not fetch circle info for client gJ81G5H6Irvah4jmAAHC: ECONNREFUSED
+[2025-12-20T20:46:58.444Z] [WARN] Could not fetch circle info for client kH_fEwOR9ICCo59WAAG0: ECONNREFUSED
+[2025-12-20T20:46:58.445Z] [WARN] Could not fetch circle info for client C1kySZOtRXnvHDT5AAG5: ECONNREFUSED
+[2025-12-20T20:46:58.445Z] [WARN] Could not fetch circle info for client Ulb8N2PEkDIbNUiFAAG9: ECONNREFUSED
+[2025-12-20T20:46:58.445Z] [WARN] Could not fetch circle info for client h2SrJk1zI3nF9zbdAAGt: ECONNREFUSED
+[2025-12-20T20:46:58.445Z] [WARN] Could not fetch circle info for client l3gw3DCF1kbmDUdqAAHB: ECONNREFUSED
+[2025-12-20T20:46:58.446Z] [WARN] Could not fetch circle info for client SSVrVMvxLPXVjTOFAAG2: ECONNREFUSED
+[2025-12-20T20:46:58.480Z] [INFO] WebSocket client connected: Hz3GWA5puMHjw8tIAAHK
+[2025-12-20T20:46:58.482Z] [INFO] WebSocket client connected: UgN2bHhhhEyyDhkVAAHF
+[2025-12-20T20:46:58.483Z] [INFO] WebSocket client connected: QXrFT46D_MvoTVXUAAHG
+[2025-12-20T20:46:58.484Z] [WARN] Could not fetch circle info for client Hz3GWA5puMHjw8tIAAHK: ECONNREFUSED
+[2025-12-20T20:46:58.485Z] [INFO] WebSocket client connected: w9fQEjQru1dcdPo2AAHJ
+[2025-12-20T20:46:58.486Z] [WARN] Could not fetch circle info for client UgN2bHhhhEyyDhkVAAHF: ECONNREFUSED
+[2025-12-20T20:46:58.486Z] [WARN] Could not fetch circle info for client QXrFT46D_MvoTVXUAAHG: ECONNREFUSED
+[2025-12-20T20:46:58.487Z] [INFO] WebSocket client connected: CKjQpLxemfaXxdRNAAHY
+[2025-12-20T20:46:58.488Z] [WARN] Could not fetch circle info for client w9fQEjQru1dcdPo2AAHJ: ECONNREFUSED
+[2025-12-20T20:46:58.489Z] [INFO] WebSocket client connected: NybINwHIJhMKgJJzAAHM
+[2025-12-20T20:46:58.490Z] [WARN] Could not fetch circle info for client CKjQpLxemfaXxdRNAAHY: ECONNREFUSED
+[2025-12-20T20:46:58.491Z] [INFO] WebSocket client connected: I9jmzxYoecv0pZczAAHP
+[2025-12-20T20:46:58.492Z] [INFO] WebSocket client connected: RpkDTlAh5N-BXKraAAHZ
+[2025-12-20T20:46:58.493Z] [INFO] WebSocket client connected: KyLIbhJs1FsOy8zLAAHT
+[2025-12-20T20:46:58.495Z] [WARN] Could not fetch circle info for client NybINwHIJhMKgJJzAAHM: ECONNREFUSED
+[2025-12-20T20:46:58.495Z] [WARN] Could not fetch circle info for client I9jmzxYoecv0pZczAAHP: ECONNREFUSED
+[2025-12-20T20:46:58.495Z] [WARN] Could not fetch circle info for client RpkDTlAh5N-BXKraAAHZ: ECONNREFUSED
+[2025-12-20T20:46:58.496Z] [WARN] Could not fetch circle info for client KyLIbhJs1FsOy8zLAAHT: ECONNREFUSED
+[2025-12-20T20:46:58.498Z] [INFO] WebSocket client connected: xuYWtw4P9ys-I9PwAAHa
+[2025-12-20T20:46:58.500Z] [WARN] Could not fetch circle info for client xuYWtw4P9ys-I9PwAAHa: ECONNREFUSED
+[2025-12-20T20:46:58.500Z] [INFO] WebSocket client connected: 0qNqmv-8xqxIuo4nAAHQ
+[2025-12-20T20:46:58.502Z] [INFO] WebSocket client connected: rWEnpmpSsdtZBsQ7AAE1
+[2025-12-20T20:46:58.504Z] [WARN] Could not fetch circle info for client 0qNqmv-8xqxIuo4nAAHQ: ECONNREFUSED
+[2025-12-20T20:46:58.504Z] [WARN] Could not fetch circle info for client rWEnpmpSsdtZBsQ7AAE1: ECONNREFUSED
+[2025-12-20T20:46:58.505Z] [INFO] WebSocket client connected: 4Ni5uafyh_GGnzbwAAHd
+[2025-12-20T20:46:58.506Z] [WARN] Could not fetch circle info for client 4Ni5uafyh_GGnzbwAAHd: ECONNREFUSED
+[2025-12-20T20:46:58.534Z] [INFO] WebSocket client connected: 2dEDAmg4Pq8NEcEgAAHe
+[2025-12-20T20:46:58.535Z] [WARN] Could not fetch circle info for client 2dEDAmg4Pq8NEcEgAAHe: ECONNREFUSED
+[2025-12-20T20:46:58.539Z] [INFO] WebSocket client connected: 6DSdwkeauuJ_uNmdAAHh
+[2025-12-20T20:46:58.541Z] [INFO] WebSocket client connected: 5NHC5Ds6LKVuXX0iAAHi
+[2025-12-20T20:46:58.542Z] [INFO] WebSocket client connected: EkdzoJdF0S4x3rIgAAHm
+[2025-12-20T20:46:58.543Z] [WARN] Could not fetch circle info for client 6DSdwkeauuJ_uNmdAAHh: ECONNREFUSED
+[2025-12-20T20:46:58.544Z] [WARN] Could not fetch circle info for client 5NHC5Ds6LKVuXX0iAAHi: ECONNREFUSED
+[2025-12-20T20:46:58.544Z] [INFO] WebSocket client connected: asiJp1iRwMfHzVyuAAHl
+[2025-12-20T20:46:58.545Z] [WARN] Could not fetch circle info for client EkdzoJdF0S4x3rIgAAHm: ECONNREFUSED
+[2025-12-20T20:46:58.546Z] [WARN] Could not fetch circle info for client asiJp1iRwMfHzVyuAAHl: ECONNREFUSED
+[2025-12-20T20:46:58.548Z] [INFO] WebSocket client connected: 6AGQVZCmEbH11MnUAAHt
+[2025-12-20T20:46:58.549Z] [WARN] Could not fetch circle info for client 6AGQVZCmEbH11MnUAAHt: ECONNREFUSED
+[2025-12-20T20:46:58.550Z] [INFO] WebSocket client connected: lEl-ptsbJrivLSZlAAHo
+[2025-12-20T20:46:58.551Z] [INFO] WebSocket client connected: UgYIIouuYML07qU7AAHq
+[2025-12-20T20:46:58.553Z] [INFO] WebSocket client connected: F6fH4f42rQ8DHoAIAAHu
+[2025-12-20T20:46:58.555Z] [WARN] Could not fetch circle info for client lEl-ptsbJrivLSZlAAHo: ECONNREFUSED
+[2025-12-20T20:46:58.555Z] [WARN] Could not fetch circle info for client UgYIIouuYML07qU7AAHq: ECONNREFUSED
+[2025-12-20T20:46:58.555Z] [WARN] Could not fetch circle info for client F6fH4f42rQ8DHoAIAAHu: ECONNREFUSED
+[2025-12-20T20:46:58.558Z] [INFO] WebSocket client connected: UJA1DZ2Fq9SrrSzCAAHx
+[2025-12-20T20:46:58.560Z] [INFO] WebSocket client connected: ScKiyF-fm_LmChJVAAHy
+[2025-12-20T20:46:58.561Z] [WARN] Could not fetch circle info for client UJA1DZ2Fq9SrrSzCAAHx: ECONNREFUSED
+[2025-12-20T20:46:58.561Z] [WARN] Could not fetch circle info for client ScKiyF-fm_LmChJVAAHy: ECONNREFUSED
+[2025-12-20T20:46:58.562Z] [INFO] WebSocket client connected: HuMjV_gskdJu0HvCAAH0
+[2025-12-20T20:46:58.564Z] [WARN] Could not fetch circle info for client HuMjV_gskdJu0HvCAAH0: ECONNREFUSED
+[2025-12-20T20:46:58.571Z] [INFO] WebSocket client connected: 7oBHOCMIR5BzGmVQAAH2
+[2025-12-20T20:46:58.573Z] [WARN] Could not fetch circle info for client 7oBHOCMIR5BzGmVQAAH2: ECONNREFUSED
+[2025-12-20T20:46:58.587Z] [INFO] WebSocket client connected: HHCRqRlk8BvIc6lkAAH5
+[2025-12-20T20:46:58.589Z] [WARN] Could not fetch circle info for client HHCRqRlk8BvIc6lkAAH5: ECONNREFUSED
+[2025-12-20T20:46:58.595Z] [INFO] WebSocket client connected: Wt6RUDt5cOaIUuBFAAH-
+[2025-12-20T20:46:58.597Z] [WARN] Could not fetch circle info for client Wt6RUDt5cOaIUuBFAAH-: ECONNREFUSED
+[2025-12-20T20:46:58.597Z] [INFO] WebSocket client connected: m3pj82Hm53YC1HVCAAH6
+[2025-12-20T20:46:58.598Z] [INFO] WebSocket client connected: gn21Q2p03kyF-LxuAAH9
+[2025-12-20T20:46:58.600Z] [WARN] Could not fetch circle info for client m3pj82Hm53YC1HVCAAH6: ECONNREFUSED
+[2025-12-20T20:46:58.600Z] [WARN] Could not fetch circle info for client gn21Q2p03kyF-LxuAAH9: ECONNREFUSED
+[2025-12-20T20:46:58.602Z] [INFO] WebSocket client connected: nzIpk_VvkbE3BuIkAAIB
+[2025-12-20T20:46:58.604Z] [INFO] WebSocket client connected: NHNVPw7Fk3E2GV4dAAIC
+[2025-12-20T20:46:58.605Z] [WARN] Could not fetch circle info for client nzIpk_VvkbE3BuIkAAIB: ECONNREFUSED
+[2025-12-20T20:46:58.605Z] [WARN] Could not fetch circle info for client NHNVPw7Fk3E2GV4dAAIC: ECONNREFUSED
+[2025-12-20T20:46:58.610Z] [INFO] WebSocket client connected: rRyFJ1jhGQkLrvz4AAIE
+[2025-12-20T20:46:58.612Z] [INFO] WebSocket client connected: fGRHrHtp_bYaC0tjAAII
+[2025-12-20T20:46:58.614Z] [INFO] WebSocket client connected: 6c4Gti5UcUBHw_i5AAIG
+[2025-12-20T20:46:58.616Z] [WARN] Could not fetch circle info for client rRyFJ1jhGQkLrvz4AAIE: ECONNREFUSED
+[2025-12-20T20:46:58.616Z] [WARN] Could not fetch circle info for client fGRHrHtp_bYaC0tjAAII: ECONNREFUSED
+[2025-12-20T20:46:58.616Z] [WARN] Could not fetch circle info for client 6c4Gti5UcUBHw_i5AAIG: ECONNREFUSED
+[2025-12-20T20:46:58.617Z] [INFO] WebSocket client connected: 1BScvTuRwN97tOnEAAG6
+[2025-12-20T20:46:58.618Z] [INFO] WebSocket client connected: sqbLx1xoQKnsUXvmAAIP
+[2025-12-20T20:46:58.620Z] [INFO] WebSocket client connected: 9na7V3mcz4ZAOb_ZAAIM
+[2025-12-20T20:46:58.622Z] [INFO] WebSocket client connected: qdIy2PfKIvyMVhKaAAIQ
+[2025-12-20T20:46:58.622Z] [WARN] Could not fetch circle info for client 1BScvTuRwN97tOnEAAG6: ECONNREFUSED
+[2025-12-20T20:46:58.623Z] [WARN] Could not fetch circle info for client sqbLx1xoQKnsUXvmAAIP: ECONNREFUSED
+[2025-12-20T20:46:58.623Z] [WARN] Could not fetch circle info for client 9na7V3mcz4ZAOb_ZAAIM: ECONNREFUSED
+[2025-12-20T20:46:58.624Z] [WARN] Could not fetch circle info for client qdIy2PfKIvyMVhKaAAIQ: ECONNREFUSED
+[2025-12-20T20:46:58.637Z] [INFO] WebSocket client connected: zd1NJ8aS5R-uDk5wAAIT
+[2025-12-20T20:46:58.639Z] [WARN] Could not fetch circle info for client zd1NJ8aS5R-uDk5wAAIT: ECONNREFUSED
+[2025-12-20T20:46:58.642Z] [INFO] WebSocket client connected: jVmtnPWittDvt32NAAIU
+[2025-12-20T20:46:58.644Z] [WARN] Could not fetch circle info for client jVmtnPWittDvt32NAAIU: ECONNREFUSED
+[2025-12-20T20:46:58.650Z] [INFO] WebSocket client connected: 42qxOSCtYxuVPpRUAAIX
+[2025-12-20T20:46:58.652Z] [WARN] Could not fetch circle info for client 42qxOSCtYxuVPpRUAAIX: ECONNREFUSED
+[2025-12-20T20:46:58.654Z] [INFO] WebSocket client connected: qkLWIQ1CNTfoUVkeAAIY
+[2025-12-20T20:46:58.656Z] [INFO] WebSocket client connected: VxHuB8doVoukogWBAAIa
+[2025-12-20T20:46:58.658Z] [WARN] Could not fetch circle info for client qkLWIQ1CNTfoUVkeAAIY: ECONNREFUSED
+[2025-12-20T20:46:58.658Z] [WARN] Could not fetch circle info for client VxHuB8doVoukogWBAAIa: ECONNREFUSED
+[2025-12-20T20:46:58.659Z] [INFO] WebSocket client connected: pPhP0gtG_ychCqkSAAIf
+[2025-12-20T20:46:58.660Z] [INFO] WebSocket client connected: CaN5TtKcqAzx_ezwAAIe
+[2025-12-20T20:46:58.662Z] [WARN] Could not fetch circle info for client pPhP0gtG_ychCqkSAAIf: ECONNREFUSED
+[2025-12-20T20:46:58.662Z] [WARN] Could not fetch circle info for client CaN5TtKcqAzx_ezwAAIe: ECONNREFUSED
+[2025-12-20T20:46:58.671Z] [INFO] WebSocket client connected: UeoYhYjFKy2H1m0mAAIj
+[2025-12-20T20:46:58.673Z] [INFO] WebSocket client connected: 3W0qPmIz_d8gqUPiAAIg
+[2025-12-20T20:46:58.675Z] [WARN] Could not fetch circle info for client UeoYhYjFKy2H1m0mAAIj: ECONNREFUSED
+[2025-12-20T20:46:58.675Z] [INFO] WebSocket client connected: UFZqN8crb4Me59pMAAIk
+[2025-12-20T20:46:58.676Z] [WARN] Could not fetch circle info for client 3W0qPmIz_d8gqUPiAAIg: ECONNREFUSED
+[2025-12-20T20:46:58.677Z] [INFO] WebSocket client connected: ffKxt7027PIplVjPAAIo
+[2025-12-20T20:46:58.678Z] [INFO] WebSocket client connected: iAPCOiSugY0UBON6AAIn
+[2025-12-20T20:46:58.680Z] [INFO] WebSocket client connected: 9cy-qv6wyfl1GPZsAAIr
+[2025-12-20T20:46:58.681Z] [WARN] Could not fetch circle info for client UFZqN8crb4Me59pMAAIk: ECONNREFUSED
+[2025-12-20T20:46:58.682Z] [WARN] Could not fetch circle info for client ffKxt7027PIplVjPAAIo: ECONNREFUSED
+[2025-12-20T20:46:58.682Z] [WARN] Could not fetch circle info for client iAPCOiSugY0UBON6AAIn: ECONNREFUSED
+[2025-12-20T20:46:58.683Z] [INFO] WebSocket client connected: Yy5MMOLbceLQYhQMAAIs
+[2025-12-20T20:46:58.684Z] [WARN] Could not fetch circle info for client 9cy-qv6wyfl1GPZsAAIr: ECONNREFUSED
+[2025-12-20T20:46:58.684Z] [WARN] Could not fetch circle info for client Yy5MMOLbceLQYhQMAAIs: ECONNREFUSED
+[2025-12-20T20:46:58.695Z] [INFO] WebSocket client connected: _f_t7jF0VcqPFlKFAAIw
+[2025-12-20T20:46:58.697Z] [WARN] Could not fetch circle info for client _f_t7jF0VcqPFlKFAAIw: ECONNREFUSED
+[2025-12-20T20:46:58.703Z] [INFO] WebSocket client connected: xgmoLtCyabO0MO09AAIu
+[2025-12-20T20:46:58.704Z] [INFO] WebSocket client connected: q7ttl-_fJlE6hhpeAAIz
+[2025-12-20T20:46:58.706Z] [WARN] Could not fetch circle info for client xgmoLtCyabO0MO09AAIu: ECONNREFUSED
+[2025-12-20T20:46:58.706Z] [WARN] Could not fetch circle info for client q7ttl-_fJlE6hhpeAAIz: ECONNREFUSED
+[2025-12-20T20:46:58.713Z] [INFO] WebSocket client connected: ge9c1uFoVxVUAuiOAAI0
+[2025-12-20T20:46:58.714Z] [INFO] WebSocket client connected: aMK16B3FL5RzMR2_AAI2
+[2025-12-20T20:46:58.715Z] [INFO] WebSocket client connected: A8wLDqahbWAwAnwVAAI4
+[2025-12-20T20:46:58.717Z] [WARN] Could not fetch circle info for client ge9c1uFoVxVUAuiOAAI0: ECONNREFUSED
+[2025-12-20T20:46:58.718Z] [WARN] Could not fetch circle info for client aMK16B3FL5RzMR2_AAI2: ECONNREFUSED
+[2025-12-20T20:46:58.718Z] [WARN] Could not fetch circle info for client A8wLDqahbWAwAnwVAAI4: ECONNREFUSED
+[2025-12-20T20:46:58.719Z] [INFO] WebSocket client connected: JVYMEexTiT9SGbNzAAI6
+[2025-12-20T20:46:58.720Z] [WARN] Could not fetch circle info for client JVYMEexTiT9SGbNzAAI6: ECONNREFUSED
+[2025-12-20T20:46:58.731Z] [INFO] WebSocket client connected: 1sZGlTU1cYuWTcVfAAI8
+[2025-12-20T20:46:58.732Z] [WARN] Could not fetch circle info for client 1sZGlTU1cYuWTcVfAAI8: ECONNREFUSED
+[2025-12-20T20:46:58.733Z] [INFO] WebSocket client connected: kFoXoZM5gNo8uID9AAI-
+[2025-12-20T20:46:58.735Z] [INFO] WebSocket client connected: 6XqtNgMEb-y-qQJJAAJC
+[2025-12-20T20:46:58.736Z] [INFO] WebSocket client connected: ZInvYH-1eMIWE6NGAAJA
+[2025-12-20T20:46:58.740Z] [INFO] WebSocket client connected: lYlutZeggQpS_hW7AAJE
+[2025-12-20T20:46:58.741Z] [INFO] WebSocket client connected: O3vJWu7RZ73Gq6QBAAJG
+[2025-12-20T20:46:58.742Z] [WARN] Could not fetch circle info for client kFoXoZM5gNo8uID9AAI-: ECONNREFUSED
+[2025-12-20T20:46:58.742Z] [WARN] Could not fetch circle info for client 6XqtNgMEb-y-qQJJAAJC: ECONNREFUSED
+[2025-12-20T20:46:58.743Z] [INFO] WebSocket client connected: 14MpQvb14S4iu1ZkAAJI
+[2025-12-20T20:46:58.744Z] [WARN] Could not fetch circle info for client ZInvYH-1eMIWE6NGAAJA: ECONNREFUSED
+[2025-12-20T20:46:58.745Z] [WARN] Could not fetch circle info for client lYlutZeggQpS_hW7AAJE: ECONNREFUSED
+[2025-12-20T20:46:58.745Z] [WARN] Could not fetch circle info for client O3vJWu7RZ73Gq6QBAAJG: ECONNREFUSED
+[2025-12-20T20:46:58.746Z] [WARN] Could not fetch circle info for client 14MpQvb14S4iu1ZkAAJI: ECONNREFUSED
+[2025-12-20T20:46:58.748Z] [INFO] WebSocket client connected: MNSAZWNF0g3pmulfAAJK
+[2025-12-20T20:46:58.750Z] [WARN] Could not fetch circle info for client MNSAZWNF0g3pmulfAAJK: ECONNREFUSED
+[2025-12-20T20:46:58.758Z] [INFO] WebSocket client connected: QPxnh-T5cw6PPwKLAAJO
+[2025-12-20T20:46:58.760Z] [WARN] Could not fetch circle info for client QPxnh-T5cw6PPwKLAAJO: ECONNREFUSED
+[2025-12-20T20:46:58.769Z] [INFO] WebSocket client connected: bjgUwfFSTWtT8YYZAAJM
+[2025-12-20T20:46:58.771Z] [WARN] Could not fetch circle info for client bjgUwfFSTWtT8YYZAAJM: ECONNREFUSED
+[2025-12-20T20:46:58.772Z] [INFO] WebSocket client connected: 27Wc_eHjHz_hLmHiAAJQ
+[2025-12-20T20:46:58.773Z] [INFO] WebSocket client connected: OZRXtZho7Wz9vJENAAJU
+[2025-12-20T20:46:58.773Z] [INFO] WebSocket client connected: uwGRgvvLfV05CzXSAAJS
+[2025-12-20T20:46:58.775Z] [WARN] Could not fetch circle info for client 27Wc_eHjHz_hLmHiAAJQ: ECONNREFUSED
+[2025-12-20T20:46:58.775Z] [WARN] Could not fetch circle info for client OZRXtZho7Wz9vJENAAJU: ECONNREFUSED
+[2025-12-20T20:46:58.775Z] [WARN] Could not fetch circle info for client uwGRgvvLfV05CzXSAAJS: ECONNREFUSED
+[2025-12-20T20:46:58.777Z] [INFO] WebSocket client connected: 8TzAs_i2iJFJfYlkAAJW
+[2025-12-20T20:46:58.779Z] [WARN] Could not fetch circle info for client 8TzAs_i2iJFJfYlkAAJW: ECONNREFUSED
+[2025-12-20T20:46:58.790Z] [INFO] WebSocket client connected: wAbxDJxwXs5IRcjQAAJY
+[2025-12-20T20:46:58.791Z] [WARN] Could not fetch circle info for client wAbxDJxwXs5IRcjQAAJY: ECONNREFUSED
+[2025-12-20T20:46:58.793Z] [INFO] WebSocket client connected: biwEt4jlZBEguy8NAAJc
+[2025-12-20T20:46:58.794Z] [INFO] WebSocket client connected: wIJXujV_5Gge-oPWAAJa
+[2025-12-20T20:46:58.796Z] [WARN] Could not fetch circle info for client biwEt4jlZBEguy8NAAJc: ECONNREFUSED
+[2025-12-20T20:46:58.797Z] [INFO] WebSocket client connected: 4_rHjwM4sAUiY9x0AAJe
+[2025-12-20T20:46:58.798Z] [WARN] Could not fetch circle info for client wIJXujV_5Gge-oPWAAJa: ECONNREFUSED
+[2025-12-20T20:46:58.801Z] [WARN] Could not fetch circle info for client 4_rHjwM4sAUiY9x0AAJe: ECONNREFUSED
+[2025-12-20T20:46:58.804Z] [INFO] WebSocket client connected: N6649HbCNLOpKF0lAAJg
+[2025-12-20T20:46:58.809Z] [WARN] Could not fetch circle info for client N6649HbCNLOpKF0lAAJg: ECONNREFUSED
+[2025-12-20T20:46:58.903Z] [INFO] WebSocket client connected: GZDpQyyJhUEWNLz5AAHU
+[2025-12-20T20:46:58.905Z] [WARN] Could not fetch circle info for client GZDpQyyJhUEWNLz5AAHU: ECONNREFUSED
+[2025-12-20T20:46:58.927Z] [INFO] WebSocket client connected: _udA4HFkLDc1FCenAAJi
+[2025-12-20T20:46:58.929Z] [WARN] Could not fetch circle info for client _udA4HFkLDc1FCenAAJi: ECONNREFUSED
+[2025-12-20T20:46:58.998Z] [INFO] WebSocket client connected: EfN7O5C5V5ZT8LvoAAIK
+[2025-12-20T20:46:59.000Z] [WARN] Could not fetch circle info for client EfN7O5C5V5ZT8LvoAAIK: ECONNREFUSED
+[2025-12-20T20:46:59.049Z] [INFO] WebSocket client connected: Ny2RBBVxs_qJ2bB3AAJk
+[2025-12-20T20:46:59.051Z] [WARN] Could not fetch circle info for client Ny2RBBVxs_qJ2bB3AAJk: ECONNREFUSED
+[2025-12-20T20:47:00.929Z] [INFO] WebSocket client connected: EW1BXt8ArJnuwElGAAJm
+[2025-12-20T20:47:00.931Z] [WARN] Could not fetch circle info for client EW1BXt8ArJnuwElGAAJm: ECONNREFUSED
+[2025-12-20T20:47:44.946Z] [INFO] WebSocket client connected: e0MKsPLoB3hLFbt4AAJo
+[2025-12-20T20:47:44.949Z] [WARN] Could not fetch circle info for client e0MKsPLoB3hLFbt4AAJo: ECONNREFUSED
+[2025-12-20T20:47:44.957Z] [INFO] WebSocket client connected: QOrYAWSkUz_5h52BAAJq
+[2025-12-20T20:47:44.959Z] [WARN] Could not fetch circle info for client QOrYAWSkUz_5h52BAAJq: ECONNREFUSED
+[2025-12-20T20:47:44.975Z] [INFO] WebSocket client connected: Yqd2ZYMB6KK3nr3tAAJs
+[2025-12-20T20:47:44.977Z] [WARN] Could not fetch circle info for client Yqd2ZYMB6KK3nr3tAAJs: ECONNREFUSED
+[2025-12-20T20:47:44.991Z] [INFO] WebSocket client connected: 6SLnc5Fz23GmwflEAAJu
+[2025-12-20T20:47:44.993Z] [WARN] Could not fetch circle info for client 6SLnc5Fz23GmwflEAAJu: ECONNREFUSED
+[2025-12-20T20:47:45.007Z] [INFO] WebSocket client connected: bhCSRTWt05KifkfAAAJw
+[2025-12-20T20:47:45.010Z] [WARN] Could not fetch circle info for client bhCSRTWt05KifkfAAAJw: ECONNREFUSED
+[2025-12-20T20:47:45.017Z] [INFO] WebSocket client connected: VOWWn1WORhcJzUZQAAJy
+[2025-12-20T20:47:45.018Z] [WARN] Could not fetch circle info for client VOWWn1WORhcJzUZQAAJy: ECONNREFUSED
+[2025-12-20T20:47:45.038Z] [INFO] WebSocket client connected: XxFfGGYaD4GP0h3QAAJ0
+[2025-12-20T20:47:45.040Z] [WARN] Could not fetch circle info for client XxFfGGYaD4GP0h3QAAJ0: ECONNREFUSED
+[2025-12-20T20:47:45.064Z] [INFO] WebSocket client connected: b8uY_-QyA2YdbkmRAAJ2
+[2025-12-20T20:47:45.066Z] [WARN] Could not fetch circle info for client b8uY_-QyA2YdbkmRAAJ2: ECONNREFUSED
+[2025-12-20T20:47:45.070Z] [INFO] WebSocket client connected: MB_mVahpQU_SLJxbAAJ4
+[2025-12-20T20:47:45.071Z] [WARN] Could not fetch circle info for client MB_mVahpQU_SLJxbAAJ4: ECONNREFUSED
+[2025-12-20T20:47:45.094Z] [INFO] WebSocket client connected: Vq3WOI4SUpmxOsQKAAJ6
+[2025-12-20T20:47:45.097Z] [WARN] Could not fetch circle info for client Vq3WOI4SUpmxOsQKAAJ6: ECONNREFUSED
+[2025-12-20T20:48:04.869Z] [INFO] [discovery] Starting polling loop for user 68cb88a92e32c82dcca2b32e
+[2025-12-20T20:48:07.485Z] [INFO] [live] Begin update for matchId=6946fb22c3e130209542da4e user=68cb88a92e32c82dcca2b32e
+[2025-12-20T20:48:07.493Z] [WARN] [CIRCLE] API connection failed: ECONNREFUSED
+[2025-12-20T20:48:07.727Z] [INFO] Using tournamentId: 6946ecf5f7e09caab06c63b7 for user 68cb88a92e32c82dcca2b32e
+[2025-12-20T20:48:07.853Z] [INFO] Using group for tournament 6946ecf5f7e09caab06c63b7 (user 68cb88a92e32c82dcca2b32e):
+[2025-12-20T20:48:07.853Z] [INFO] Group ID: 6946f20951a7ac73ea97a70e, Slots: 19
+[2025-12-20T20:48:07.853Z] [INFO]  Slot 1: teamId=6920916b3d1185e870e91a73, teamName=FARVOICE GAMING, players=11
+[2025-12-20T20:48:07.854Z] [INFO]  Slot 2: teamId=691f52f104385bd1cd0bb639, teamName=BOARS GAMING, players=12
+[2025-12-20T20:48:07.854Z] [INFO]  Slot 3: teamId=691b68b65924f998c75f0f42, teamName=SHOCKWAVE , players=7
+[2025-12-20T20:48:07.854Z] [INFO]  Slot 4: teamId=6939b7e3c15a4970e91d4479, teamName=SCAMMERS , players=4
+[2025-12-20T20:48:07.854Z] [INFO]  Slot 5: teamId=6946e740f7e09caab06c603e, teamName=ANORTHOSIS FAMAGUSTA ESPORTS, players=5
+[2025-12-20T20:48:07.854Z] [INFO]  Slot 6: teamId=6946f05751a7ac73ea97a5e6, teamName=KAM ARMY , players=5
+[2025-12-20T20:48:07.854Z] [INFO]  Slot 7: teamId=6946e7c3f7e09caab06c6075, teamName=STAR ESPORTS , players=5
+[2025-12-20T20:48:07.855Z] [INFO]  Slot 8: teamId=694195c9691d2e45d94326aa, teamName=KZ ESPORTS, players=4
+[2025-12-20T20:48:07.855Z] [INFO]  Slot 9: teamId=69050a4a2423cdc44fd74c82, teamName=WeRunExtreme ESPORTS, players=9
+[2025-12-20T20:48:07.855Z] [INFO]  Slot 10: teamId=6939b839c15a4970e91d44af, teamName=ATOMIC TEAM, players=8
+[2025-12-20T20:48:07.855Z] [INFO]  Slot 11: teamId=69050a3a2423cdc44fd74c77, teamName=EIGHT ACADEMY, players=11
+[2025-12-20T20:48:07.855Z] [INFO]  Slot 12: teamId=6946e84bf7e09caab06c60e5, teamName=NOVA JUNIOR, players=5
+[2025-12-20T20:48:07.855Z] [INFO]  Slot 13: teamId=6946e880f7e09caab06c60fc, teamName=MARU ECOSAL, players=5
+[2025-12-20T20:48:07.856Z] [INFO]  Slot 14: teamId=6946e8baf7e09caab06c6117, teamName=RE ZERO, players=6
+[2025-12-20T20:48:07.856Z] [INFO]  Slot 15: teamId=69419527691d2e45d9432655, teamName=UQIMERION, players=5
+[2025-12-20T20:48:07.856Z] [INFO]  Slot 16: teamId=6946e93df7e09caab06c6155, teamName=BRUTAL TEAM, players=5
+[2025-12-20T20:48:07.856Z] [INFO]  Slot 17: teamId=6946e98ff7e09caab06c6178, teamName=NARI KOOTAM, players=6
+[2025-12-20T20:48:07.856Z] [INFO]  Slot 18: teamId=691231788fc724f3da328cbe, teamName=ONE ESPORTS, players=8
+[2025-12-20T20:48:07.856Z] [INFO]  Slot 19: teamId=6946ef4551a7ac73ea97a56c, teamName=EQUILLIBRIUM , players=5
+[2025-12-20T20:48:07.857Z] [WARN] ⚠️ Could not connect to PUBG API at http://localhost:10086: ECONNREFUSED
+[2025-12-20T20:48:07.857Z] [INFO] Continuing without API data...
+[2025-12-20T20:48:07.861Z] [INFO] [user 68cb88a92e32c82dcca2b32e] No previous data, emitting liveMatchUpdate for match: 6946fb22c3e130209542da4e
+[2025-12-20T20:48:07.898Z] [INFO] [adaptive] user=68cb88a92e32c82dcca2b32e interval=2000ms noChangeCount=0
+[2025-12-20T20:48:10.020Z] [INFO] [user 68cb88a92e32c82dcca2b32e] Polling not active for match: 6946fb22c3e130209542da4e
+[2025-12-20T20:48:10.020Z] [INFO] [adaptive] user=68cb88a92e32c82dcca2b32e interval=3000ms noChangeCount=1
+[2025-12-20T20:48:13.138Z] [INFO] [user 68cb88a92e32c82dcca2b32e] Polling not active for match: 6946fb22c3e130209542da4e
+[2025-12-20T20:48:13.138Z] [INFO] [adaptive] user=68cb88a92e32c82dcca2b32e interval=4000ms noChangeCount=2
+[2025-12-20T20:48:14.876Z] [INFO] [discovery] Paused polling loop for inactive user 68cb88a92e32c82dcca2b32e
+[2025-12-20T20:48:19.938Z] [INFO] Received SIGINT, shutting down...
