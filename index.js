@@ -9,6 +9,7 @@ const config = require('./config');
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const compression = require('compression');
 const http = require('http');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
@@ -33,6 +34,9 @@ const port = process.env.PORT || 3000;
 
 // Trust proxy (required for Render.com and other cloud platforms)
 app.set('trust proxy', 1);
+
+// Enable compression for all responses
+app.use(compression());
 
 // Auto-detect production environment
 const isProduction = process.env.NODE_ENV === 'production' || process.env.RENDER === 'true' || process.env.REACT_APP_API_URL?.includes('render.com');
