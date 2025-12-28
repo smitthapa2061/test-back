@@ -2277,3 +2277,684 @@
 [2025-12-28T08:03:05.939Z] [INFO] [user 68cb88a92e32c82dcca2b32e] Emitting liveMatchUpdate for match: new ObjectId('6946f3a8b5940971a8f35915')
 [2025-12-28T08:03:05.944Z] [INFO] [adaptive] user=68cb88a92e32c82dcca2b32e interval=2000ms noChangeCount=0
 [2025-12-28T08:03:07.103Z] [INFO] Received SIGINT, shutting down...
+[2025-12-28T08:06:31.388Z] [INFO] 🔧 Environment: DEVELOPMENT
+[2025-12-28T08:06:31.389Z] [INFO] 🔧 NODE_ENV: undefined
+[2025-12-28T08:06:31.389Z] [INFO] 🔧 RENDER: undefined
+[2025-12-28T08:06:31.389Z] [INFO] 🔧 REACT_APP_API_URL: undefined
+[2025-12-28T08:06:31.390Z] [INFO] 🔧 Local IP mode: true
+[2025-12-28T08:06:31.497Z] [INFO] ✅ Socket.IO initialized with CORS
+[2025-12-28T08:06:31.499Z] [ERROR] (node:28704) [MONGODB DRIVER] Warning: useNewUrlParser is a deprecated option: useNewUrlParser has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(Use `node --trace-warnings ...` to show where the warning was created)
+[2025-12-28T08:06:31.500Z] [ERROR] (node:28704) [MONGODB DRIVER] Warning: useUnifiedTopology is a deprecated option: useUnifiedTopology has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+[2025-12-28T08:06:31.501Z] [INFO] 🚀 Server running at http://localhost:3000
+[2025-12-28T08:06:31.502Z] [INFO] Live match updater started
+[2025-12-28T08:06:31.502Z] [INFO] Socket.IO instance connected: true
+[2025-12-28T08:06:31.503Z] [INFO] [CIRCLE] Circle info updater started
+[2025-12-28T08:06:31.509Z] [INFO] [BACKPACK] Backpack info updater started
+[2025-12-28T08:06:32.037Z] [INFO] ✅ MongoDB connected
+[2025-12-28T08:06:32.468Z] [INFO] [discovery] Starting polling loop for user 68cb88a92e32c82dcca2b32e
+[2025-12-28T08:06:32.469Z] [INFO] [BACKPACK] Starting polling loop for user 68cb88a92e32c82dcca2b32e
+[2025-12-28T08:06:35.061Z] [INFO] [live] Begin update for matchId=6946f3a8b5940971a8f35915 user=68cb88a92e32c82dcca2b32e
+[2025-12-28T08:06:35.153Z] [INFO] Using tournamentId: 6946ecf5f7e09caab06c63b7 for user 68cb88a92e32c82dcca2b32e
+[2025-12-28T08:06:35.347Z] [INFO] Using group for tournament 6946ecf5f7e09caab06c63b7 (user 68cb88a92e32c82dcca2b32e):
+[2025-12-28T08:06:35.347Z] [INFO] Group ID: 6946f20951a7ac73ea97a70e, Slots: 19
+[2025-12-28T08:06:35.347Z] [INFO]  Slot 1: teamId=6920916b3d1185e870e91a73, teamName=FARVOICE GAMING, players=25
+[2025-12-28T08:06:35.348Z] [INFO]  Slot 2: teamId=691f52f104385bd1cd0bb639, teamName=BOARS GAMING, players=26
+[2025-12-28T08:06:35.348Z] [INFO]  Slot 3: teamId=691b68b65924f998c75f0f42, teamName=SHOCKWAVE , players=19
+[2025-12-28T08:06:35.348Z] [INFO]  Slot 4: teamId=6939b7e3c15a4970e91d4479, teamName=SCAMMERS , players=17
+[2025-12-28T08:06:35.348Z] [INFO]  Slot 5: teamId=6946e740f7e09caab06c603e, teamName=ANORTHOSIS FAMAGUSTA ESPORTS, players=19
+[2025-12-28T08:06:35.348Z] [INFO]  Slot 6: teamId=6946f05751a7ac73ea97a5e6, teamName=KAM ARMY , players=17
+[2025-12-28T08:06:35.349Z] [INFO]  Slot 7: teamId=6946e7c3f7e09caab06c6075, teamName=STAR ESPORTS , players=17
+[2025-12-28T08:06:35.349Z] [INFO]  Slot 8: teamId=694195c9691d2e45d94326aa, teamName=KZ ESPORTS, players=17
+[2025-12-28T08:06:35.349Z] [INFO]  Slot 9: teamId=69050a4a2423cdc44fd74c82, teamName=WeRunExtreme ESPORTS, players=22
+[2025-12-28T08:06:35.349Z] [INFO]  Slot 10: teamId=6939b839c15a4970e91d44af, teamName=ATOMIC TEAM, players=18
+[2025-12-28T08:06:35.349Z] [INFO]  Slot 11: teamId=69050a3a2423cdc44fd74c77, teamName=EIGHT ACADEMY, players=25
+[2025-12-28T08:06:35.349Z] [INFO]  Slot 12: teamId=6946e84bf7e09caab06c60e5, teamName=NOVA JUNIOR, players=18
+[2025-12-28T08:06:35.349Z] [INFO]  Slot 13: teamId=6946e880f7e09caab06c60fc, teamName=MARU ECOSAL, players=17
+[2025-12-28T08:06:35.349Z] [INFO]  Slot 14: teamId=6946e8baf7e09caab06c6117, teamName=RE ZERO, players=19
+[2025-12-28T08:06:35.350Z] [INFO]  Slot 15: teamId=69419527691d2e45d9432655, teamName=UQIMERION, players=18
+[2025-12-28T08:06:35.350Z] [INFO]  Slot 16: teamId=6946e93df7e09caab06c6155, teamName=BRUTAL TEAM, players=17
+[2025-12-28T08:06:35.350Z] [INFO]  Slot 17: teamId=6946e98ff7e09caab06c6178, teamName=NARI KOOTAM, players=15
+[2025-12-28T08:06:35.350Z] [INFO]  Slot 18: teamId=691231788fc724f3da328cbe, teamName=ONE ESPORTS, players=17
+[2025-12-28T08:06:35.350Z] [INFO]  Slot 19: teamId=6946ef4551a7ac73ea97a56c, teamName=EQUILLIBRIUM , players=16
+[2025-12-28T08:06:35.352Z] [INFO] API returned 2 players
+[2025-12-28T08:06:35.462Z] [INFO] [updateTeams] UID=51463325520 already exists in team FARVOICE GAMING. Skipping.
+[2025-12-28T08:06:35.462Z] [INFO] [updateTeams] UID=5871160565 already exists in team BOARS GAMING. Skipping.
+[2025-12-28T08:06:35.462Z] [INFO] 
+[updateTeams] Finished processing all API players
+
+[2025-12-28T08:06:35.462Z] [INFO] Merged player x6tenceDEMON: kills=0, health=81/100
+[2025-12-28T08:06:35.463Z] [INFO] [merged] uid=51463325520 | name="x6tenceDEMON" | picUrl=""
+[2025-12-28T08:06:35.468Z] [INFO] Team slot 3 (FARVOICE GAMING) final players: [ 'x6tenceDEMON(51463325520)' ]
+[2025-12-28T08:06:35.468Z] [INFO] Merged player FGxDeMON: kills=0, health=0/100
+[2025-12-28T08:06:35.468Z] [INFO] [merged] uid=5871160565 | name="FGxDeMON" | picUrl=""
+[2025-12-28T08:06:35.469Z] [INFO] Team slot 4 (BOARS GAMING) final players: [ 'FGxDeMON(5871160565)' ]
+[2025-12-28T08:06:35.470Z] [INFO] Team slot 5 (SHOCKWAVE ) final players: []
+[2025-12-28T08:06:35.470Z] [INFO] Team slot 6 (SCAMMERS ) final players: []
+[2025-12-28T08:06:35.470Z] [INFO] Team slot 7 (ANORTHOSIS FAMAGUSTA ESPORTS) final players: []
+[2025-12-28T08:06:35.471Z] [INFO] Team slot 8 (KAM ARMY ) final players: []
+[2025-12-28T08:06:35.471Z] [INFO] Team slot 9 (STAR ESPORTS ) final players: []
+[2025-12-28T08:06:35.471Z] [INFO] Team slot 10 (KZ ESPORTS) final players: []
+[2025-12-28T08:06:35.471Z] [INFO] Team slot 11 (WeRunExtreme ESPORTS) final players: []
+[2025-12-28T08:06:35.471Z] [INFO] Team slot 12 (ATOMIC TEAM) final players: []
+[2025-12-28T08:06:35.472Z] [INFO] Team slot 13 (EIGHT ACADEMY) final players: []
+[2025-12-28T08:06:35.472Z] [INFO] Team slot 14 (NOVA JUNIOR) final players: []
+[2025-12-28T08:06:35.472Z] [INFO] Team slot 15 (MARU ECOSAL) final players: []
+[2025-12-28T08:06:35.473Z] [INFO] Team slot 16 (RE ZERO) final players: []
+[2025-12-28T08:06:35.473Z] [INFO] Team slot 17 (UQIMERION) final players: []
+[2025-12-28T08:06:35.473Z] [INFO] Team slot 18 (BRUTAL TEAM) final players: []
+[2025-12-28T08:06:35.473Z] [INFO] Team slot 19 (NARI KOOTAM) final players: []
+[2025-12-28T08:06:35.473Z] [INFO] Team slot 20 (ONE ESPORTS) final players: []
+[2025-12-28T08:06:35.474Z] [INFO] Team slot 21 (EQUILLIBRIUM ) final players: []
+[2025-12-28T08:06:35.544Z] [INFO] [user 68cb88a92e32c82dcca2b32e] No previous data, emitting liveMatchUpdate for match: 6946f3a8b5940971a8f35915
+[2025-12-28T08:06:35.545Z] [INFO] [adaptive] user=68cb88a92e32c82dcca2b32e interval=2000ms noChangeCount=0
+[2025-12-28T08:06:37.638Z] [INFO] [live] Begin update for matchId=6946f3a8b5940971a8f35915 user=68cb88a92e32c82dcca2b32e
+[2025-12-28T08:06:37.728Z] [INFO] Using tournamentId: 6946ecf5f7e09caab06c63b7 for user 68cb88a92e32c82dcca2b32e
+[2025-12-28T08:06:37.906Z] [INFO] Using group for tournament 6946ecf5f7e09caab06c63b7 (user 68cb88a92e32c82dcca2b32e):
+[2025-12-28T08:06:37.907Z] [INFO] Group ID: 6946f20951a7ac73ea97a70e, Slots: 19
+[2025-12-28T08:06:37.907Z] [INFO]  Slot 1: teamId=6920916b3d1185e870e91a73, teamName=FARVOICE GAMING, players=25
+[2025-12-28T08:06:37.907Z] [INFO]  Slot 2: teamId=691f52f104385bd1cd0bb639, teamName=BOARS GAMING, players=26
+[2025-12-28T08:06:37.907Z] [INFO]  Slot 3: teamId=691b68b65924f998c75f0f42, teamName=SHOCKWAVE , players=19
+[2025-12-28T08:06:37.907Z] [INFO]  Slot 4: teamId=6939b7e3c15a4970e91d4479, teamName=SCAMMERS , players=17
+[2025-12-28T08:06:37.908Z] [INFO]  Slot 5: teamId=6946e740f7e09caab06c603e, teamName=ANORTHOSIS FAMAGUSTA ESPORTS, players=19
+[2025-12-28T08:06:37.908Z] [INFO]  Slot 6: teamId=6946f05751a7ac73ea97a5e6, teamName=KAM ARMY , players=17
+[2025-12-28T08:06:37.908Z] [INFO]  Slot 7: teamId=6946e7c3f7e09caab06c6075, teamName=STAR ESPORTS , players=17
+[2025-12-28T08:06:37.908Z] [INFO]  Slot 8: teamId=694195c9691d2e45d94326aa, teamName=KZ ESPORTS, players=17
+[2025-12-28T08:06:37.908Z] [INFO]  Slot 9: teamId=69050a4a2423cdc44fd74c82, teamName=WeRunExtreme ESPORTS, players=22
+[2025-12-28T08:06:37.908Z] [INFO]  Slot 10: teamId=6939b839c15a4970e91d44af, teamName=ATOMIC TEAM, players=18
+[2025-12-28T08:06:37.908Z] [INFO]  Slot 11: teamId=69050a3a2423cdc44fd74c77, teamName=EIGHT ACADEMY, players=25
+[2025-12-28T08:06:37.908Z] [INFO]  Slot 12: teamId=6946e84bf7e09caab06c60e5, teamName=NOVA JUNIOR, players=18
+[2025-12-28T08:06:37.909Z] [INFO]  Slot 13: teamId=6946e880f7e09caab06c60fc, teamName=MARU ECOSAL, players=17
+[2025-12-28T08:06:37.909Z] [INFO]  Slot 14: teamId=6946e8baf7e09caab06c6117, teamName=RE ZERO, players=19
+[2025-12-28T08:06:37.909Z] [INFO]  Slot 15: teamId=69419527691d2e45d9432655, teamName=UQIMERION, players=18
+[2025-12-28T08:06:37.909Z] [INFO]  Slot 16: teamId=6946e93df7e09caab06c6155, teamName=BRUTAL TEAM, players=17
+[2025-12-28T08:06:37.909Z] [INFO]  Slot 17: teamId=6946e98ff7e09caab06c6178, teamName=NARI KOOTAM, players=15
+[2025-12-28T08:06:37.909Z] [INFO]  Slot 18: teamId=691231788fc724f3da328cbe, teamName=ONE ESPORTS, players=17
+[2025-12-28T08:06:37.909Z] [INFO]  Slot 19: teamId=6946ef4551a7ac73ea97a56c, teamName=EQUILLIBRIUM , players=16
+[2025-12-28T08:06:37.911Z] [INFO] API returned 2 players
+[2025-12-28T08:06:38.005Z] [INFO] [updateTeams] UID=51463325520 already exists in team FARVOICE GAMING. Skipping.
+[2025-12-28T08:06:38.006Z] [INFO] [updateTeams] UID=5871160565 already exists in team BOARS GAMING. Skipping.
+[2025-12-28T08:06:38.006Z] [INFO] 
+[updateTeams] Finished processing all API players
+
+[2025-12-28T08:06:38.006Z] [INFO] Merged player x6tenceDEMON: kills=0, health=81/100
+[2025-12-28T08:06:38.006Z] [INFO] [merged] uid=51463325520 | name="x6tenceDEMON" | picUrl=""
+[2025-12-28T08:06:38.008Z] [INFO] Team slot 3 (FARVOICE GAMING) final players: [ 'x6tenceDEMON(51463325520)' ]
+[2025-12-28T08:06:38.008Z] [INFO] Merged player FGxDeMON: kills=0, health=0/100
+[2025-12-28T08:06:38.008Z] [INFO] [merged] uid=5871160565 | name="FGxDeMON" | picUrl=""
+[2025-12-28T08:06:38.009Z] [INFO] Team slot 4 (BOARS GAMING) final players: [ 'FGxDeMON(5871160565)' ]
+[2025-12-28T08:06:38.009Z] [INFO] Team slot 5 (SHOCKWAVE ) final players: []
+[2025-12-28T08:06:38.009Z] [INFO] Team slot 6 (SCAMMERS ) final players: []
+[2025-12-28T08:06:38.010Z] [INFO] Team slot 7 (ANORTHOSIS FAMAGUSTA ESPORTS) final players: []
+[2025-12-28T08:06:38.010Z] [INFO] Team slot 8 (KAM ARMY ) final players: []
+[2025-12-28T08:06:38.010Z] [INFO] Team slot 9 (STAR ESPORTS ) final players: []
+[2025-12-28T08:06:38.010Z] [INFO] Team slot 10 (KZ ESPORTS) final players: []
+[2025-12-28T08:06:38.010Z] [INFO] Team slot 11 (WeRunExtreme ESPORTS) final players: []
+[2025-12-28T08:06:38.011Z] [INFO] Team slot 12 (ATOMIC TEAM) final players: []
+[2025-12-28T08:06:38.011Z] [INFO] Team slot 13 (EIGHT ACADEMY) final players: []
+[2025-12-28T08:06:38.011Z] [INFO] Team slot 14 (NOVA JUNIOR) final players: []
+[2025-12-28T08:06:38.011Z] [INFO] Team slot 15 (MARU ECOSAL) final players: []
+[2025-12-28T08:06:38.011Z] [INFO] Team slot 16 (RE ZERO) final players: []
+[2025-12-28T08:06:38.012Z] [INFO] Team slot 17 (UQIMERION) final players: []
+[2025-12-28T08:06:38.012Z] [INFO] Team slot 18 (BRUTAL TEAM) final players: []
+[2025-12-28T08:06:38.012Z] [INFO] Team slot 19 (NARI KOOTAM) final players: []
+[2025-12-28T08:06:38.012Z] [INFO] Team slot 20 (ONE ESPORTS) final players: []
+[2025-12-28T08:06:38.013Z] [INFO] Team slot 21 (EQUILLIBRIUM ) final players: []
+[2025-12-28T08:06:38.067Z] [INFO] [user 68cb88a92e32c82dcca2b32e] Data comparison for match: 6946f3a8b5940971a8f35915 isEqual: false
+[2025-12-28T08:06:38.067Z] [INFO] [user 68cb88a92e32c82dcca2b32e] Emitting liveMatchUpdate for match: new ObjectId('6946f3a8b5940971a8f35915')
+[2025-12-28T08:06:38.069Z] [INFO] [adaptive] user=68cb88a92e32c82dcca2b32e interval=2000ms noChangeCount=0
+[2025-12-28T08:06:40.157Z] [INFO] [live] Begin update for matchId=6946f3a8b5940971a8f35915 user=68cb88a92e32c82dcca2b32e
+[2025-12-28T08:06:40.243Z] [INFO] Using tournamentId: 6946ecf5f7e09caab06c63b7 for user 68cb88a92e32c82dcca2b32e
+[2025-12-28T08:06:40.424Z] [INFO] Using group for tournament 6946ecf5f7e09caab06c63b7 (user 68cb88a92e32c82dcca2b32e):
+[2025-12-28T08:06:40.424Z] [INFO] Group ID: 6946f20951a7ac73ea97a70e, Slots: 19
+[2025-12-28T08:06:40.424Z] [INFO]  Slot 1: teamId=6920916b3d1185e870e91a73, teamName=FARVOICE GAMING, players=25
+[2025-12-28T08:06:40.424Z] [INFO]  Slot 2: teamId=691f52f104385bd1cd0bb639, teamName=BOARS GAMING, players=26
+[2025-12-28T08:06:40.425Z] [INFO]  Slot 3: teamId=691b68b65924f998c75f0f42, teamName=SHOCKWAVE , players=19
+[2025-12-28T08:06:40.425Z] [INFO]  Slot 4: teamId=6939b7e3c15a4970e91d4479, teamName=SCAMMERS , players=17
+[2025-12-28T08:06:40.425Z] [INFO]  Slot 5: teamId=6946e740f7e09caab06c603e, teamName=ANORTHOSIS FAMAGUSTA ESPORTS, players=19
+[2025-12-28T08:06:40.425Z] [INFO]  Slot 6: teamId=6946f05751a7ac73ea97a5e6, teamName=KAM ARMY , players=17
+[2025-12-28T08:06:40.425Z] [INFO]  Slot 7: teamId=6946e7c3f7e09caab06c6075, teamName=STAR ESPORTS , players=17
+[2025-12-28T08:06:40.425Z] [INFO]  Slot 8: teamId=694195c9691d2e45d94326aa, teamName=KZ ESPORTS, players=17
+[2025-12-28T08:06:40.425Z] [INFO]  Slot 9: teamId=69050a4a2423cdc44fd74c82, teamName=WeRunExtreme ESPORTS, players=22
+[2025-12-28T08:06:40.425Z] [INFO]  Slot 10: teamId=6939b839c15a4970e91d44af, teamName=ATOMIC TEAM, players=18
+[2025-12-28T08:06:40.426Z] [INFO]  Slot 11: teamId=69050a3a2423cdc44fd74c77, teamName=EIGHT ACADEMY, players=25
+[2025-12-28T08:06:40.426Z] [INFO]  Slot 12: teamId=6946e84bf7e09caab06c60e5, teamName=NOVA JUNIOR, players=18
+[2025-12-28T08:06:40.426Z] [INFO]  Slot 13: teamId=6946e880f7e09caab06c60fc, teamName=MARU ECOSAL, players=17
+[2025-12-28T08:06:40.426Z] [INFO]  Slot 14: teamId=6946e8baf7e09caab06c6117, teamName=RE ZERO, players=19
+[2025-12-28T08:06:40.426Z] [INFO]  Slot 15: teamId=69419527691d2e45d9432655, teamName=UQIMERION, players=18
+[2025-12-28T08:06:40.426Z] [INFO]  Slot 16: teamId=6946e93df7e09caab06c6155, teamName=BRUTAL TEAM, players=17
+[2025-12-28T08:06:40.427Z] [INFO]  Slot 17: teamId=6946e98ff7e09caab06c6178, teamName=NARI KOOTAM, players=15
+[2025-12-28T08:06:40.427Z] [INFO]  Slot 18: teamId=691231788fc724f3da328cbe, teamName=ONE ESPORTS, players=17
+[2025-12-28T08:06:40.427Z] [INFO]  Slot 19: teamId=6946ef4551a7ac73ea97a56c, teamName=EQUILLIBRIUM , players=16
+[2025-12-28T08:06:40.429Z] [INFO] API returned 2 players
+[2025-12-28T08:06:40.525Z] [INFO] [updateTeams] UID=51463325520 already exists in team FARVOICE GAMING. Skipping.
+[2025-12-28T08:06:40.525Z] [INFO] [updateTeams] UID=5871160565 already exists in team BOARS GAMING. Skipping.
+[2025-12-28T08:06:40.525Z] [INFO] 
+[updateTeams] Finished processing all API players
+
+[2025-12-28T08:06:40.526Z] [INFO] Merged player x6tenceDEMON: kills=0, health=81/100
+[2025-12-28T08:06:40.526Z] [INFO] [merged] uid=51463325520 | name="x6tenceDEMON" | picUrl=""
+[2025-12-28T08:06:40.527Z] [INFO] Team slot 3 (FARVOICE GAMING) final players: [ 'x6tenceDEMON(51463325520)' ]
+[2025-12-28T08:06:40.527Z] [INFO] Merged player FGxDeMON: kills=0, health=0/100
+[2025-12-28T08:06:40.527Z] [INFO] [merged] uid=5871160565 | name="FGxDeMON" | picUrl=""
+[2025-12-28T08:06:40.528Z] [INFO] Team slot 4 (BOARS GAMING) final players: [ 'FGxDeMON(5871160565)' ]
+[2025-12-28T08:06:40.529Z] [INFO] Team slot 5 (SHOCKWAVE ) final players: []
+[2025-12-28T08:06:40.529Z] [INFO] Team slot 6 (SCAMMERS ) final players: []
+[2025-12-28T08:06:40.529Z] [INFO] Team slot 7 (ANORTHOSIS FAMAGUSTA ESPORTS) final players: []
+[2025-12-28T08:06:40.529Z] [INFO] Team slot 8 (KAM ARMY ) final players: []
+[2025-12-28T08:06:40.530Z] [INFO] Team slot 9 (STAR ESPORTS ) final players: []
+[2025-12-28T08:06:40.530Z] [INFO] Team slot 10 (KZ ESPORTS) final players: []
+[2025-12-28T08:06:40.530Z] [INFO] Team slot 11 (WeRunExtreme ESPORTS) final players: []
+[2025-12-28T08:06:40.530Z] [INFO] Team slot 12 (ATOMIC TEAM) final players: []
+[2025-12-28T08:06:40.532Z] [INFO] Team slot 13 (EIGHT ACADEMY) final players: []
+[2025-12-28T08:06:40.533Z] [INFO] Team slot 14 (NOVA JUNIOR) final players: []
+[2025-12-28T08:06:40.533Z] [INFO] Team slot 15 (MARU ECOSAL) final players: []
+[2025-12-28T08:06:40.533Z] [INFO] Team slot 16 (RE ZERO) final players: []
+[2025-12-28T08:06:40.533Z] [INFO] Team slot 17 (UQIMERION) final players: []
+[2025-12-28T08:06:40.534Z] [INFO] Team slot 18 (BRUTAL TEAM) final players: []
+[2025-12-28T08:06:40.534Z] [INFO] Team slot 19 (NARI KOOTAM) final players: []
+[2025-12-28T08:06:40.534Z] [INFO] Team slot 20 (ONE ESPORTS) final players: []
+[2025-12-28T08:06:40.534Z] [INFO] Team slot 21 (EQUILLIBRIUM ) final players: []
+[2025-12-28T08:06:40.591Z] [INFO] [user 68cb88a92e32c82dcca2b32e] Data comparison for match: 6946f3a8b5940971a8f35915 isEqual: false
+[2025-12-28T08:06:40.591Z] [INFO] [user 68cb88a92e32c82dcca2b32e] Emitting liveMatchUpdate for match: new ObjectId('6946f3a8b5940971a8f35915')
+[2025-12-28T08:06:40.593Z] [INFO] [adaptive] user=68cb88a92e32c82dcca2b32e interval=2000ms noChangeCount=0
+[2025-12-28T08:06:42.692Z] [INFO] [live] Begin update for matchId=6946f3a8b5940971a8f35915 user=68cb88a92e32c82dcca2b32e
+[2025-12-28T08:06:42.792Z] [INFO] Using tournamentId: 6946ecf5f7e09caab06c63b7 for user 68cb88a92e32c82dcca2b32e
+[2025-12-28T08:06:43.000Z] [INFO] Using group for tournament 6946ecf5f7e09caab06c63b7 (user 68cb88a92e32c82dcca2b32e):
+[2025-12-28T08:06:43.001Z] [INFO] Group ID: 6946f20951a7ac73ea97a70e, Slots: 19
+[2025-12-28T08:06:43.001Z] [INFO]  Slot 1: teamId=6920916b3d1185e870e91a73, teamName=FARVOICE GAMING, players=25
+[2025-12-28T08:06:43.001Z] [INFO]  Slot 2: teamId=691f52f104385bd1cd0bb639, teamName=BOARS GAMING, players=26
+[2025-12-28T08:06:43.001Z] [INFO]  Slot 3: teamId=691b68b65924f998c75f0f42, teamName=SHOCKWAVE , players=19
+[2025-12-28T08:06:43.002Z] [INFO]  Slot 4: teamId=6939b7e3c15a4970e91d4479, teamName=SCAMMERS , players=17
+[2025-12-28T08:06:43.002Z] [INFO]  Slot 5: teamId=6946e740f7e09caab06c603e, teamName=ANORTHOSIS FAMAGUSTA ESPORTS, players=19
+[2025-12-28T08:06:43.002Z] [INFO]  Slot 6: teamId=6946f05751a7ac73ea97a5e6, teamName=KAM ARMY , players=17
+[2025-12-28T08:06:43.002Z] [INFO]  Slot 7: teamId=6946e7c3f7e09caab06c6075, teamName=STAR ESPORTS , players=17
+[2025-12-28T08:06:43.002Z] [INFO]  Slot 8: teamId=694195c9691d2e45d94326aa, teamName=KZ ESPORTS, players=17
+[2025-12-28T08:06:43.002Z] [INFO]  Slot 9: teamId=69050a4a2423cdc44fd74c82, teamName=WeRunExtreme ESPORTS, players=22
+[2025-12-28T08:06:43.002Z] [INFO]  Slot 10: teamId=6939b839c15a4970e91d44af, teamName=ATOMIC TEAM, players=18
+[2025-12-28T08:06:43.003Z] [INFO]  Slot 11: teamId=69050a3a2423cdc44fd74c77, teamName=EIGHT ACADEMY, players=25
+[2025-12-28T08:06:43.003Z] [INFO]  Slot 12: teamId=6946e84bf7e09caab06c60e5, teamName=NOVA JUNIOR, players=18
+[2025-12-28T08:06:43.003Z] [INFO]  Slot 13: teamId=6946e880f7e09caab06c60fc, teamName=MARU ECOSAL, players=17
+[2025-12-28T08:06:43.003Z] [INFO]  Slot 14: teamId=6946e8baf7e09caab06c6117, teamName=RE ZERO, players=19
+[2025-12-28T08:06:43.003Z] [INFO]  Slot 15: teamId=69419527691d2e45d9432655, teamName=UQIMERION, players=18
+[2025-12-28T08:06:43.003Z] [INFO]  Slot 16: teamId=6946e93df7e09caab06c6155, teamName=BRUTAL TEAM, players=17
+[2025-12-28T08:06:43.003Z] [INFO]  Slot 17: teamId=6946e98ff7e09caab06c6178, teamName=NARI KOOTAM, players=15
+[2025-12-28T08:06:43.003Z] [INFO]  Slot 18: teamId=691231788fc724f3da328cbe, teamName=ONE ESPORTS, players=17
+[2025-12-28T08:06:43.004Z] [INFO]  Slot 19: teamId=6946ef4551a7ac73ea97a56c, teamName=EQUILLIBRIUM , players=16
+[2025-12-28T08:06:43.005Z] [INFO] API returned 2 players
+[2025-12-28T08:06:43.115Z] [INFO] [updateTeams] UID=51463325520 already exists in team FARVOICE GAMING. Skipping.
+[2025-12-28T08:06:43.116Z] [INFO] [updateTeams] UID=5871160565 already exists in team BOARS GAMING. Skipping.
+[2025-12-28T08:06:43.116Z] [INFO] 
+[updateTeams] Finished processing all API players
+
+[2025-12-28T08:06:43.116Z] [INFO] Merged player x6tenceDEMON: kills=0, health=81/100
+[2025-12-28T08:06:43.116Z] [INFO] [merged] uid=51463325520 | name="x6tenceDEMON" | picUrl=""
+[2025-12-28T08:06:43.117Z] [INFO] Team slot 3 (FARVOICE GAMING) final players: [ 'x6tenceDEMON(51463325520)' ]
+[2025-12-28T08:06:43.118Z] [INFO] Merged player FGxDeMON: kills=0, health=0/100
+[2025-12-28T08:06:43.118Z] [INFO] [merged] uid=5871160565 | name="FGxDeMON" | picUrl=""
+[2025-12-28T08:06:43.119Z] [INFO] Team slot 4 (BOARS GAMING) final players: [ 'FGxDeMON(5871160565)' ]
+[2025-12-28T08:06:43.119Z] [INFO] Team slot 5 (SHOCKWAVE ) final players: []
+[2025-12-28T08:06:43.119Z] [INFO] Team slot 6 (SCAMMERS ) final players: []
+[2025-12-28T08:06:43.119Z] [INFO] Team slot 7 (ANORTHOSIS FAMAGUSTA ESPORTS) final players: []
+[2025-12-28T08:06:43.120Z] [INFO] Team slot 8 (KAM ARMY ) final players: []
+[2025-12-28T08:06:43.120Z] [INFO] Team slot 9 (STAR ESPORTS ) final players: []
+[2025-12-28T08:06:43.120Z] [INFO] Team slot 10 (KZ ESPORTS) final players: []
+[2025-12-28T08:06:43.120Z] [INFO] Team slot 11 (WeRunExtreme ESPORTS) final players: []
+[2025-12-28T08:06:43.120Z] [INFO] Team slot 12 (ATOMIC TEAM) final players: []
+[2025-12-28T08:06:43.120Z] [INFO] Team slot 13 (EIGHT ACADEMY) final players: []
+[2025-12-28T08:06:43.121Z] [INFO] Team slot 14 (NOVA JUNIOR) final players: []
+[2025-12-28T08:06:43.121Z] [INFO] Team slot 15 (MARU ECOSAL) final players: []
+[2025-12-28T08:06:43.121Z] [INFO] Team slot 16 (RE ZERO) final players: []
+[2025-12-28T08:06:43.121Z] [INFO] Team slot 17 (UQIMERION) final players: []
+[2025-12-28T08:06:43.121Z] [INFO] Team slot 18 (BRUTAL TEAM) final players: []
+[2025-12-28T08:06:43.122Z] [INFO] Team slot 19 (NARI KOOTAM) final players: []
+[2025-12-28T08:06:43.122Z] [INFO] Team slot 20 (ONE ESPORTS) final players: []
+[2025-12-28T08:06:43.122Z] [INFO] Team slot 21 (EQUILLIBRIUM ) final players: []
+[2025-12-28T08:06:43.180Z] [INFO] [user 68cb88a92e32c82dcca2b32e] Data comparison for match: 6946f3a8b5940971a8f35915 isEqual: false
+[2025-12-28T08:06:43.181Z] [INFO] [user 68cb88a92e32c82dcca2b32e] Emitting liveMatchUpdate for match: new ObjectId('6946f3a8b5940971a8f35915')
+[2025-12-28T08:06:43.182Z] [INFO] [adaptive] user=68cb88a92e32c82dcca2b32e interval=2000ms noChangeCount=0
+[2025-12-28T08:06:45.283Z] [INFO] [live] Begin update for matchId=6946f3a8b5940971a8f35915 user=68cb88a92e32c82dcca2b32e
+[2025-12-28T08:06:45.384Z] [INFO] Using tournamentId: 6946ecf5f7e09caab06c63b7 for user 68cb88a92e32c82dcca2b32e
+[2025-12-28T08:06:45.577Z] [INFO] Using group for tournament 6946ecf5f7e09caab06c63b7 (user 68cb88a92e32c82dcca2b32e):
+[2025-12-28T08:06:45.577Z] [INFO] Group ID: 6946f20951a7ac73ea97a70e, Slots: 19
+[2025-12-28T08:06:45.577Z] [INFO]  Slot 1: teamId=6920916b3d1185e870e91a73, teamName=FARVOICE GAMING, players=25
+[2025-12-28T08:06:45.577Z] [INFO]  Slot 2: teamId=691f52f104385bd1cd0bb639, teamName=BOARS GAMING, players=26
+[2025-12-28T08:06:45.578Z] [INFO]  Slot 3: teamId=691b68b65924f998c75f0f42, teamName=SHOCKWAVE , players=19
+[2025-12-28T08:06:45.578Z] [INFO]  Slot 4: teamId=6939b7e3c15a4970e91d4479, teamName=SCAMMERS , players=17
+[2025-12-28T08:06:45.578Z] [INFO]  Slot 5: teamId=6946e740f7e09caab06c603e, teamName=ANORTHOSIS FAMAGUSTA ESPORTS, players=19
+[2025-12-28T08:06:45.578Z] [INFO]  Slot 6: teamId=6946f05751a7ac73ea97a5e6, teamName=KAM ARMY , players=17
+[2025-12-28T08:06:45.578Z] [INFO]  Slot 7: teamId=6946e7c3f7e09caab06c6075, teamName=STAR ESPORTS , players=17
+[2025-12-28T08:06:45.578Z] [INFO]  Slot 8: teamId=694195c9691d2e45d94326aa, teamName=KZ ESPORTS, players=17
+[2025-12-28T08:06:45.578Z] [INFO]  Slot 9: teamId=69050a4a2423cdc44fd74c82, teamName=WeRunExtreme ESPORTS, players=22
+[2025-12-28T08:06:45.578Z] [INFO]  Slot 10: teamId=6939b839c15a4970e91d44af, teamName=ATOMIC TEAM, players=18
+[2025-12-28T08:06:45.578Z] [INFO]  Slot 11: teamId=69050a3a2423cdc44fd74c77, teamName=EIGHT ACADEMY, players=25
+[2025-12-28T08:06:45.579Z] [INFO]  Slot 12: teamId=6946e84bf7e09caab06c60e5, teamName=NOVA JUNIOR, players=18
+[2025-12-28T08:06:45.579Z] [INFO]  Slot 13: teamId=6946e880f7e09caab06c60fc, teamName=MARU ECOSAL, players=17
+[2025-12-28T08:06:45.579Z] [INFO]  Slot 14: teamId=6946e8baf7e09caab06c6117, teamName=RE ZERO, players=19
+[2025-12-28T08:06:45.579Z] [INFO]  Slot 15: teamId=69419527691d2e45d9432655, teamName=UQIMERION, players=18
+[2025-12-28T08:06:45.579Z] [INFO]  Slot 16: teamId=6946e93df7e09caab06c6155, teamName=BRUTAL TEAM, players=17
+[2025-12-28T08:06:45.579Z] [INFO]  Slot 17: teamId=6946e98ff7e09caab06c6178, teamName=NARI KOOTAM, players=15
+[2025-12-28T08:06:45.579Z] [INFO]  Slot 18: teamId=691231788fc724f3da328cbe, teamName=ONE ESPORTS, players=17
+[2025-12-28T08:06:45.580Z] [INFO]  Slot 19: teamId=6946ef4551a7ac73ea97a56c, teamName=EQUILLIBRIUM , players=16
+[2025-12-28T08:06:45.581Z] [INFO] API returned 2 players
+[2025-12-28T08:06:45.691Z] [INFO] [updateTeams] UID=51463325520 already exists in team FARVOICE GAMING. Skipping.
+[2025-12-28T08:06:45.691Z] [INFO] [updateTeams] UID=5871160565 already exists in team BOARS GAMING. Skipping.
+[2025-12-28T08:06:45.691Z] [INFO] 
+[updateTeams] Finished processing all API players
+
+[2025-12-28T08:06:45.692Z] [INFO] Merged player x6tenceDEMON: kills=0, health=81/100
+[2025-12-28T08:06:45.692Z] [INFO] [merged] uid=51463325520 | name="x6tenceDEMON" | picUrl=""
+[2025-12-28T08:06:45.693Z] [INFO] Team slot 3 (FARVOICE GAMING) final players: [ 'x6tenceDEMON(51463325520)' ]
+[2025-12-28T08:06:45.694Z] [INFO] Merged player FGxDeMON: kills=0, health=0/100
+[2025-12-28T08:06:45.694Z] [INFO] [merged] uid=5871160565 | name="FGxDeMON" | picUrl=""
+[2025-12-28T08:06:45.695Z] [INFO] Team slot 4 (BOARS GAMING) final players: [ 'FGxDeMON(5871160565)' ]
+[2025-12-28T08:06:45.696Z] [INFO] Team slot 5 (SHOCKWAVE ) final players: []
+[2025-12-28T08:06:45.696Z] [INFO] Team slot 6 (SCAMMERS ) final players: []
+[2025-12-28T08:06:45.696Z] [INFO] Team slot 7 (ANORTHOSIS FAMAGUSTA ESPORTS) final players: []
+[2025-12-28T08:06:45.696Z] [INFO] Team slot 8 (KAM ARMY ) final players: []
+[2025-12-28T08:06:45.696Z] [INFO] Team slot 9 (STAR ESPORTS ) final players: []
+[2025-12-28T08:06:45.697Z] [INFO] Team slot 10 (KZ ESPORTS) final players: []
+[2025-12-28T08:06:45.697Z] [INFO] Team slot 11 (WeRunExtreme ESPORTS) final players: []
+[2025-12-28T08:06:45.697Z] [INFO] Team slot 12 (ATOMIC TEAM) final players: []
+[2025-12-28T08:06:45.697Z] [INFO] Team slot 13 (EIGHT ACADEMY) final players: []
+[2025-12-28T08:06:45.698Z] [INFO] Team slot 14 (NOVA JUNIOR) final players: []
+[2025-12-28T08:06:45.698Z] [INFO] Team slot 15 (MARU ECOSAL) final players: []
+[2025-12-28T08:06:45.698Z] [INFO] Team slot 16 (RE ZERO) final players: []
+[2025-12-28T08:06:45.698Z] [INFO] Team slot 17 (UQIMERION) final players: []
+[2025-12-28T08:06:45.699Z] [INFO] Team slot 18 (BRUTAL TEAM) final players: []
+[2025-12-28T08:06:45.699Z] [INFO] Team slot 19 (NARI KOOTAM) final players: []
+[2025-12-28T08:06:45.699Z] [INFO] Team slot 20 (ONE ESPORTS) final players: []
+[2025-12-28T08:06:45.699Z] [INFO] Team slot 21 (EQUILLIBRIUM ) final players: []
+[2025-12-28T08:06:45.760Z] [INFO] [user 68cb88a92e32c82dcca2b32e] Data comparison for match: 6946f3a8b5940971a8f35915 isEqual: false
+[2025-12-28T08:06:45.760Z] [INFO] [user 68cb88a92e32c82dcca2b32e] Emitting liveMatchUpdate for match: new ObjectId('6946f3a8b5940971a8f35915')
+[2025-12-28T08:06:45.761Z] [INFO] [adaptive] user=68cb88a92e32c82dcca2b32e interval=2000ms noChangeCount=0
+[2025-12-28T08:06:47.861Z] [INFO] [live] Begin update for matchId=6946f3a8b5940971a8f35915 user=68cb88a92e32c82dcca2b32e
+[2025-12-28T08:06:47.959Z] [INFO] Using tournamentId: 6946ecf5f7e09caab06c63b7 for user 68cb88a92e32c82dcca2b32e
+[2025-12-28T08:06:48.167Z] [INFO] Using group for tournament 6946ecf5f7e09caab06c63b7 (user 68cb88a92e32c82dcca2b32e):
+[2025-12-28T08:06:48.167Z] [INFO] Group ID: 6946f20951a7ac73ea97a70e, Slots: 19
+[2025-12-28T08:06:48.167Z] [INFO]  Slot 1: teamId=6920916b3d1185e870e91a73, teamName=FARVOICE GAMING, players=25
+[2025-12-28T08:06:48.168Z] [INFO]  Slot 2: teamId=691f52f104385bd1cd0bb639, teamName=BOARS GAMING, players=26
+[2025-12-28T08:06:48.168Z] [INFO]  Slot 3: teamId=691b68b65924f998c75f0f42, teamName=SHOCKWAVE , players=19
+[2025-12-28T08:06:48.168Z] [INFO]  Slot 4: teamId=6939b7e3c15a4970e91d4479, teamName=SCAMMERS , players=17
+[2025-12-28T08:06:48.168Z] [INFO]  Slot 5: teamId=6946e740f7e09caab06c603e, teamName=ANORTHOSIS FAMAGUSTA ESPORTS, players=19
+[2025-12-28T08:06:48.168Z] [INFO]  Slot 6: teamId=6946f05751a7ac73ea97a5e6, teamName=KAM ARMY , players=17
+[2025-12-28T08:06:48.168Z] [INFO]  Slot 7: teamId=6946e7c3f7e09caab06c6075, teamName=STAR ESPORTS , players=17
+[2025-12-28T08:06:48.168Z] [INFO]  Slot 8: teamId=694195c9691d2e45d94326aa, teamName=KZ ESPORTS, players=17
+[2025-12-28T08:06:48.169Z] [INFO]  Slot 9: teamId=69050a4a2423cdc44fd74c82, teamName=WeRunExtreme ESPORTS, players=22
+[2025-12-28T08:06:48.169Z] [INFO]  Slot 10: teamId=6939b839c15a4970e91d44af, teamName=ATOMIC TEAM, players=18
+[2025-12-28T08:06:48.169Z] [INFO]  Slot 11: teamId=69050a3a2423cdc44fd74c77, teamName=EIGHT ACADEMY, players=25
+[2025-12-28T08:06:48.169Z] [INFO]  Slot 12: teamId=6946e84bf7e09caab06c60e5, teamName=NOVA JUNIOR, players=18
+[2025-12-28T08:06:48.169Z] [INFO]  Slot 13: teamId=6946e880f7e09caab06c60fc, teamName=MARU ECOSAL, players=17
+[2025-12-28T08:06:48.169Z] [INFO]  Slot 14: teamId=6946e8baf7e09caab06c6117, teamName=RE ZERO, players=19
+[2025-12-28T08:06:48.169Z] [INFO]  Slot 15: teamId=69419527691d2e45d9432655, teamName=UQIMERION, players=18
+[2025-12-28T08:06:48.169Z] [INFO]  Slot 16: teamId=6946e93df7e09caab06c6155, teamName=BRUTAL TEAM, players=17
+[2025-12-28T08:06:48.169Z] [INFO]  Slot 17: teamId=6946e98ff7e09caab06c6178, teamName=NARI KOOTAM, players=15
+[2025-12-28T08:06:48.170Z] [INFO]  Slot 18: teamId=691231788fc724f3da328cbe, teamName=ONE ESPORTS, players=17
+[2025-12-28T08:06:48.170Z] [INFO]  Slot 19: teamId=6946ef4551a7ac73ea97a56c, teamName=EQUILLIBRIUM , players=16
+[2025-12-28T08:06:48.171Z] [INFO] API returned 2 players
+[2025-12-28T08:06:48.273Z] [INFO] [updateTeams] UID=51463325520 already exists in team FARVOICE GAMING. Skipping.
+[2025-12-28T08:06:48.273Z] [INFO] [updateTeams] UID=5871160565 already exists in team BOARS GAMING. Skipping.
+[2025-12-28T08:06:48.273Z] [INFO] 
+[updateTeams] Finished processing all API players
+
+[2025-12-28T08:06:48.274Z] [INFO] Merged player x6tenceDEMON: kills=0, health=81/100
+[2025-12-28T08:06:48.274Z] [INFO] [merged] uid=51463325520 | name="x6tenceDEMON" | picUrl=""
+[2025-12-28T08:06:48.275Z] [INFO] Team slot 3 (FARVOICE GAMING) final players: [ 'x6tenceDEMON(51463325520)' ]
+[2025-12-28T08:06:48.275Z] [INFO] Merged player FGxDeMON: kills=0, health=0/100
+[2025-12-28T08:06:48.275Z] [INFO] [merged] uid=5871160565 | name="FGxDeMON" | picUrl=""
+[2025-12-28T08:06:48.276Z] [INFO] Team slot 4 (BOARS GAMING) final players: [ 'FGxDeMON(5871160565)' ]
+[2025-12-28T08:06:48.277Z] [INFO] Team slot 5 (SHOCKWAVE ) final players: []
+[2025-12-28T08:06:48.277Z] [INFO] Team slot 6 (SCAMMERS ) final players: []
+[2025-12-28T08:06:48.277Z] [INFO] Team slot 7 (ANORTHOSIS FAMAGUSTA ESPORTS) final players: []
+[2025-12-28T08:06:48.277Z] [INFO] Team slot 8 (KAM ARMY ) final players: []
+[2025-12-28T08:06:48.277Z] [INFO] Team slot 9 (STAR ESPORTS ) final players: []
+[2025-12-28T08:06:48.278Z] [INFO] Team slot 10 (KZ ESPORTS) final players: []
+[2025-12-28T08:06:48.278Z] [INFO] Team slot 11 (WeRunExtreme ESPORTS) final players: []
+[2025-12-28T08:06:48.278Z] [INFO] Team slot 12 (ATOMIC TEAM) final players: []
+[2025-12-28T08:06:48.278Z] [INFO] Team slot 13 (EIGHT ACADEMY) final players: []
+[2025-12-28T08:06:48.278Z] [INFO] Team slot 14 (NOVA JUNIOR) final players: []
+[2025-12-28T08:06:48.278Z] [INFO] Team slot 15 (MARU ECOSAL) final players: []
+[2025-12-28T08:06:48.279Z] [INFO] Team slot 16 (RE ZERO) final players: []
+[2025-12-28T08:06:48.279Z] [INFO] Team slot 17 (UQIMERION) final players: []
+[2025-12-28T08:06:48.279Z] [INFO] Team slot 18 (BRUTAL TEAM) final players: []
+[2025-12-28T08:06:48.279Z] [INFO] Team slot 19 (NARI KOOTAM) final players: []
+[2025-12-28T08:06:48.279Z] [INFO] Team slot 20 (ONE ESPORTS) final players: []
+[2025-12-28T08:06:48.280Z] [INFO] Team slot 21 (EQUILLIBRIUM ) final players: []
+[2025-12-28T08:06:48.332Z] [INFO] [user 68cb88a92e32c82dcca2b32e] Data comparison for match: 6946f3a8b5940971a8f35915 isEqual: false
+[2025-12-28T08:06:48.333Z] [INFO] [user 68cb88a92e32c82dcca2b32e] Emitting liveMatchUpdate for match: new ObjectId('6946f3a8b5940971a8f35915')
+[2025-12-28T08:06:48.334Z] [INFO] [adaptive] user=68cb88a92e32c82dcca2b32e interval=2000ms noChangeCount=0
+[2025-12-28T08:06:50.428Z] [INFO] [live] Begin update for matchId=6946f3a8b5940971a8f35915 user=68cb88a92e32c82dcca2b32e
+[2025-12-28T08:06:50.527Z] [INFO] Using tournamentId: 6946ecf5f7e09caab06c63b7 for user 68cb88a92e32c82dcca2b32e
+[2025-12-28T08:06:50.705Z] [INFO] Using group for tournament 6946ecf5f7e09caab06c63b7 (user 68cb88a92e32c82dcca2b32e):
+[2025-12-28T08:06:50.705Z] [INFO] Group ID: 6946f20951a7ac73ea97a70e, Slots: 19
+[2025-12-28T08:06:50.705Z] [INFO]  Slot 1: teamId=6920916b3d1185e870e91a73, teamName=FARVOICE GAMING, players=25
+[2025-12-28T08:06:50.705Z] [INFO]  Slot 2: teamId=691f52f104385bd1cd0bb639, teamName=BOARS GAMING, players=26
+[2025-12-28T08:06:50.706Z] [INFO]  Slot 3: teamId=691b68b65924f998c75f0f42, teamName=SHOCKWAVE , players=19
+[2025-12-28T08:06:50.706Z] [INFO]  Slot 4: teamId=6939b7e3c15a4970e91d4479, teamName=SCAMMERS , players=17
+[2025-12-28T08:06:50.706Z] [INFO]  Slot 5: teamId=6946e740f7e09caab06c603e, teamName=ANORTHOSIS FAMAGUSTA ESPORTS, players=19
+[2025-12-28T08:06:50.706Z] [INFO]  Slot 6: teamId=6946f05751a7ac73ea97a5e6, teamName=KAM ARMY , players=17
+[2025-12-28T08:06:50.706Z] [INFO]  Slot 7: teamId=6946e7c3f7e09caab06c6075, teamName=STAR ESPORTS , players=17
+[2025-12-28T08:06:50.706Z] [INFO]  Slot 8: teamId=694195c9691d2e45d94326aa, teamName=KZ ESPORTS, players=17
+[2025-12-28T08:06:50.706Z] [INFO]  Slot 9: teamId=69050a4a2423cdc44fd74c82, teamName=WeRunExtreme ESPORTS, players=22
+[2025-12-28T08:06:50.706Z] [INFO]  Slot 10: teamId=6939b839c15a4970e91d44af, teamName=ATOMIC TEAM, players=18
+[2025-12-28T08:06:50.706Z] [INFO]  Slot 11: teamId=69050a3a2423cdc44fd74c77, teamName=EIGHT ACADEMY, players=25
+[2025-12-28T08:06:50.707Z] [INFO]  Slot 12: teamId=6946e84bf7e09caab06c60e5, teamName=NOVA JUNIOR, players=18
+[2025-12-28T08:06:50.707Z] [INFO]  Slot 13: teamId=6946e880f7e09caab06c60fc, teamName=MARU ECOSAL, players=17
+[2025-12-28T08:06:50.707Z] [INFO]  Slot 14: teamId=6946e8baf7e09caab06c6117, teamName=RE ZERO, players=19
+[2025-12-28T08:06:50.707Z] [INFO]  Slot 15: teamId=69419527691d2e45d9432655, teamName=UQIMERION, players=18
+[2025-12-28T08:06:50.707Z] [INFO]  Slot 16: teamId=6946e93df7e09caab06c6155, teamName=BRUTAL TEAM, players=17
+[2025-12-28T08:06:50.707Z] [INFO]  Slot 17: teamId=6946e98ff7e09caab06c6178, teamName=NARI KOOTAM, players=15
+[2025-12-28T08:06:50.707Z] [INFO]  Slot 18: teamId=691231788fc724f3da328cbe, teamName=ONE ESPORTS, players=17
+[2025-12-28T08:06:50.707Z] [INFO]  Slot 19: teamId=6946ef4551a7ac73ea97a56c, teamName=EQUILLIBRIUM , players=16
+[2025-12-28T08:06:50.708Z] [INFO] API returned 2 players
+[2025-12-28T08:06:50.811Z] [INFO] [updateTeams] UID=51463325520 already exists in team FARVOICE GAMING. Skipping.
+[2025-12-28T08:06:50.811Z] [INFO] [updateTeams] UID=5871160565 already exists in team BOARS GAMING. Skipping.
+[2025-12-28T08:06:50.811Z] [INFO] 
+[updateTeams] Finished processing all API players
+
+[2025-12-28T08:06:50.812Z] [INFO] Merged player x6tenceDEMON: kills=0, health=81/100
+[2025-12-28T08:06:50.812Z] [INFO] [merged] uid=51463325520 | name="x6tenceDEMON" | picUrl=""
+[2025-12-28T08:06:50.813Z] [INFO] Team slot 3 (FARVOICE GAMING) final players: [ 'x6tenceDEMON(51463325520)' ]
+[2025-12-28T08:06:50.813Z] [INFO] Merged player FGxDeMON: kills=0, health=0/100
+[2025-12-28T08:06:50.813Z] [INFO] [merged] uid=5871160565 | name="FGxDeMON" | picUrl=""
+[2025-12-28T08:06:50.814Z] [INFO] Team slot 4 (BOARS GAMING) final players: [ 'FGxDeMON(5871160565)' ]
+[2025-12-28T08:06:50.814Z] [INFO] Team slot 5 (SHOCKWAVE ) final players: []
+[2025-12-28T08:06:50.814Z] [INFO] Team slot 6 (SCAMMERS ) final players: []
+[2025-12-28T08:06:50.814Z] [INFO] Team slot 7 (ANORTHOSIS FAMAGUSTA ESPORTS) final players: []
+[2025-12-28T08:06:50.815Z] [INFO] Team slot 8 (KAM ARMY ) final players: []
+[2025-12-28T08:06:50.815Z] [INFO] Team slot 9 (STAR ESPORTS ) final players: []
+[2025-12-28T08:06:50.815Z] [INFO] Team slot 10 (KZ ESPORTS) final players: []
+[2025-12-28T08:06:50.815Z] [INFO] Team slot 11 (WeRunExtreme ESPORTS) final players: []
+[2025-12-28T08:06:50.815Z] [INFO] Team slot 12 (ATOMIC TEAM) final players: []
+[2025-12-28T08:06:50.815Z] [INFO] Team slot 13 (EIGHT ACADEMY) final players: []
+[2025-12-28T08:06:50.815Z] [INFO] Team slot 14 (NOVA JUNIOR) final players: []
+[2025-12-28T08:06:50.816Z] [INFO] Team slot 15 (MARU ECOSAL) final players: []
+[2025-12-28T08:06:50.816Z] [INFO] Team slot 16 (RE ZERO) final players: []
+[2025-12-28T08:06:50.816Z] [INFO] Team slot 17 (UQIMERION) final players: []
+[2025-12-28T08:06:50.816Z] [INFO] Team slot 18 (BRUTAL TEAM) final players: []
+[2025-12-28T08:06:50.816Z] [INFO] Team slot 19 (NARI KOOTAM) final players: []
+[2025-12-28T08:06:50.816Z] [INFO] Team slot 20 (ONE ESPORTS) final players: []
+[2025-12-28T08:06:50.816Z] [INFO] Team slot 21 (EQUILLIBRIUM ) final players: []
+[2025-12-28T08:06:50.872Z] [INFO] [user 68cb88a92e32c82dcca2b32e] Data comparison for match: 6946f3a8b5940971a8f35915 isEqual: false
+[2025-12-28T08:06:50.872Z] [INFO] [user 68cb88a92e32c82dcca2b32e] Emitting liveMatchUpdate for match: new ObjectId('6946f3a8b5940971a8f35915')
+[2025-12-28T08:06:50.873Z] [INFO] [adaptive] user=68cb88a92e32c82dcca2b32e interval=2000ms noChangeCount=0
+[2025-12-28T08:06:52.969Z] [INFO] [live] Begin update for matchId=6946f3a8b5940971a8f35915 user=68cb88a92e32c82dcca2b32e
+[2025-12-28T08:06:53.069Z] [INFO] Using tournamentId: 6946ecf5f7e09caab06c63b7 for user 68cb88a92e32c82dcca2b32e
+[2025-12-28T08:06:53.269Z] [INFO] Using group for tournament 6946ecf5f7e09caab06c63b7 (user 68cb88a92e32c82dcca2b32e):
+[2025-12-28T08:06:53.270Z] [INFO] Group ID: 6946f20951a7ac73ea97a70e, Slots: 19
+[2025-12-28T08:06:53.270Z] [INFO]  Slot 1: teamId=6920916b3d1185e870e91a73, teamName=FARVOICE GAMING, players=25
+[2025-12-28T08:06:53.270Z] [INFO]  Slot 2: teamId=691f52f104385bd1cd0bb639, teamName=BOARS GAMING, players=26
+[2025-12-28T08:06:53.270Z] [INFO]  Slot 3: teamId=691b68b65924f998c75f0f42, teamName=SHOCKWAVE , players=19
+[2025-12-28T08:06:53.270Z] [INFO]  Slot 4: teamId=6939b7e3c15a4970e91d4479, teamName=SCAMMERS , players=17
+[2025-12-28T08:06:53.270Z] [INFO]  Slot 5: teamId=6946e740f7e09caab06c603e, teamName=ANORTHOSIS FAMAGUSTA ESPORTS, players=19
+[2025-12-28T08:06:53.270Z] [INFO]  Slot 6: teamId=6946f05751a7ac73ea97a5e6, teamName=KAM ARMY , players=17
+[2025-12-28T08:06:53.270Z] [INFO]  Slot 7: teamId=6946e7c3f7e09caab06c6075, teamName=STAR ESPORTS , players=17
+[2025-12-28T08:06:53.271Z] [INFO]  Slot 8: teamId=694195c9691d2e45d94326aa, teamName=KZ ESPORTS, players=17
+[2025-12-28T08:06:53.271Z] [INFO]  Slot 9: teamId=69050a4a2423cdc44fd74c82, teamName=WeRunExtreme ESPORTS, players=22
+[2025-12-28T08:06:53.271Z] [INFO]  Slot 10: teamId=6939b839c15a4970e91d44af, teamName=ATOMIC TEAM, players=18
+[2025-12-28T08:06:53.271Z] [INFO]  Slot 11: teamId=69050a3a2423cdc44fd74c77, teamName=EIGHT ACADEMY, players=25
+[2025-12-28T08:06:53.271Z] [INFO]  Slot 12: teamId=6946e84bf7e09caab06c60e5, teamName=NOVA JUNIOR, players=18
+[2025-12-28T08:06:53.271Z] [INFO]  Slot 13: teamId=6946e880f7e09caab06c60fc, teamName=MARU ECOSAL, players=17
+[2025-12-28T08:06:53.271Z] [INFO]  Slot 14: teamId=6946e8baf7e09caab06c6117, teamName=RE ZERO, players=19
+[2025-12-28T08:06:53.271Z] [INFO]  Slot 15: teamId=69419527691d2e45d9432655, teamName=UQIMERION, players=18
+[2025-12-28T08:06:53.272Z] [INFO]  Slot 16: teamId=6946e93df7e09caab06c6155, teamName=BRUTAL TEAM, players=17
+[2025-12-28T08:06:53.272Z] [INFO]  Slot 17: teamId=6946e98ff7e09caab06c6178, teamName=NARI KOOTAM, players=15
+[2025-12-28T08:06:53.272Z] [INFO]  Slot 18: teamId=691231788fc724f3da328cbe, teamName=ONE ESPORTS, players=17
+[2025-12-28T08:06:53.272Z] [INFO]  Slot 19: teamId=6946ef4551a7ac73ea97a56c, teamName=EQUILLIBRIUM , players=16
+[2025-12-28T08:06:53.273Z] [INFO] API returned 2 players
+[2025-12-28T08:06:53.374Z] [INFO] [updateTeams] UID=51463325520 already exists in team FARVOICE GAMING. Skipping.
+[2025-12-28T08:06:53.375Z] [INFO] [updateTeams] UID=5871160565 already exists in team BOARS GAMING. Skipping.
+[2025-12-28T08:06:53.375Z] [INFO] 
+[updateTeams] Finished processing all API players
+
+[2025-12-28T08:06:53.375Z] [INFO] Merged player x6tenceDEMON: kills=0, health=81/100
+[2025-12-28T08:06:53.375Z] [INFO] [merged] uid=51463325520 | name="x6tenceDEMON" | picUrl=""
+[2025-12-28T08:06:53.376Z] [INFO] Team slot 3 (FARVOICE GAMING) final players: [ 'x6tenceDEMON(51463325520)' ]
+[2025-12-28T08:06:53.376Z] [INFO] Merged player FGxDeMON: kills=0, health=0/100
+[2025-12-28T08:06:53.377Z] [INFO] [merged] uid=5871160565 | name="FGxDeMON" | picUrl=""
+[2025-12-28T08:06:53.377Z] [INFO] Team slot 4 (BOARS GAMING) final players: [ 'FGxDeMON(5871160565)' ]
+[2025-12-28T08:06:53.377Z] [INFO] Team slot 5 (SHOCKWAVE ) final players: []
+[2025-12-28T08:06:53.378Z] [INFO] Team slot 6 (SCAMMERS ) final players: []
+[2025-12-28T08:06:53.378Z] [INFO] Team slot 7 (ANORTHOSIS FAMAGUSTA ESPORTS) final players: []
+[2025-12-28T08:06:53.378Z] [INFO] Team slot 8 (KAM ARMY ) final players: []
+[2025-12-28T08:06:53.378Z] [INFO] Team slot 9 (STAR ESPORTS ) final players: []
+[2025-12-28T08:06:53.378Z] [INFO] Team slot 10 (KZ ESPORTS) final players: []
+[2025-12-28T08:06:53.378Z] [INFO] Team slot 11 (WeRunExtreme ESPORTS) final players: []
+[2025-12-28T08:06:53.379Z] [INFO] Team slot 12 (ATOMIC TEAM) final players: []
+[2025-12-28T08:06:53.379Z] [INFO] Team slot 13 (EIGHT ACADEMY) final players: []
+[2025-12-28T08:06:53.379Z] [INFO] Team slot 14 (NOVA JUNIOR) final players: []
+[2025-12-28T08:06:53.379Z] [INFO] Team slot 15 (MARU ECOSAL) final players: []
+[2025-12-28T08:06:53.379Z] [INFO] Team slot 16 (RE ZERO) final players: []
+[2025-12-28T08:06:53.379Z] [INFO] Team slot 17 (UQIMERION) final players: []
+[2025-12-28T08:06:53.380Z] [INFO] Team slot 18 (BRUTAL TEAM) final players: []
+[2025-12-28T08:06:53.380Z] [INFO] Team slot 19 (NARI KOOTAM) final players: []
+[2025-12-28T08:06:53.380Z] [INFO] Team slot 20 (ONE ESPORTS) final players: []
+[2025-12-28T08:06:53.380Z] [INFO] Team slot 21 (EQUILLIBRIUM ) final players: []
+[2025-12-28T08:06:53.437Z] [INFO] [user 68cb88a92e32c82dcca2b32e] Data comparison for match: 6946f3a8b5940971a8f35915 isEqual: false
+[2025-12-28T08:06:53.437Z] [INFO] [user 68cb88a92e32c82dcca2b32e] Emitting liveMatchUpdate for match: new ObjectId('6946f3a8b5940971a8f35915')
+[2025-12-28T08:06:53.438Z] [INFO] [adaptive] user=68cb88a92e32c82dcca2b32e interval=2000ms noChangeCount=0
+[2025-12-28T08:06:55.534Z] [INFO] [live] Begin update for matchId=6946f3a8b5940971a8f35915 user=68cb88a92e32c82dcca2b32e
+[2025-12-28T08:06:55.633Z] [INFO] Using tournamentId: 6946ecf5f7e09caab06c63b7 for user 68cb88a92e32c82dcca2b32e
+[2025-12-28T08:06:55.830Z] [INFO] Using group for tournament 6946ecf5f7e09caab06c63b7 (user 68cb88a92e32c82dcca2b32e):
+[2025-12-28T08:06:55.831Z] [INFO] Group ID: 6946f20951a7ac73ea97a70e, Slots: 19
+[2025-12-28T08:06:55.831Z] [INFO]  Slot 1: teamId=6920916b3d1185e870e91a73, teamName=FARVOICE GAMING, players=25
+[2025-12-28T08:06:55.831Z] [INFO]  Slot 2: teamId=691f52f104385bd1cd0bb639, teamName=BOARS GAMING, players=26
+[2025-12-28T08:06:55.831Z] [INFO]  Slot 3: teamId=691b68b65924f998c75f0f42, teamName=SHOCKWAVE , players=19
+[2025-12-28T08:06:55.831Z] [INFO]  Slot 4: teamId=6939b7e3c15a4970e91d4479, teamName=SCAMMERS , players=17
+[2025-12-28T08:06:55.831Z] [INFO]  Slot 5: teamId=6946e740f7e09caab06c603e, teamName=ANORTHOSIS FAMAGUSTA ESPORTS, players=19
+[2025-12-28T08:06:55.832Z] [INFO]  Slot 6: teamId=6946f05751a7ac73ea97a5e6, teamName=KAM ARMY , players=17
+[2025-12-28T08:06:55.832Z] [INFO]  Slot 7: teamId=6946e7c3f7e09caab06c6075, teamName=STAR ESPORTS , players=17
+[2025-12-28T08:06:55.832Z] [INFO]  Slot 8: teamId=694195c9691d2e45d94326aa, teamName=KZ ESPORTS, players=17
+[2025-12-28T08:06:55.832Z] [INFO]  Slot 9: teamId=69050a4a2423cdc44fd74c82, teamName=WeRunExtreme ESPORTS, players=22
+[2025-12-28T08:06:55.832Z] [INFO]  Slot 10: teamId=6939b839c15a4970e91d44af, teamName=ATOMIC TEAM, players=18
+[2025-12-28T08:06:55.832Z] [INFO]  Slot 11: teamId=69050a3a2423cdc44fd74c77, teamName=EIGHT ACADEMY, players=25
+[2025-12-28T08:06:55.832Z] [INFO]  Slot 12: teamId=6946e84bf7e09caab06c60e5, teamName=NOVA JUNIOR, players=18
+[2025-12-28T08:06:55.832Z] [INFO]  Slot 13: teamId=6946e880f7e09caab06c60fc, teamName=MARU ECOSAL, players=17
+[2025-12-28T08:06:55.832Z] [INFO]  Slot 14: teamId=6946e8baf7e09caab06c6117, teamName=RE ZERO, players=19
+[2025-12-28T08:06:55.833Z] [INFO]  Slot 15: teamId=69419527691d2e45d9432655, teamName=UQIMERION, players=18
+[2025-12-28T08:06:55.833Z] [INFO]  Slot 16: teamId=6946e93df7e09caab06c6155, teamName=BRUTAL TEAM, players=17
+[2025-12-28T08:06:55.833Z] [INFO]  Slot 17: teamId=6946e98ff7e09caab06c6178, teamName=NARI KOOTAM, players=15
+[2025-12-28T08:06:55.833Z] [INFO]  Slot 18: teamId=691231788fc724f3da328cbe, teamName=ONE ESPORTS, players=17
+[2025-12-28T08:06:55.833Z] [INFO]  Slot 19: teamId=6946ef4551a7ac73ea97a56c, teamName=EQUILLIBRIUM , players=16
+[2025-12-28T08:06:55.834Z] [INFO] API returned 2 players
+[2025-12-28T08:06:55.938Z] [INFO] [updateTeams] UID=51463325520 already exists in team FARVOICE GAMING. Skipping.
+[2025-12-28T08:06:55.938Z] [INFO] [updateTeams] UID=5871160565 already exists in team BOARS GAMING. Skipping.
+[2025-12-28T08:06:55.938Z] [INFO] 
+[updateTeams] Finished processing all API players
+
+[2025-12-28T08:06:55.939Z] [INFO] Merged player x6tenceDEMON: kills=0, health=81/100
+[2025-12-28T08:06:55.939Z] [INFO] [merged] uid=51463325520 | name="x6tenceDEMON" | picUrl=""
+[2025-12-28T08:06:55.940Z] [INFO] Team slot 3 (FARVOICE GAMING) final players: [ 'x6tenceDEMON(51463325520)' ]
+[2025-12-28T08:06:55.940Z] [INFO] Merged player FGxDeMON: kills=0, health=0/100
+[2025-12-28T08:06:55.940Z] [INFO] [merged] uid=5871160565 | name="FGxDeMON" | picUrl=""
+[2025-12-28T08:06:55.941Z] [INFO] Team slot 4 (BOARS GAMING) final players: [ 'FGxDeMON(5871160565)' ]
+[2025-12-28T08:06:55.941Z] [INFO] Team slot 5 (SHOCKWAVE ) final players: []
+[2025-12-28T08:06:55.941Z] [INFO] Team slot 6 (SCAMMERS ) final players: []
+[2025-12-28T08:06:55.942Z] [INFO] Team slot 7 (ANORTHOSIS FAMAGUSTA ESPORTS) final players: []
+[2025-12-28T08:06:55.942Z] [INFO] Team slot 8 (KAM ARMY ) final players: []
+[2025-12-28T08:06:55.942Z] [INFO] Team slot 9 (STAR ESPORTS ) final players: []
+[2025-12-28T08:06:55.942Z] [INFO] Team slot 10 (KZ ESPORTS) final players: []
+[2025-12-28T08:06:55.942Z] [INFO] Team slot 11 (WeRunExtreme ESPORTS) final players: []
+[2025-12-28T08:06:55.942Z] [INFO] Team slot 12 (ATOMIC TEAM) final players: []
+[2025-12-28T08:06:55.943Z] [INFO] Team slot 13 (EIGHT ACADEMY) final players: []
+[2025-12-28T08:06:55.943Z] [INFO] Team slot 14 (NOVA JUNIOR) final players: []
+[2025-12-28T08:06:55.943Z] [INFO] Team slot 15 (MARU ECOSAL) final players: []
+[2025-12-28T08:06:55.943Z] [INFO] Team slot 16 (RE ZERO) final players: []
+[2025-12-28T08:06:55.943Z] [INFO] Team slot 17 (UQIMERION) final players: []
+[2025-12-28T08:06:55.943Z] [INFO] Team slot 18 (BRUTAL TEAM) final players: []
+[2025-12-28T08:06:55.943Z] [INFO] Team slot 19 (NARI KOOTAM) final players: []
+[2025-12-28T08:06:55.944Z] [INFO] Team slot 20 (ONE ESPORTS) final players: []
+[2025-12-28T08:06:55.944Z] [INFO] Team slot 21 (EQUILLIBRIUM ) final players: []
+[2025-12-28T08:06:56.002Z] [INFO] [user 68cb88a92e32c82dcca2b32e] Data comparison for match: 6946f3a8b5940971a8f35915 isEqual: false
+[2025-12-28T08:06:56.002Z] [INFO] [user 68cb88a92e32c82dcca2b32e] Emitting liveMatchUpdate for match: new ObjectId('6946f3a8b5940971a8f35915')
+[2025-12-28T08:06:56.003Z] [INFO] [adaptive] user=68cb88a92e32c82dcca2b32e interval=2000ms noChangeCount=0
+[2025-12-28T08:06:58.106Z] [INFO] [live] Begin update for matchId=6946f3a8b5940971a8f35915 user=68cb88a92e32c82dcca2b32e
+[2025-12-28T08:06:58.205Z] [INFO] Using tournamentId: 6946ecf5f7e09caab06c63b7 for user 68cb88a92e32c82dcca2b32e
+[2025-12-28T08:06:58.411Z] [INFO] Using group for tournament 6946ecf5f7e09caab06c63b7 (user 68cb88a92e32c82dcca2b32e):
+[2025-12-28T08:06:58.411Z] [INFO] Group ID: 6946f20951a7ac73ea97a70e, Slots: 19
+[2025-12-28T08:06:58.412Z] [INFO]  Slot 1: teamId=6920916b3d1185e870e91a73, teamName=FARVOICE GAMING, players=25
+[2025-12-28T08:06:58.412Z] [INFO]  Slot 2: teamId=691f52f104385bd1cd0bb639, teamName=BOARS GAMING, players=26
+[2025-12-28T08:06:58.412Z] [INFO]  Slot 3: teamId=691b68b65924f998c75f0f42, teamName=SHOCKWAVE , players=19
+[2025-12-28T08:06:58.412Z] [INFO]  Slot 4: teamId=6939b7e3c15a4970e91d4479, teamName=SCAMMERS , players=17
+[2025-12-28T08:06:58.412Z] [INFO]  Slot 5: teamId=6946e740f7e09caab06c603e, teamName=ANORTHOSIS FAMAGUSTA ESPORTS, players=19
+[2025-12-28T08:06:58.412Z] [INFO]  Slot 6: teamId=6946f05751a7ac73ea97a5e6, teamName=KAM ARMY , players=17
+[2025-12-28T08:06:58.412Z] [INFO]  Slot 7: teamId=6946e7c3f7e09caab06c6075, teamName=STAR ESPORTS , players=17
+[2025-12-28T08:06:58.413Z] [INFO]  Slot 8: teamId=694195c9691d2e45d94326aa, teamName=KZ ESPORTS, players=17
+[2025-12-28T08:06:58.413Z] [INFO]  Slot 9: teamId=69050a4a2423cdc44fd74c82, teamName=WeRunExtreme ESPORTS, players=22
+[2025-12-28T08:06:58.413Z] [INFO]  Slot 10: teamId=6939b839c15a4970e91d44af, teamName=ATOMIC TEAM, players=18
+[2025-12-28T08:06:58.413Z] [INFO]  Slot 11: teamId=69050a3a2423cdc44fd74c77, teamName=EIGHT ACADEMY, players=25
+[2025-12-28T08:06:58.413Z] [INFO]  Slot 12: teamId=6946e84bf7e09caab06c60e5, teamName=NOVA JUNIOR, players=18
+[2025-12-28T08:06:58.413Z] [INFO]  Slot 13: teamId=6946e880f7e09caab06c60fc, teamName=MARU ECOSAL, players=17
+[2025-12-28T08:06:58.413Z] [INFO]  Slot 14: teamId=6946e8baf7e09caab06c6117, teamName=RE ZERO, players=19
+[2025-12-28T08:06:58.413Z] [INFO]  Slot 15: teamId=69419527691d2e45d9432655, teamName=UQIMERION, players=18
+[2025-12-28T08:06:58.414Z] [INFO]  Slot 16: teamId=6946e93df7e09caab06c6155, teamName=BRUTAL TEAM, players=17
+[2025-12-28T08:06:58.414Z] [INFO]  Slot 17: teamId=6946e98ff7e09caab06c6178, teamName=NARI KOOTAM, players=15
+[2025-12-28T08:06:58.414Z] [INFO]  Slot 18: teamId=691231788fc724f3da328cbe, teamName=ONE ESPORTS, players=17
+[2025-12-28T08:06:58.414Z] [INFO]  Slot 19: teamId=6946ef4551a7ac73ea97a56c, teamName=EQUILLIBRIUM , players=16
+[2025-12-28T08:06:58.415Z] [INFO] API returned 2 players
+[2025-12-28T08:06:58.519Z] [INFO] [updateTeams] UID=51463325520 already exists in team FARVOICE GAMING. Skipping.
+[2025-12-28T08:06:58.519Z] [INFO] [updateTeams] UID=5871160565 already exists in team BOARS GAMING. Skipping.
+[2025-12-28T08:06:58.519Z] [INFO] 
+[updateTeams] Finished processing all API players
+
+[2025-12-28T08:06:58.519Z] [INFO] Merged player x6tenceDEMON: kills=0, health=81/100
+[2025-12-28T08:06:58.520Z] [INFO] [merged] uid=51463325520 | name="x6tenceDEMON" | picUrl=""
+[2025-12-28T08:06:58.521Z] [INFO] Team slot 3 (FARVOICE GAMING) final players: [ 'x6tenceDEMON(51463325520)' ]
+[2025-12-28T08:06:58.521Z] [INFO] Merged player FGxDeMON: kills=0, health=0/100
+[2025-12-28T08:06:58.521Z] [INFO] [merged] uid=5871160565 | name="FGxDeMON" | picUrl=""
+[2025-12-28T08:06:58.522Z] [INFO] Team slot 4 (BOARS GAMING) final players: [ 'FGxDeMON(5871160565)' ]
+[2025-12-28T08:06:58.522Z] [INFO] Team slot 5 (SHOCKWAVE ) final players: []
+[2025-12-28T08:06:58.522Z] [INFO] Team slot 6 (SCAMMERS ) final players: []
+[2025-12-28T08:06:58.522Z] [INFO] Team slot 7 (ANORTHOSIS FAMAGUSTA ESPORTS) final players: []
+[2025-12-28T08:06:58.523Z] [INFO] Team slot 8 (KAM ARMY ) final players: []
+[2025-12-28T08:06:58.523Z] [INFO] Team slot 9 (STAR ESPORTS ) final players: []
+[2025-12-28T08:06:58.523Z] [INFO] Team slot 10 (KZ ESPORTS) final players: []
+[2025-12-28T08:06:58.523Z] [INFO] Team slot 11 (WeRunExtreme ESPORTS) final players: []
+[2025-12-28T08:06:58.523Z] [INFO] Team slot 12 (ATOMIC TEAM) final players: []
+[2025-12-28T08:06:58.523Z] [INFO] Team slot 13 (EIGHT ACADEMY) final players: []
+[2025-12-28T08:06:58.524Z] [INFO] Team slot 14 (NOVA JUNIOR) final players: []
+[2025-12-28T08:06:58.524Z] [INFO] Team slot 15 (MARU ECOSAL) final players: []
+[2025-12-28T08:06:58.524Z] [INFO] Team slot 16 (RE ZERO) final players: []
+[2025-12-28T08:06:58.524Z] [INFO] Team slot 17 (UQIMERION) final players: []
+[2025-12-28T08:06:58.524Z] [INFO] Team slot 18 (BRUTAL TEAM) final players: []
+[2025-12-28T08:06:58.524Z] [INFO] Team slot 19 (NARI KOOTAM) final players: []
+[2025-12-28T08:06:58.525Z] [INFO] Team slot 20 (ONE ESPORTS) final players: []
+[2025-12-28T08:06:58.525Z] [INFO] Team slot 21 (EQUILLIBRIUM ) final players: []
+[2025-12-28T08:06:58.582Z] [INFO] [user 68cb88a92e32c82dcca2b32e] Data comparison for match: 6946f3a8b5940971a8f35915 isEqual: false
+[2025-12-28T08:06:58.583Z] [INFO] [user 68cb88a92e32c82dcca2b32e] Emitting liveMatchUpdate for match: new ObjectId('6946f3a8b5940971a8f35915')
+[2025-12-28T08:06:58.584Z] [INFO] [adaptive] user=68cb88a92e32c82dcca2b32e interval=2000ms noChangeCount=0
+[2025-12-28T08:07:00.687Z] [INFO] [live] Begin update for matchId=6946f3a8b5940971a8f35915 user=68cb88a92e32c82dcca2b32e
+[2025-12-28T08:07:00.788Z] [INFO] Using tournamentId: 6946ecf5f7e09caab06c63b7 for user 68cb88a92e32c82dcca2b32e
+[2025-12-28T08:07:00.986Z] [INFO] Using group for tournament 6946ecf5f7e09caab06c63b7 (user 68cb88a92e32c82dcca2b32e):
+[2025-12-28T08:07:00.986Z] [INFO] Group ID: 6946f20951a7ac73ea97a70e, Slots: 19
+[2025-12-28T08:07:00.986Z] [INFO]  Slot 1: teamId=6920916b3d1185e870e91a73, teamName=FARVOICE GAMING, players=25
+[2025-12-28T08:07:00.986Z] [INFO]  Slot 2: teamId=691f52f104385bd1cd0bb639, teamName=BOARS GAMING, players=26
+[2025-12-28T08:07:00.986Z] [INFO]  Slot 3: teamId=691b68b65924f998c75f0f42, teamName=SHOCKWAVE , players=19
+[2025-12-28T08:07:00.987Z] [INFO]  Slot 4: teamId=6939b7e3c15a4970e91d4479, teamName=SCAMMERS , players=17
+[2025-12-28T08:07:00.987Z] [INFO]  Slot 5: teamId=6946e740f7e09caab06c603e, teamName=ANORTHOSIS FAMAGUSTA ESPORTS, players=19
+[2025-12-28T08:07:00.987Z] [INFO]  Slot 6: teamId=6946f05751a7ac73ea97a5e6, teamName=KAM ARMY , players=17
+[2025-12-28T08:07:00.987Z] [INFO]  Slot 7: teamId=6946e7c3f7e09caab06c6075, teamName=STAR ESPORTS , players=17
+[2025-12-28T08:07:00.987Z] [INFO]  Slot 8: teamId=694195c9691d2e45d94326aa, teamName=KZ ESPORTS, players=17
+[2025-12-28T08:07:00.987Z] [INFO]  Slot 9: teamId=69050a4a2423cdc44fd74c82, teamName=WeRunExtreme ESPORTS, players=22
+[2025-12-28T08:07:00.987Z] [INFO]  Slot 10: teamId=6939b839c15a4970e91d44af, teamName=ATOMIC TEAM, players=18
+[2025-12-28T08:07:00.987Z] [INFO]  Slot 11: teamId=69050a3a2423cdc44fd74c77, teamName=EIGHT ACADEMY, players=25
+[2025-12-28T08:07:00.988Z] [INFO]  Slot 12: teamId=6946e84bf7e09caab06c60e5, teamName=NOVA JUNIOR, players=18
+[2025-12-28T08:07:00.988Z] [INFO]  Slot 13: teamId=6946e880f7e09caab06c60fc, teamName=MARU ECOSAL, players=17
+[2025-12-28T08:07:00.988Z] [INFO]  Slot 14: teamId=6946e8baf7e09caab06c6117, teamName=RE ZERO, players=19
+[2025-12-28T08:07:00.988Z] [INFO]  Slot 15: teamId=69419527691d2e45d9432655, teamName=UQIMERION, players=18
+[2025-12-28T08:07:00.988Z] [INFO]  Slot 16: teamId=6946e93df7e09caab06c6155, teamName=BRUTAL TEAM, players=17
+[2025-12-28T08:07:00.988Z] [INFO]  Slot 17: teamId=6946e98ff7e09caab06c6178, teamName=NARI KOOTAM, players=15
+[2025-12-28T08:07:00.988Z] [INFO]  Slot 18: teamId=691231788fc724f3da328cbe, teamName=ONE ESPORTS, players=17
+[2025-12-28T08:07:00.988Z] [INFO]  Slot 19: teamId=6946ef4551a7ac73ea97a56c, teamName=EQUILLIBRIUM , players=16
+[2025-12-28T08:07:00.990Z] [INFO] API returned 2 players
+[2025-12-28T08:07:01.094Z] [INFO] [updateTeams] UID=51463325520 already exists in team FARVOICE GAMING. Skipping.
+[2025-12-28T08:07:01.094Z] [INFO] [updateTeams] UID=5871160565 already exists in team BOARS GAMING. Skipping.
+[2025-12-28T08:07:01.094Z] [INFO] 
+[updateTeams] Finished processing all API players
+
+[2025-12-28T08:07:01.095Z] [INFO] Merged player x6tenceDEMON: kills=0, health=81/100
+[2025-12-28T08:07:01.095Z] [INFO] [merged] uid=51463325520 | name="x6tenceDEMON" | picUrl=""
+[2025-12-28T08:07:01.096Z] [INFO] Team slot 3 (FARVOICE GAMING) final players: [ 'x6tenceDEMON(51463325520)' ]
+[2025-12-28T08:07:01.096Z] [INFO] Merged player FGxDeMON: kills=0, health=0/100
+[2025-12-28T08:07:01.096Z] [INFO] [merged] uid=5871160565 | name="FGxDeMON" | picUrl=""
+[2025-12-28T08:07:01.097Z] [INFO] Team slot 4 (BOARS GAMING) final players: [ 'FGxDeMON(5871160565)' ]
+[2025-12-28T08:07:01.097Z] [INFO] Team slot 5 (SHOCKWAVE ) final players: []
+[2025-12-28T08:07:01.097Z] [INFO] Team slot 6 (SCAMMERS ) final players: []
+[2025-12-28T08:07:01.097Z] [INFO] Team slot 7 (ANORTHOSIS FAMAGUSTA ESPORTS) final players: []
+[2025-12-28T08:07:01.097Z] [INFO] Team slot 8 (KAM ARMY ) final players: []
+[2025-12-28T08:07:01.098Z] [INFO] Team slot 9 (STAR ESPORTS ) final players: []
+[2025-12-28T08:07:01.098Z] [INFO] Team slot 10 (KZ ESPORTS) final players: []
+[2025-12-28T08:07:01.098Z] [INFO] Team slot 11 (WeRunExtreme ESPORTS) final players: []
+[2025-12-28T08:07:01.098Z] [INFO] Team slot 12 (ATOMIC TEAM) final players: []
+[2025-12-28T08:07:01.098Z] [INFO] Team slot 13 (EIGHT ACADEMY) final players: []
+[2025-12-28T08:07:01.099Z] [INFO] Team slot 14 (NOVA JUNIOR) final players: []
+[2025-12-28T08:07:01.099Z] [INFO] Team slot 15 (MARU ECOSAL) final players: []
+[2025-12-28T08:07:01.099Z] [INFO] Team slot 16 (RE ZERO) final players: []
+[2025-12-28T08:07:01.099Z] [INFO] Team slot 17 (UQIMERION) final players: []
+[2025-12-28T08:07:01.099Z] [INFO] Team slot 18 (BRUTAL TEAM) final players: []
+[2025-12-28T08:07:01.099Z] [INFO] Team slot 19 (NARI KOOTAM) final players: []
+[2025-12-28T08:07:01.100Z] [INFO] Team slot 20 (ONE ESPORTS) final players: []
+[2025-12-28T08:07:01.100Z] [INFO] Team slot 21 (EQUILLIBRIUM ) final players: []
+[2025-12-28T08:07:01.155Z] [INFO] [user 68cb88a92e32c82dcca2b32e] Data comparison for match: 6946f3a8b5940971a8f35915 isEqual: false
+[2025-12-28T08:07:01.156Z] [INFO] [user 68cb88a92e32c82dcca2b32e] Emitting liveMatchUpdate for match: new ObjectId('6946f3a8b5940971a8f35915')
+[2025-12-28T08:07:01.157Z] [INFO] [adaptive] user=68cb88a92e32c82dcca2b32e interval=2000ms noChangeCount=0
+[2025-12-28T08:07:03.107Z] [INFO] 📍 GET /api/public/bagPack/tournament/6946ecf5f7e09caab06c63b7/round/6946f21151a7ac73ea97a724/match/6946f3a8b5940971a8f35915/matchdata/6946f3a8b5940971a8f35972
+[2025-12-28T08:07:03.107Z] [INFO] 🍪 Cookies: scoreSync.sid=s%3As82a5UXJjs7_0YzNnYjNWELLs11eMUEm.hbbw5naXQF2VY%2BJmFSS9or%2Fh6nTL54BchPKqvomyPlo
+[2025-12-28T08:07:03.107Z] [INFO] 🔑 Session ID: s82a5UXJjs7_0YzNnYjNWELLs11eMUEm
+[2025-12-28T08:07:03.108Z] [INFO] 👤 User ID: 68cb88a92e32c82dcca2b32e
+[2025-12-28T08:07:03.254Z] [INFO] [live] Begin update for matchId=6946f3a8b5940971a8f35915 user=68cb88a92e32c82dcca2b32e
+[2025-12-28T08:07:03.350Z] [INFO] Using tournamentId: 6946ecf5f7e09caab06c63b7 for user 68cb88a92e32c82dcca2b32e
+[2025-12-28T08:07:03.555Z] [INFO] Using group for tournament 6946ecf5f7e09caab06c63b7 (user 68cb88a92e32c82dcca2b32e):
+[2025-12-28T08:07:03.555Z] [INFO] Group ID: 6946f20951a7ac73ea97a70e, Slots: 19
+[2025-12-28T08:07:03.556Z] [INFO]  Slot 1: teamId=6920916b3d1185e870e91a73, teamName=FARVOICE GAMING, players=25
+[2025-12-28T08:07:03.556Z] [INFO]  Slot 2: teamId=691f52f104385bd1cd0bb639, teamName=BOARS GAMING, players=26
+[2025-12-28T08:07:03.556Z] [INFO]  Slot 3: teamId=691b68b65924f998c75f0f42, teamName=SHOCKWAVE , players=19
+[2025-12-28T08:07:03.556Z] [INFO]  Slot 4: teamId=6939b7e3c15a4970e91d4479, teamName=SCAMMERS , players=17
+[2025-12-28T08:07:03.556Z] [INFO]  Slot 5: teamId=6946e740f7e09caab06c603e, teamName=ANORTHOSIS FAMAGUSTA ESPORTS, players=19
+[2025-12-28T08:07:03.556Z] [INFO]  Slot 6: teamId=6946f05751a7ac73ea97a5e6, teamName=KAM ARMY , players=17
+[2025-12-28T08:07:03.556Z] [INFO]  Slot 7: teamId=6946e7c3f7e09caab06c6075, teamName=STAR ESPORTS , players=17
+[2025-12-28T08:07:03.557Z] [INFO]  Slot 8: teamId=694195c9691d2e45d94326aa, teamName=KZ ESPORTS, players=17
+[2025-12-28T08:07:03.557Z] [INFO]  Slot 9: teamId=69050a4a2423cdc44fd74c82, teamName=WeRunExtreme ESPORTS, players=22
+[2025-12-28T08:07:03.557Z] [INFO]  Slot 10: teamId=6939b839c15a4970e91d44af, teamName=ATOMIC TEAM, players=18
+[2025-12-28T08:07:03.557Z] [INFO]  Slot 11: teamId=69050a3a2423cdc44fd74c77, teamName=EIGHT ACADEMY, players=25
+[2025-12-28T08:07:03.557Z] [INFO]  Slot 12: teamId=6946e84bf7e09caab06c60e5, teamName=NOVA JUNIOR, players=18
+[2025-12-28T08:07:03.557Z] [INFO]  Slot 13: teamId=6946e880f7e09caab06c60fc, teamName=MARU ECOSAL, players=17
+[2025-12-28T08:07:03.557Z] [INFO]  Slot 14: teamId=6946e8baf7e09caab06c6117, teamName=RE ZERO, players=19
+[2025-12-28T08:07:03.557Z] [INFO]  Slot 15: teamId=69419527691d2e45d9432655, teamName=UQIMERION, players=18
+[2025-12-28T08:07:03.557Z] [INFO]  Slot 16: teamId=6946e93df7e09caab06c6155, teamName=BRUTAL TEAM, players=17
+[2025-12-28T08:07:03.557Z] [INFO]  Slot 17: teamId=6946e98ff7e09caab06c6178, teamName=NARI KOOTAM, players=15
+[2025-12-28T08:07:03.558Z] [INFO]  Slot 18: teamId=691231788fc724f3da328cbe, teamName=ONE ESPORTS, players=17
+[2025-12-28T08:07:03.558Z] [INFO]  Slot 19: teamId=6946ef4551a7ac73ea97a56c, teamName=EQUILLIBRIUM , players=16
+[2025-12-28T08:07:03.559Z] [INFO] API returned 2 players
+[2025-12-28T08:07:03.662Z] [INFO] [updateTeams] UID=51463325520 already exists in team FARVOICE GAMING. Skipping.
+[2025-12-28T08:07:03.662Z] [INFO] [updateTeams] UID=5871160565 already exists in team BOARS GAMING. Skipping.
+[2025-12-28T08:07:03.662Z] [INFO] 
+[updateTeams] Finished processing all API players
+
+[2025-12-28T08:07:03.662Z] [INFO] Merged player x6tenceDEMON: kills=0, health=81/100
+[2025-12-28T08:07:03.662Z] [INFO] [merged] uid=51463325520 | name="x6tenceDEMON" | picUrl=""
+[2025-12-28T08:07:03.663Z] [INFO] Team slot 3 (FARVOICE GAMING) final players: [ 'x6tenceDEMON(51463325520)' ]
+[2025-12-28T08:07:03.664Z] [INFO] Merged player FGxDeMON: kills=0, health=0/100
+[2025-12-28T08:07:03.664Z] [INFO] [merged] uid=5871160565 | name="FGxDeMON" | picUrl=""
+[2025-12-28T08:07:03.665Z] [INFO] Team slot 4 (BOARS GAMING) final players: [ 'FGxDeMON(5871160565)' ]
+[2025-12-28T08:07:03.665Z] [INFO] Team slot 5 (SHOCKWAVE ) final players: []
+[2025-12-28T08:07:03.665Z] [INFO] Team slot 6 (SCAMMERS ) final players: []
+[2025-12-28T08:07:03.665Z] [INFO] Team slot 7 (ANORTHOSIS FAMAGUSTA ESPORTS) final players: []
+[2025-12-28T08:07:03.665Z] [INFO] Team slot 8 (KAM ARMY ) final players: []
+[2025-12-28T08:07:03.665Z] [INFO] Team slot 9 (STAR ESPORTS ) final players: []
+[2025-12-28T08:07:03.666Z] [INFO] Team slot 10 (KZ ESPORTS) final players: []
+[2025-12-28T08:07:03.666Z] [INFO] Team slot 11 (WeRunExtreme ESPORTS) final players: []
+[2025-12-28T08:07:03.666Z] [INFO] Team slot 12 (ATOMIC TEAM) final players: []
+[2025-12-28T08:07:03.666Z] [INFO] Team slot 13 (EIGHT ACADEMY) final players: []
+[2025-12-28T08:07:03.666Z] [INFO] Team slot 14 (NOVA JUNIOR) final players: []
+[2025-12-28T08:07:03.666Z] [INFO] Team slot 15 (MARU ECOSAL) final players: []
+[2025-12-28T08:07:03.666Z] [INFO] Team slot 16 (RE ZERO) final players: []
+[2025-12-28T08:07:03.667Z] [INFO] Team slot 17 (UQIMERION) final players: []
+[2025-12-28T08:07:03.667Z] [INFO] Team slot 18 (BRUTAL TEAM) final players: []
+[2025-12-28T08:07:03.667Z] [INFO] Team slot 19 (NARI KOOTAM) final players: []
+[2025-12-28T08:07:03.667Z] [INFO] Team slot 20 (ONE ESPORTS) final players: []
+[2025-12-28T08:07:03.667Z] [INFO] Team slot 21 (EQUILLIBRIUM ) final players: []
+[2025-12-28T08:07:03.725Z] [INFO] [user 68cb88a92e32c82dcca2b32e] Data comparison for match: 6946f3a8b5940971a8f35915 isEqual: false
+[2025-12-28T08:07:03.726Z] [INFO] [user 68cb88a92e32c82dcca2b32e] Emitting liveMatchUpdate for match: new ObjectId('6946f3a8b5940971a8f35915')
+[2025-12-28T08:07:03.726Z] [INFO] [adaptive] user=68cb88a92e32c82dcca2b32e interval=2000ms noChangeCount=0
+[2025-12-28T08:07:05.086Z] [INFO] Received SIGINT, shutting down...

@@ -358,6 +358,50 @@ app.get('/api/public/tournaments/:tournamentId/rounds/:roundId/selected-match', 
   }
 });
 
+// Public backpack data
+app.get('/api/public/bagPack/tournament/:tournamentId/round/:roundId/match/:matchId/matchdata/:matchDataId', async (req, res) => {
+  try {
+    const { matchDataId } = req.params;
+    const MatchData = require('./models/matchData.model');
+    const Match = require('./models/match.model');
+    const { getBackpackModel } = require('./models/bgpackModel');
+
+    const matchDataDoc = await MatchData.findById(matchDataId);
+    if (!matchDataDoc) {
+      return res.status(404).json({ error: 'MatchData not found' });
+    }
+
+    const match = await Match.findById(matchDataDoc.matchId);
+    if (!match) {
+      return res.status(404).json({ error: 'Match not found' });
+    }
+
+    const Backpack = getBackpackModel(matchDataId);
+    const data = await Backpack.find({ userId: matchDataDoc.userId });
+
+    // Remove userId from each item in data
+    const cleanedData = data.map(item => {
+      const itemObj = item.toObject();
+      delete itemObj.userId;
+      return itemObj;
+    });
+
+    res.json({
+      userId: matchDataDoc.userId,
+      tournamentId: match.tournamentId,
+      roundId: match.roundId,
+      matchId: match._id,
+      matchDataId,
+      teambackpackinfo: {
+        TeamBackPackList: cleanedData
+      }
+    });
+  } catch (error) {
+    console.error('Error getting public backpack data:', error);
+    res.status(500).json({ error: 'Failed to get public backpack data' });
+  }
+});
+
 // Public overall aggregated data for a round in a tournament
 app.get('/api/public/tournaments/:tournamentId/rounds/:roundId/overall', async (req, res) => {
   try {
