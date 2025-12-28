@@ -1,9 +1,8 @@
 const Team = require('../models/teams.model.js');
 
 // Default assets
-const DEFAULT_TEAM_LOGO = 'https://res.cloudinary.com/dqckienxj/image/upload/v1761358754/def_logo_yyaoaz.png';
-const DEFAULT_PLAYER_PHOTO = 'https://res.cloudinary.com/dqckienxj/image/upload/v1761358753/defplayer_m7qexs.png';
-
+const DEFAULT_TEAM_LOGO = '/def_logo.png';
+const DEFAULT_PLAYER_PHOTO = '/def_char.png';
 // Create a new team
 const createTeam = async (req, res) => {
   try {
