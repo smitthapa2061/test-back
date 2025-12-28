@@ -240,7 +240,7 @@ app.use('/api', teamRoutes);
 app.use('/api', matchDataRoutes);
 app.use('/api/matchSelection', matchSelectionRoutes);
 app.use('/api', overallRoutes);
-app.use('/api/backpack', bgPackRoutes);
+app.use('/api/bagPack', bgPackRoutes);
 
 // --- PUBLIC ROUTES (No Authentication Required) ---
 const Tournament = require('./models/tournament.model');
