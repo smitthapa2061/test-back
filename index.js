@@ -25,8 +25,10 @@ const matchDataRoutes = require('./route/matchData.route.js');
 const matchSelectionRoutes = require('./route/matchSelection.route.js');
 const overallRoutes = require('./route/overall.route.js');
 const userRoutes = require('./route/User.route.js');
+const bgPackRoutes = require('./route/bgPackRoute.js');
 const { startLiveMatchUpdater } = require('./controller/Api_controllers/pubgApiMatchData.controller.js');
 const { startCircleInfoUpdater } = require('./controller/Api_controllers/circleInfo.controller.js');
+const { startBackpackUpdater } = require('./controller/Api_controllers/bagpackInfocontroller.js');
 
 // --- DECLARE APP AND PORT ---
 const app = express();
@@ -238,6 +240,7 @@ app.use('/api', teamRoutes);
 app.use('/api', matchDataRoutes);
 app.use('/api/matchSelection', matchSelectionRoutes);
 app.use('/api', overallRoutes);
+app.use('/api/backpack', bgPackRoutes);
 
 // --- PUBLIC ROUTES (No Authentication Required) ---
 const Tournament = require('./models/tournament.model');
@@ -580,5 +583,6 @@ server.listen(port, () => {
   console.log(`🚀 Server running at http://localhost:${port}`);
   startLiveMatchUpdater();
   startCircleInfoUpdater();
+  startBackpackUpdater();
 });
 
