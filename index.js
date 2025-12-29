@@ -175,13 +175,13 @@ const sessionMiddleware = session({
   store: sessionStore,
   proxy: true, // Trust the reverse proxy (important for HTTPS)
   cookie: {
-    secure: isProduction && !isLocalIP, // Only secure in true production, not local IP
+    secure: false, // Only secure in true production, not local IP
     httpOnly: true,
-    sameSite: 'none', // 'none' only for true production
+    sameSite: 'lax', // 'none' only for true production
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     domain: undefined, // Don't set domain for cross-site cookies between different TLDs
     path: '/',
-    partitioned: isProduction && !isLocalIP // Only partitioned in true production
+    partitioned: false // Only partitioned in true production
   },
   rolling: true // Reset the expiration on every request
 });
