@@ -6,6 +6,16 @@ const redisClient = new Redis({
   token: process.env.UPSTASH_REDIS_REST_TOKEN || "ApclAAIgcDLXJyE672YX0dBKYh4ND1v4jTMZcPohUunn9I7mqkgrlA",
 });
 
+// Test connection
+(async () => {
+  try {
+    await redisClient.ping();
+    console.log("✅ Upstash Redis connected");
+  } catch (err) {
+    console.error("❌ Upstash Redis connection failed:", err.message);
+  }
+})();
+
 // Simple in-memory cache as fallback
 const memoryCache = new Map();
 
@@ -21,8 +31,9 @@ const getCache = async (key) => {
 
 const setCache = async (key, value, ttlSeconds = 300) => {
   try {
-    const serializedValue = JSON.stringify(value);
-    await redisClient.setex(key, ttlSeconds, serializedValue);
+    await redisClient.set(key, JSON.stringify(value), {
+      ex: ttlSeconds,
+    });
   } catch (error) {
     console.warn('Cache set error:', error.message);
     memoryCache.set(key, value);
