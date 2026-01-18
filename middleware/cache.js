@@ -3,7 +3,7 @@ const { Redis } = require('@upstash/redis');
 // Create Redis client
 const redisClient = new Redis({
   url: process.env.UPSTASH_REDIS_REST_URL || "https://enabled-mako-38693.upstash.io",
-  token: process.env.UPSTASH_REDIS_REST_TOKEN || "ApclAAIgcDLXJyE672YX0dBKYh4ND1v4jTMZcPohUunn9I7mqkgrlA",
+  token: process.env.UPSTASH_REDIS_REST_TOKEN || "AZclAAIncDIwYzAxYTkyMmRlNDU0YjU5OWZjNGU5ZWQ2MDMzZTVkYnAyMzg2OTM",
 });
 
 // Test connection
