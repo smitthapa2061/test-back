@@ -2,15 +2,18 @@ const { createClient } = require('redis');
 
 // Create Redis client
 const redisClient = createClient({
+  url: process.env.REDIS_URL || 'rediss://default_ro:ApclAAIgcDLXJyE672YX0dBKYh4ND1v4jTMZcPohUunn9I7mqkgrlA@enabled-mako-38693.upstash.io:6379',
   socket: {
-    host: '127.0.0.1',
-    port: 6379,
     reconnectStrategy: retries => Math.min(retries * 100, 3000)
   }
 });
 
 redisClient.on('error', (err) => {
   console.error('Redis Client Error', err);
+});
+
+redisClient.on('connect', () => {
+  console.log('✅ Redis connected successfully');
 });
 
 redisClient.connect().catch(console.error);
@@ -105,4 +108,5 @@ const invalidateCacheMiddleware = (keysOrFunc) => {
   };
 };
 
+module.exports = { getCache, setCache, cacheMiddleware, invalidateCacheMiddleware };
 module.exports = { getCache, setCache, cacheMiddleware, invalidateCacheMiddleware };
