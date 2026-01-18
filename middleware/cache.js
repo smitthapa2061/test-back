@@ -3,7 +3,7 @@ const { createClient } = require('redis');
 // Create Redis client
 const redisClient = createClient({
   socket: {
-    host: process.env.REDIS_URL,
+    host: process.env.REDIS_URL || "rediss://default_ro:ApclAAIgcDLXJyE672YX0dBKYh4ND1v4jTMZcPohUunn9I7mqkgrlA@enabled-mako-38693.upstash.io:6379",
     port: 6379,
     reconnectStrategy: retries => Math.min(retries * 100, 3000)
   }
