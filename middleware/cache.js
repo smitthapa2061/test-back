@@ -1,33 +1,18 @@
-const { createClient } = require('redis');
+const { Redis } = require('@upstash/redis');
 
 // Create Redis client
-const redisClient = createClient({
-  socket: {
-    host: process.env.REDIS_URL || "rediss://default_ro:ApclAAIgcDLXJyE672YX0dBKYh4ND1v4jTMZcPohUunn9I7mqkgrlA@enabled-mako-38693.upstash.io:6379",
-    port: 6379,
-    reconnectStrategy: retries => Math.min(retries * 100, 3000)
-  }
+const redisClient = new Redis({
+  url: process.env.UPSTASH_REDIS_REST_URL || "https://enabled-mako-38693.upstash.io",
+  token: process.env.UPSTASH_REDIS_REST_TOKEN || "ApclAAIgcDLXJyE672YX0dBKYh4ND1v4jTMZcPohUunn9I7mqkgrlA",
 });
-
-redisClient.on('error', (err) => {
-  console.error('Redis Client Error', err);
-});
-redisClient.on('connect', () => {
-  console.log('✅ Redis connected successfully');
-});
-redisClient.connect().catch(console.error);
 
 // Simple in-memory cache as fallback
 const memoryCache = new Map();
 
 const getCache = async (key) => {
   try {
-    if (redisClient.isOpen) {
-      const value = await redisClient.get(key);
-      return value ? JSON.parse(value) : null;
-    } else {
-      return memoryCache.get(key) || null;
-    }
+    const value = await redisClient.get(key);
+    return value ? JSON.parse(value) : null;
   } catch (error) {
     console.warn('Cache get error:', error.message);
     return memoryCache.get(key) || null;
@@ -37,13 +22,7 @@ const getCache = async (key) => {
 const setCache = async (key, value, ttlSeconds = 300) => {
   try {
     const serializedValue = JSON.stringify(value);
-    if (redisClient.isOpen) {
-      await redisClient.setEx(key, ttlSeconds, serializedValue);
-    } else {
-      memoryCache.set(key, value);
-      // Simple TTL for memory cache
-      setTimeout(() => memoryCache.delete(key), ttlSeconds * 1000);
-    }
+    await redisClient.setex(key, ttlSeconds, serializedValue);
   } catch (error) {
     console.warn('Cache set error:', error.message);
     memoryCache.set(key, value);
@@ -53,11 +32,7 @@ const setCache = async (key, value, ttlSeconds = 300) => {
 
 const deleteCache = async (key) => {
   try {
-    if (redisClient.isOpen) {
-      await redisClient.del(key);
-    } else {
-      memoryCache.delete(key);
-    }
+    await redisClient.del(key);
   } catch (error) {
     console.warn('Cache delete error:', error.message);
     memoryCache.delete(key);
