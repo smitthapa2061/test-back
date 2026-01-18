@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const requireAuth = require('../authMiddleware.js');
+const { cacheMiddleware } = require('../middleware/cache.js');
 const { getOverallMatchDataForRound } = require('../controller/overall.controller.js');
 
 // GET overall aggregated match data for a given tournament and round up to a specific match

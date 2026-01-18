@@ -10,7 +10,7 @@ const playerStatsSchema = new Schema({
   playerOpenId: String,
   picUrl: String,
   showPicUrl: String,
-  character: String,
+  character: { type: String, default: 'None' },
   isFiring: { type: Boolean, default: false },
   bHasDied: { type: Boolean, default: false },
   location: {
@@ -23,7 +23,7 @@ const playerStatsSchema = new Schema({
   liveState: { type: Number, default: 0 },
   killNum: { type: Number, default: 0 },
   killNumBeforeDie: { type: Number, default: 0 },
-  playerKey: String,
+  playerKey: { type: String, default: '' },
   gotAirDropNum: { type: Number, default: 0 },
   maxKillDistance: { type: Number, default: 0 },
   damage: { type: Number, default: 0 },
@@ -34,6 +34,7 @@ const playerStatsSchema = new Schema({
   rank: { type: Number, default: 0 },
   isOutsideBlueCircle: { type: Boolean, default: false },
   inDamage: { type: Number, default: 0 },
+  heal: { type: Number, default: 0 },
   headShotNum: { type: Number, default: 0 },
   survivalTime: { type: Number, default: 0 },
   driveDistance: { type: Number, default: 0 },
@@ -50,6 +51,8 @@ const playerStatsSchema = new Schema({
   UseSelfRescueTime: { type: Number, default: 0 },
   UseEmergencyCallTime: { type: Number, default: 0 },
   teamIdfromApi: String,
+  teamId: { type: Number, default: 0 },
+  teamName: { type: String, default: '' },
   contribution: { type: Number, default: 0 }
 }, { _id: true }); // ✅ default _id for each player
 

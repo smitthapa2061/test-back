@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
-// Initialize logger first to capture all logs
-require('./logger');
+
 
 // Load configuration
 const config = require('./config');
@@ -29,6 +28,7 @@ const bgPackRoutes = require('./route/bgPackRoute.js');
 const { startLiveMatchUpdater } = require('./controller/Api_controllers/pubgApiMatchData.controller.js');
 const { startCircleInfoUpdater } = require('./controller/Api_controllers/circleInfo.controller.js');
 const { startBackpackUpdater } = require('./controller/Api_controllers/bagpackInfocontroller.js');
+const { cacheMiddleware } = require('./middleware/cache.js');
 
 // --- DECLARE APP AND PORT ---
 const app = express();
@@ -175,13 +175,13 @@ const sessionMiddleware = session({
   store: sessionStore,
   proxy: true, // Trust the reverse proxy (important for HTTPS)
   cookie: {
-    secure: true, // Only secure in true production, not local IP
+    secure: false, // Only secure in true production, not local IP
     httpOnly: true,
-    sameSite: 'none', // 'none' only for true production
+    sameSite: 'lax', // 'none' only for true production
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     domain: undefined, // Don't set domain for cross-site cookies between different TLDs
     path: '/',
-    partitioned: true // Only partitioned in true production
+    partitioned: false // Only partitioned in true production
   },
   rolling: true // Reset the expiration on every request
 });
@@ -233,9 +233,10 @@ app.use((req, res, next) => {
 // --- REGISTER ROUTES ---
 app.use('/api/users', userRoutes);
 app.use('/api', groupRoutes);
+// Mount matchRoutes before tournamentRoutes to handle nested routes
+app.use('/api', matchRoutes);
 app.use('/api/tournaments', tournamentRoutes);
 app.use('/api', roundRoutes);
-app.use('/api', matchRoutes);
 app.use('/api', teamRoutes);
 app.use('/api', matchDataRoutes);
 app.use('/api/matchSelection', matchSelectionRoutes);
@@ -247,7 +248,7 @@ const Tournament = require('./models/tournament.model');
 const Match = require('./models/match.model');
 
 // Public tournament data
-app.get('/api/public/tournaments/:tournamentId', async (req, res) => {
+app.get('/api/public/tournaments/:tournamentId', cacheMiddleware(), async (req, res) => {
   try {
     const tournament = await Tournament.findById(req.params.tournamentId);
     if (!tournament) {
@@ -260,7 +261,7 @@ app.get('/api/public/tournaments/:tournamentId', async (req, res) => {
 });
 
 // Public round data
-app.get('/api/public/tournaments/:tournamentId/rounds/:roundId', async (req, res) => {
+app.get('/api/public/tournaments/:tournamentId/rounds/:roundId', cacheMiddleware(), async (req, res) => {
   try {
     const Round = require('./models/round.model');
     const round = await Round.findById(req.params.roundId);
@@ -274,7 +275,7 @@ app.get('/api/public/tournaments/:tournamentId/rounds/:roundId', async (req, res
 });
 
 // Public match data
-app.get('/api/public/matches/:matchId', async (req, res) => {
+app.get('/api/public/matches/:matchId', cacheMiddleware(), async (req, res) => {
   try {
     const match = await Match.findById(req.params.matchId);
     if (!match) {
@@ -316,7 +317,7 @@ app.get('/api/public/matches/:matchId/matchdata', async (req, res) => {
 });
 
 // Public: list matches in a round
-app.get('/api/public/rounds/:roundId/matches', async (req, res) => {
+app.get('/api/public/rounds/:roundId/matches', cacheMiddleware(), async (req, res) => {
   try {
     const Match = require('./models/match.model');
     const matches = await Match.find({ roundId: req.params.roundId });
@@ -359,7 +360,7 @@ app.get('/api/public/tournaments/:tournamentId/rounds/:roundId/selected-match', 
 });
 
 // Public backpack data
-app.get('/api/public/bagPack/tournament/:tournamentId/round/:roundId/match/:matchId/matchdata/:matchDataId', async (req, res) => {
+app.get('/api/public/bagPack/tournament/:tournamentId/round/:roundId/match/:matchId/matchdata/:matchDataId', cacheMiddleware(), async (req, res) => {
   try {
     const { matchDataId } = req.params;
     const MatchData = require('./models/matchData.model');

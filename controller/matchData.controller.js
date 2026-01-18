@@ -6,6 +6,7 @@ const Group = require('../models/group.model.js');
 const { getSocket } = require('../socket.js'); // import socket instance
 const mongoose = require('mongoose');
 const requireAuth = require('../authMiddleware.js');
+const { computeOverallMatchDataForRound } = require('./overall.controller');
 
 
 
@@ -45,7 +46,7 @@ let teams = (match.groups || []).flatMap(group =>
         playerOpenId: player.playerOpenId || '',
         picUrl: player.photo || '',
         showPicUrl: '',
-        character: '',
+        character: 'None',
         isFiring: false,
         bHasDied: false,
         location: { x: 0, y: 0, z: 0 },
@@ -65,6 +66,7 @@ let teams = (match.groups || []).flatMap(group =>
         rank: 0,
         isOutsideBlueCircle: false,
         inDamage: 0,
+        heal: 0,
         headShotNum: 0,
         survivalTime: 0,
         driveDistance: 0,
@@ -81,6 +83,8 @@ let teams = (match.groups || []).flatMap(group =>
         UseSelfRescueTime: 0,
         UseEmergencyCallTime: 0,
         teamIdfromApi: '',
+        teamId: slot.slot,
+        teamName: slot.team.teamFullName || '',
         contribution: 0,
       }))
     }))
@@ -169,6 +173,17 @@ const getMatchDataByMatchId = async (req, res) => {
 
 // === Update Team Points & Emit via Socket ===
 const updateTeamPoints = async (req, res) => {
+  const lockKey = `${req.params.matchDataId}-${req.params.teamId}-points`;
+
+  // Check if this team points update is already in progress
+  if (updateLocks.has(lockKey)) {
+    console.log('Team points update already in progress for:', lockKey);
+    return res.status(429).json({ error: 'Update already in progress, please wait' });
+  }
+
+  // Set lock
+  updateLocks.set(lockKey, true);
+
   try {
     // Enforce ownership via match and matchData
     const { matchId, matchDataId } = req.params;
@@ -176,11 +191,8 @@ const updateTeamPoints = async (req, res) => {
     if (!match) return res.status(404).json({ error: 'Match not found or not yours' });
     const md = await MatchData.findOne({ _id: matchDataId, matchId, userId: req.session.userId });
     if (!md) return res.status(404).json({ error: 'MatchData not found or not yours' });
-  } catch (e) {
-    return res.status(401).json({ error: 'Unauthorized' });
-  }
-  try {
-    const { matchDataId, teamId } = req.params;
+
+    const { teamId } = req.params;
     const { placePoints } = req.body;
 
     if (typeof placePoints !== 'number') {
@@ -203,27 +215,29 @@ const updateTeamPoints = async (req, res) => {
       changes: { placePoints }
     });
 
+    // Emit overall data update for real-time aggregation
+    try {
+      const overallTeams = await computeOverallMatchDataForRound(match.tournamentId, match.roundId, matchId, req.session.userId);
+      io.emit('overallDataUpdate', { tournamentId: match.tournamentId, roundId: match.roundId, matchId, teams: overallTeams, createdAt: new Date() });
+    } catch (overallError) {
+      console.warn('Failed to emit overall data update:', overallError.message);
+    }
+
     res.json({ message: 'Team placePoints updated', matchDataId, teamId, changes: { placePoints } });
   } catch (error) {
     console.error('Error updating team points:', error);
     res.status(500).json({ error: error.message });
+  } finally {
+    // Always remove the lock
+    updateLocks.delete(lockKey);
   }
 };
 
 // Add a simple in-memory lock to prevent concurrent updates
 const updateLocks = new Map();
 
-const updatePlayerStats = async (req, res) => {
-  const lockKey = `${req.params.matchDataId}-${req.params.teamId}-${req.params.playerId}`;
-  
-  // Check if this player is already being updated
-  if (updateLocks.has(lockKey)) {
-    console.log('Update already in progress for player:', lockKey);
-    return res.status(429).json({ error: 'Update already in progress, please wait' });
-  }
 
-  // Set lock
-  updateLocks.set(lockKey, true);
+const updatePlayerStats = async (req, res) => {
   
   try {
     console.log('updatePlayerStats called with params:', req.params);
@@ -363,13 +377,22 @@ const updatePlayerStats = async (req, res) => {
       // Continue execution even if socket fails
     }
 
+    // Emit overall data update for real-time aggregation
+    try {
+      const match = await Match.findById(matchId);
+      if (match) {
+        const overallTeams = await computeOverallMatchDataForRound(match.tournamentId, match.roundId, matchId, req.session.userId);
+        const io = getSocket();
+        io.emit('overallDataUpdate', { tournamentId: match.tournamentId, roundId: match.roundId, matchId, teams: overallTeams, createdAt: new Date() });
+      }
+    } catch (overallError) {
+      console.warn('Failed to emit overall data update:', overallError.message);
+    }
+
     res.json({ message: 'Player stats updated', player });
   } catch (error) {
     console.error('Error in updatePlayerStats:', error);
     res.status(500).json({ error: error.message });
-  } finally {
-    // Always remove the lock
-    updateLocks.delete(lockKey);
   }
 };
 
@@ -389,6 +412,17 @@ const deleteMatchDataById = async (req, res) => {
 
 // Bulk update all players in a team (e.g., toggle bHasDied for entire team)
 const updateTeamPlayersBulkStats = async (req, res) => {
+  const lockKey = `${req.params.matchDataId}-${req.params.teamId}-bulk`;
+
+  // Check if this bulk update is already in progress
+  if (updateLocks.has(lockKey)) {
+    console.log('Bulk team update already in progress for:', lockKey);
+    return res.status(429).json({ error: 'Update already in progress, please wait' });
+  }
+
+  // Set lock
+  updateLocks.set(lockKey, true);
+
   try {
     const { matchId, matchDataId, teamId } = req.params;
     const { bHasDied } = req.body;
@@ -420,9 +454,21 @@ const updateTeamPlayersBulkStats = async (req, res) => {
       changes: { players: team.players.map(p => ({ _id: p._id, bHasDied: p.bHasDied })) },
     });
 
+    // Emit overall data update for real-time aggregation
+    try {
+      const overallTeams = await computeOverallMatchDataForRound(match.tournamentId, match.roundId, matchId, req.session.userId);
+      io.emit('overallDataUpdate', { tournamentId: match.tournamentId, roundId: match.roundId, matchId, teams: overallTeams, createdAt: new Date() });
+    } catch (overallError) {
+      console.warn('Failed to emit overall data update:', overallError.message);
+    }
+
     return res.json({ message: 'Team players updated', teamId, bHasDied });
   } catch (error) {
-    return res.status(500).json({ error: error.message });
+    console.error('Error in bulk team update:', error);
+    res.status(500).json({ error: error.message });
+  } finally {
+    // Always remove the lock
+    updateLocks.delete(lockKey);
   }
 };
 

@@ -3,11 +3,18 @@ const express = require('express');
 const router = express.Router();
 const matchController = require('../controller/match.controller.js');
 const requireAuth = require('../authMiddleware.js'); // ✅ import middleware
+const { cacheMiddleware, invalidateCacheMiddleware } = require('../middleware/cache.js');
 
 // Create a match inside specific tournament and round
 router.post(
   '/tournaments/:tournamentId/rounds/:roundId/matches',
   requireAuth,
+  invalidateCacheMiddleware((req) => [
+    'cache:/api/tournaments/' + req.params.tournamentId + '/matches',
+    'cache:/api/rounds/' + req.params.roundId + '/matches',
+    'cache:/api/tournaments/' + req.params.tournamentId + '/rounds/' + req.params.roundId + '/matches',
+    'cache:/api/public/rounds/' + req.params.roundId + '/matches'
+  ]),
   matchController.createMatchInRoundInTournament
 );
 
@@ -15,6 +22,7 @@ router.post(
 router.get(
   '/matches/:id',
   requireAuth,
+  cacheMiddleware(),
   matchController.getMatchById
 );
 
@@ -22,6 +30,7 @@ router.get(
 router.get(
   '/tournaments/:tournamentId/matches',
   requireAuth,
+  cacheMiddleware(),
   matchController.getMatchesByTournamentId
 );
 
@@ -29,6 +38,7 @@ router.get(
 router.get(
   '/rounds/:roundId/matches',
   requireAuth,
+  cacheMiddleware(),
   matchController.getMatchesByRoundId
 );
 
@@ -36,6 +46,7 @@ router.get(
 router.get(
   '/tournaments/:tournamentId/rounds/:roundId/matches',
   requireAuth,
+  cacheMiddleware(),
   matchController.getMatchesByTournamentAndRound
 );
 
@@ -43,6 +54,14 @@ router.get(
 router.put(
   '/tournaments/:tournamentId/rounds/:roundId/matches/:id',
   requireAuth,
+  invalidateCacheMiddleware((req) => [
+    'cache:/api/matches/' + req.params.id,
+    'cache:/api/tournaments/' + req.params.tournamentId + '/matches',
+    'cache:/api/rounds/' + req.params.roundId + '/matches',
+    'cache:/api/tournaments/' + req.params.tournamentId + '/rounds/' + req.params.roundId + '/matches',
+    'cache:/api/public/matches/' + req.params.id,
+    'cache:/api/public/rounds/' + req.params.roundId + '/matches'
+  ]),
   matchController.updateMatch
 );
 
@@ -50,6 +69,14 @@ router.put(
 router.delete(
   '/tournaments/:tournamentId/rounds/:roundId/matches/:id',
   requireAuth,
+  invalidateCacheMiddleware((req) => [
+    'cache:/api/matches/' + req.params.id,
+    'cache:/api/tournaments/' + req.params.tournamentId + '/matches',
+    'cache:/api/rounds/' + req.params.roundId + '/matches',
+    'cache:/api/tournaments/' + req.params.tournamentId + '/rounds/' + req.params.roundId + '/matches',
+    'cache:/api/public/matches/' + req.params.id,
+    'cache:/api/public/rounds/' + req.params.roundId + '/matches'
+  ]),
   matchController.deleteMatch
 );
 

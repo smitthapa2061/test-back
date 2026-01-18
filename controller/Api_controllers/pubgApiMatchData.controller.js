@@ -8,6 +8,7 @@ const Group = require('../../models/group.model');
 const updateTeamsWithApiPlayers = require('./playerCheckandSwitch'); // adjust path
 
 const { getSocket } = require('../../socket');
+const { computeOverallMatchDataForRound } = require('../overall.controller');
 
 // Per-user adaptive polling state
 // userPollState: Map<userKey, { intervalMs: number, noChangeCount: number, timer: NodeJS.Timeout | null }>
@@ -223,6 +224,11 @@ function startLiveMatchUpdater() {
             PoisonTotalDamage: apiPlayer.PoisonTotalDamage || 0,
             UseSelfRescueTime: apiPlayer.UseSelfRescueTime || 0,
             UseEmergencyCallTime: apiPlayer.UseEmergencyCallTime || 0,
+            heal: apiPlayer.heal || 0,
+            teamId: apiPlayer.teamId,
+            teamName: apiPlayer.teamName || '',
+            character: apiPlayer.character || 'None',
+            playerKey: apiPlayer.playerKey || 0,
           };
 
           if (apiPlayer.killNum > 0 || apiPlayer.health < 100) {
@@ -233,7 +239,7 @@ function startLiveMatchUpdater() {
             // Spread ALL API player data
             ...apiPlayer,
 
-            // Override identity fields
+          // Override identity fields
             _id: new mongoose.Types.ObjectId(),
             uId: uid,
             teamIdfromApi: team.slot,
@@ -327,6 +333,13 @@ function startLiveMatchUpdater() {
           if (!lastData) {
             console.log(`[user ${userKey}] No previous data, emitting liveMatchUpdate for match: ${selected.matchId}`);
             io.emit('liveMatchUpdate', updatedMatchData);
+            // Emit overall data update
+            try {
+              const overallTeams = await computeOverallMatchDataForRound(selected.tournamentId, selected.roundId, selected.matchId, selUserId);
+              io.emit('overallDataUpdate', { tournamentId: selected.tournamentId, roundId: selected.roundId, matchId: selected.matchId, teams: overallTeams, createdAt: new Date() });
+            } catch (overallError) {
+              console.warn('Failed to compute overall data:', overallError.message);
+            }
             lastMatchDataByUserMatch[snapshotKey] = currentData;
             hadChanges = true;
           } else {
@@ -349,6 +362,13 @@ function startLiveMatchUpdater() {
 
               console.log(`[user ${userKey}] Emitting liveMatchUpdate for match:`, selected.matchId);
               io.emit('liveMatchUpdate', updatedMatchData);
+              // Emit overall data update
+              try {
+                const overallTeams = await computeOverallMatchDataForRound(selected.tournamentId, selected.roundId, selected.matchId, selUserId);
+                io.emit('overallDataUpdate', { tournamentId: selected.tournamentId, roundId: selected.roundId, matchId: selected.matchId, teams: overallTeams, createdAt: new Date() });
+              } catch (overallError) {
+                console.warn('Failed to compute overall data:', overallError.message);
+              }
               lastMatchDataByUserMatch[snapshotKey] = currentData;
               hadChanges = true;
 

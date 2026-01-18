@@ -1,8 +1,12 @@
-const redis = require('redis');
+const { createClient } = require('redis');
 
 // Create Redis client
-const redisClient = redis.createClient({
-  url: process.env.REDIS_URL || 'redis://localhost:6379'
+const redisClient = createClient({
+  socket: {
+    host: '127.0.0.1',
+    port: 6379,
+    reconnectStrategy: retries => Math.min(retries * 100, 3000)
+  }
 });
 
 redisClient.on('error', (err) => {
@@ -45,4 +49,60 @@ const setCache = async (key, value, ttlSeconds = 300) => {
   }
 };
 
-module.exports = { getCache, setCache };
+const deleteCache = async (key) => {
+  try {
+    if (redisClient.isOpen) {
+      await redisClient.del(key);
+    } else {
+      memoryCache.delete(key);
+    }
+  } catch (error) {
+    console.warn('Cache delete error:', error.message);
+    memoryCache.delete(key);
+  }
+};
+
+// Middleware for caching GET responses
+const cacheMiddleware = (ttlSeconds = 300) => {
+  return async (req, res, next) => {
+    if (req.method !== 'GET') {
+      return next();
+    }
+
+    const key = `cache:${req.originalUrl}`;
+
+    try {
+      const cached = await getCache(key);
+      if (cached) {
+        console.log(`Cache hit for ${key}`);
+        return res.json(cached);
+      }
+    } catch (error) {
+      console.warn('Cache middleware error:', error.message);
+    }
+
+    // Override res.json to cache the response
+    const originalJson = res.json;
+    res.json = function(data) {
+      setCache(key, data, ttlSeconds).catch(err => console.warn('Cache set error:', err.message));
+      originalJson.call(this, data);
+    };
+
+    next();
+  };
+};
+
+const invalidateCacheMiddleware = (keysOrFunc) => {
+  return async (req, res, next) => {
+    if (['POST', 'PUT', 'DELETE'].includes(req.method)) {
+      // Invalidate caches before the operation
+      const keys = typeof keysOrFunc === 'function' ? keysOrFunc(req) : keysOrFunc;
+      for (const key of keys) {
+        await deleteCache(key);
+      }
+    }
+    next();
+  };
+};
+
+module.exports = { getCache, setCache, cacheMiddleware, invalidateCacheMiddleware };

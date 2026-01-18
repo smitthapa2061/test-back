@@ -327,7 +327,6 @@ function startBackpackUpdater() {
           }
           st.noChangeCount = 0;
           st.intervalMs = MAX_INTERVAL;
-          console.log(`[BACKPACK] Paused polling loop for inactive user ${existingUid}`);
         }
       }
     } catch (e) {

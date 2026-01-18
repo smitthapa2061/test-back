@@ -9,10 +9,11 @@ const {
   getAllUsers,
   getCurrentUser
 } = require('../controller/User.controller.js');
+const { cacheMiddleware } = require('../middleware/cache.js');
 
 // Admin protected user creation
 router.post('/register', createUser);
-router.get("/me", getCurrentUser); // session check route
+router.get("/me", cacheMiddleware(), getCurrentUser); // session check route
 // Login & logout
 router.post('/login', loginUser);
 router.post('/logout', logoutUser);
@@ -20,6 +21,6 @@ router.post('/logout', logoutUser);
 // CRUD
 router.put('/:id', updateUser);
 router.delete('/:id', deleteUser);
-router.get('/', getAllUsers);
+router.get('/', cacheMiddleware(), getAllUsers);
 
 module.exports = router;
