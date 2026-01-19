@@ -22,7 +22,7 @@ const memoryCache = new Map();
 const getCache = async (key) => {
   try {
     const value = await redisClient.get(key);
-    return value ? JSON.parse(value) : null;
+    return value ?? null; // Upstash already returns parsed objects
   } catch (error) {
     console.warn('Cache get error:', error.message);
     return memoryCache.get(key) || null;
@@ -31,9 +31,7 @@ const getCache = async (key) => {
 
 const setCache = async (key, value, ttlSeconds = 300) => {
   try {
-    await redisClient.set(key, JSON.stringify(value), {
-      ex: ttlSeconds,
-    });
+    await redisClient.set(key, value, { ex: ttlSeconds }); // Upstash handles JSON serialization
   } catch (error) {
     console.warn('Cache set error:', error.message);
     memoryCache.set(key, value);
